@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!-- Author: Dias Tursynbay -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Dias Tursynbay">
+  <meta name="description" content="Static login and registration forms for QazaqPeek Cyber Club members in Astana.">
+  <title>QazaqPeek Cyber Club - Login and Register</title>
+</head>
+<body>
+
+  <header>
+    <h1>QazaqPeek Cyber Club Astana</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Zones &amp; Tariffs</a></li>
+        <li><a href="booking.html">Book a Station</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="login.html">Login / Register</a></li>
+        <li><a href="colophon.html">Colophon</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Member Account</h2>
+      <p>Use an account to keep your booking contact details ready for future visits. These forms are for the static HTML demonstration and do not submit information to a server.</p>
+
+      <form method="POST" action="#">
+        <fieldset>
+          <legend>Log In</legend>
+          <p>
+            <label for="login-email">Email Address:</label><br>
+            <input type="email" id="login-email" name="login_email" placeholder="gamer@example.kz" required>
+          </p>
+          <p>
+            <label for="login-password">Password:</label><br>
+            <input type="password" id="login-password" name="login_password" required>
+          </p>
+          <p>
+            <input type="checkbox" id="remember-me" name="remember_me">
+            <label for="remember-me">Remember this account on this device</label>
+          </p>
+          <p><button type="submit">Log In</button></p>
+        </fieldset>
+      </form>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>Create a New Account</h2>
+      <form method="POST" action="#">
+        <fieldset>
+          <legend>Registration Details</legend>
+          <p>
+            <label for="register-name">Full Name or Gamer Tag:</label><br>
+            <input type="text" id="register-name" name="register_name" placeholder="e.g., ShadowAce" required>
+          </p>
+          <p>
+            <label for="register-email">Email Address:</label><br>
+            <input type="email" id="register-email" name="register_email" placeholder="gamer@example.kz" required>
+          </p>
+          <p>
+            <label for="register-phone">Phone Number:</label><br>
+            <input type="tel" id="register-phone" name="register_phone" placeholder="+7 706 000 0000" required>
+          </p>
+          <p>
+            <label for="register-password">Create Password:</label><br>
+            <input type="password" id="register-password" name="register_password" minlength="8" required>
+          </p>
+          <p>
+            <input type="checkbox" id="account-agree" name="account_agree" required>
+            <label for="account-agree">I agree to the club house rules and account terms.</label>
+          </p>
+          <p>
+            <button type="submit">Register</button>
+            <button type="reset">Clear Form</button>
+          </p>
+        </fieldset>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>QazaqPeek Cyber Club &bull; Kenesary St 69, Astana &bull; Tel: +7 (706) 605 5465</p>
+    <p>&copy; 2026 Dias Tursynbay. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

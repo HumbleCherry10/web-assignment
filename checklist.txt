@@ -1,9 +1,15 @@
 ================================================================================
 HTML BASICS ASSIGNMENT 1 — TAG CHECKLIST
-Student: Dias Tursynbay
+Students: Dias Tursynbay and Ainadinov Adilet
 ================================================================================
 
+The required tags and elements are divided as evenly as possible:
+Dias Tursynbay: 40 items
+Ainadinov Adilet: 41 items
+
 TAG / ELEMENT         FILE              LINE NUMBER(S)    WRITTEN BY
+--------------------------------------------------------------------------------
+DIAS TURSYNBAY — 40 ASSIGNED ITEMS
 --------------------------------------------------------------------------------
 <!DOCTYPE html>       index.html        Line 1            Dias Tursynbay
 <html lang="en">      index.html        Line 3            Dias Tursynbay
@@ -36,7 +42,6 @@ TAG / ELEMENT         FILE              LINE NUMBER(S)    WRITTEN BY
 <figcaption>          index.html        Line 59           Dias Tursynbay
 <aside>               index.html        Line 73           Dias Tursynbay
 <footer>              index.html        Line 83           Dias Tursynbay
---------------------------------------------------------------------------------
 <table>               services.html     Line 36           Dias Tursynbay
 <caption>             services.html     Line 37           Dias Tursynbay
 <thead>               services.html     Line 38           Dias Tursynbay
@@ -46,35 +51,48 @@ TAG / ELEMENT         FILE              LINE NUMBER(S)    WRITTEN BY
 <th scope="row">      services.html     Line 49           Dias Tursynbay
 <td>                  services.html     Line 50           Dias Tursynbay
 <ul> (nested)         services.html     Line 75           Dias Tursynbay
-<ol> (with attr)      services.html     Line 92           Dias Tursynbay
-<dl>                  services.html     Line 101          Dias Tursynbay
-<dt>                  services.html     Line 102          Dias Tursynbay
-<dd>                  services.html     Line 103          Dias Tursynbay
-<div> (with comment)  services.html     Line 113          Dias Tursynbay
 --------------------------------------------------------------------------------
-<form>                booking.html      Line 35           Dias Tursynbay
-<fieldset>            booking.html      Line 36           Dias Tursynbay
-<legend>              booking.html      Line 37           Dias Tursynbay
-<label>               booking.html      Line 40           Dias Tursynbay
-<input type="text">   booking.html      Line 41           Dias Tursynbay
-<input type="email">  booking.html      Line 46           Dias Tursynbay
-<input type="tel">    booking.html      Line 51           Dias Tursynbay
-<input type="date">   booking.html      Line 56           Dias Tursynbay
-<input type="number"> booking.html      Line 61           Dias Tursynbay
-<input type="radio">  booking.html      Line 66           Dias Tursynbay
-<select>              booking.html      Line 75           Dias Tursynbay
-<option>              booking.html      Line 76           Dias Tursynbay
-<textarea>            booking.html      Line 84           Dias Tursynbay
-<span> (with comment) booking.html      Line 89           Dias Tursynbay
-<input type="checkbox booking.html      Line 88           Dias Tursynbay
-<button type="submit" booking.html      Line 93           Dias Tursynbay
-<button type="reset"> booking.html      Line 94           Dias Tursynbay
-<a> (target, rel)     booking.html      Line 29           Dias Tursynbay
-<a> (tel link)        booking.html      Line 29           Dias Tursynbay
-<a> (mailto link)     booking.html      Line 29           Dias Tursynbay
+AINADINOV ADILET — 41 ASSIGNED ITEMS
 --------------------------------------------------------------------------------
-<code>                colophon.html     Line 45           Dias Tursynbay
-<kbd>                 colophon.html     Line 38           Dias Tursynbay
-<pre>                 colophon.html     Line 50           Dias Tursynbay
-<samp>                colophon.html     Line 51           Dias Tursynbay
+<ol> (with attr)      services.html     Line 92           Ainadinov Adilet
+<dl>                  services.html     Line 101          Ainadinov Adilet
+<dt>                  services.html     Line 102          Ainadinov Adilet
+<dd>                  services.html     Line 103          Ainadinov Adilet
+<div> (with comment)  services.html     Line 113          Ainadinov Adilet
+<form>                booking.html      Line 35           Ainadinov Adilet
+<fieldset>            booking.html      Line 36           Ainadinov Adilet
+<legend>              booking.html      Line 37           Ainadinov Adilet
+<label>               booking.html      Line 40           Ainadinov Adilet
+<input type="text">   booking.html      Line 41           Ainadinov Adilet
+<input type="email">  booking.html      Line 46           Ainadinov Adilet
+<input type="tel">    booking.html      Line 51           Ainadinov Adilet
+<input type="date">   booking.html      Line 56           Ainadinov Adilet
+<input type="number"> booking.html      Line 61           Ainadinov Adilet
+<input type="radio">  booking.html      Line 66           Ainadinov Adilet
+<select>              booking.html      Line 75           Ainadinov Adilet
+<option>              booking.html      Line 76           Ainadinov Adilet
+<textarea>            booking.html      Line 84           Ainadinov Adilet
+<span> (with comment) booking.html      Line 89           Ainadinov Adilet
+<input type="checkbox"> booking.html    Line 88           Ainadinov Adilet
+<button type="submit"> booking.html     Line 93           Ainadinov Adilet
+<button type="reset"> booking.html      Line 94           Ainadinov Adilet
+<a> (target, rel)     booking.html       Line 29           Ainadinov Adilet
+<a> (tel link)        booking.html       Line 29           Ainadinov Adilet
+<a> (mailto link)     booking.html       Line 29           Ainadinov Adilet
+<table>               events.html        Event calendar    Ainadinov Adilet
+<caption>             events.html        Event calendar    Ainadinov Adilet
+<ol>                  events.html        How to join       Ainadinov Adilet
+<a> (tel link)        events.html        Contact link      Ainadinov Adilet
+<a> (mailto link)     events.html        Contact link      Ainadinov Adilet
+<form>                login.html         Login/register     Ainadinov Adilet
+<fieldset>            login.html         Form grouping      Ainadinov Adilet
+<legend>              login.html         Form labels        Ainadinov Adilet
+<input type="password"> login.html       Password fields    Ainadinov Adilet
+<input type="checkbox"> login.html       Account options    Ainadinov Adilet
+<button type="submit"> login.html        Form actions       Ainadinov Adilet
+<button type="reset">  login.html        Clear form        Ainadinov Adilet
+<code>                colophon.html      Line 45           Ainadinov Adilet
+<kbd>                 colophon.html      Line 38           Ainadinov Adilet
+<pre>                 colophon.html      Line 50           Ainadinov Adilet
+<samp>                colophon.html      Line 51           Ainadinov Adilet
 ================================================================================
