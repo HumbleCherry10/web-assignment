@@ -1,9 +1,43 @@
 /* 
 ================================================================================
+QAZAQPEEK CYBER CLUB - ADILET AINADINOV'S STYLESHEET (adilet.css)
+Student: Adilet Ainadinov
+Bootstrap 5.3 Correction Layer
+*/
+
+:root {
+  --qp-accent: #38bdf8;
+  --qp-dark-bg: #0f172a;
+  --qp-input-bg: #1e293b;
+  --qp-text: rgba(240, 242, 245, 0.95);
+}
+
+/* Subtle focus ring on Bootstrap inputs matching club brand palette */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--qp-accent);
+  box-shadow: 0 0 0 0.25rem rgba(56, 189, 248, 0.25);
+}
+
+/* Retained requirement: Pseudo-element ::after marking mandatory form labels */
+label.required-field::after {
+  content: " *";
+  color: var(--qp-accent);
+  font-weight: bold;
+}
+
+/* Terminal / Code blocks styling */
+pre {
+  background-color: #000000;
+  color: var(--qp-accent);
+  padding: 15px;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
 QAZAQPEEK CYBER CLUB - ADILET'S CORRECTION LAYER (css/adilet.css)
 Author: Adilet Ainadinov
 Minimal custom styles for Booking, Login, and PC Specs pages.
-================================================================================
 */
 
 /* Custom form container background */
@@ -25,4 +59,13 @@ Minimal custom styles for Booking, Login, and PC Specs pages.
   bottom: 20px;
   right: 20px;
   z-index: 1030;
+}
+
+/* Minor card polish */
+.card {
+  transition: transform 0.15s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
 }

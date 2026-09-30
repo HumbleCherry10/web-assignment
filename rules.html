@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!-- Author: Adilet Ainadinov -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Adilet Ainadinov">
+  <meta name="description" content="House rules, gaming etiquette, hardware conduct and FAQ for QazaqPeek Cyber Club in Astana.">
+  <title>QazaqPeek Cyber Club - House Rules &amp; FAQ</title>
+
+  <!-- Using Bootstrap version 5.3.3 from CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/adilet.css">
+</head>
+<body class="bg-light">
+
+  <!-- Using container-fluid so the club header spans the full width of the viewport -->
+  <header class="container-fluid bg-dark text-white py-3 border-bottom border-danger">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+      <h1 class="h3 mb-2 mb-md-0 fw-bold">QazaqPeek Cyber Club Astana</h1>
+      <nav>
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link text-light px-2" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-light px-2" href="services.html">Zones &amp; Tariffs</a></li>
+          <li class="nav-item"><a class="nav-link text-light px-2" href="events.html">Events</a></li>
+          <li class="nav-item"><a class="nav-link text-light px-2" href="booking.html">Book a Station</a></li>
+          <li class="nav-item"><a class="nav-link text-light px-2" href="login.html">Login / Register</a></li>
+          <li class="nav-item"><a class="nav-link text-danger fw-bold px-2" href="rules.html">Rules &amp; FAQ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Using standard container to ensure readable structured text content -->
+  <main class="container my-5">
+
+    <div class="p-4 mb-4 bg-white rounded-3 shadow-sm text-center text-md-start">
+      <h2 class="display-6 fw-bold">📜 Club House Rules &amp; Conduct</h2>
+      <p class="lead text-muted mb-0">General regulations, hardware liability policies and answers to common guest questions.</p>
+    </div>
+
+    <!-- Responsive Grid Requirement: 3 blocks responding to width (col-12 col-md-6 col-lg-4) -->
+    <div class="row g-4 mb-5">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-0">
+          <div class="card-body">
+            <h3 class="h5 card-title fw-bold text-danger">1. Hardware Care</h3>
+            <p class="card-text text-muted small">Do not unplug club peripherals. Report sticky keys, monitor defects or headset glitches to staff immediately.</p>
+            <span class="badge bg-secondary">Strict Policy</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nesting Requirement: nested row inside a column element -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-danger">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <h3 class="h5 card-title fw-bold text-danger mb-0">2. Outside Food &amp; Drinks</h3>
+              <span class="badge bg-danger">Notice</span>
+            </div>
+            <!-- Nested row inside column -->
+            <div class="row g-2 my-2 py-2 border-top border-bottom bg-light rounded">
+              <div class="col-7 small text-muted">Bar available 24/7</div>
+              <div class="col-5 small text-end fw-bold text-danger">No hot meals</div>
+            </div>
+            <p class="card-text text-muted small">Drinks with tight secure caps are permitted at all PC desks. Greasy hot snacks must stay in the lounge.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-0">
+          <div class="card-body">
+            <h3 class="h5 card-title fw-bold text-danger">3. Age &amp; Night Grind</h3>
+            <p class="card-text text-muted small">Visitors under 18 must vacate premises by 22:00 according to municipal regulations. ID check is mandatory.</p>
+            <!-- Button disabled state requirement -->
+            <button type="button" class="btn btn-sm btn-secondary" disabled>Night Pass 18+ Only</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap Component: Accordion for Club FAQ -->
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-10">
+        <div class="card shadow-sm border-0 p-4">
+          <h3 class="h4 card-title fw-bold text-danger mb-3">Frequently Asked Questions</h3>
+
+          <!-- Accordion component with custom text -->
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne">
+                  Can I bring my own gaming mouse, headset or keyboard?
+                </button>
+              </h2>
+              <div id="faqOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-muted small">
+                  Yes, personal peripherals are welcome. Please notify the administrator on duty so they can plug your gear into the desk extension hub without bending cables.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo">
+                  What happens if I run out of balance during a competitive match?
+                </button>
+              </h2>
+              <div id="faqTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-muted small">
+                  The client shell gives an audio alert 5 minutes before expiration. You can top up your balance online via mobile banking without exiting the active game session.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree">
+                  How can I request pre-installation of large updates or new game releases?
+                </button>
+              </h2>
+              <div id="faqThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-muted small">
+                  Add a comment in the special requests field on our <a href="booking.html" class="link-danger fw-semibold">booking page</a> at least 4 hours before your session start.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Buttons section -->
+          <div class="d-flex gap-2 mt-4">
+            <a href="booking.html" class="btn btn-danger btn-lg flex-grow-1">Ready to Play? Book a Station</a>
+            <a href="index.html" class="btn btn-outline-secondary">Back to Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-end mt-4">
+      <a href="rules.html" class="btn btn-sm btn-outline-dark">Top</a>
+    </div>
+  </main>
+
+  <footer class="container-fluid bg-dark text-white py-4 mt-auto">
+    <div class="container text-center small text-secondary">
+      <p class="mb-1">QazaqPeek Cyber Club &bull; Kenesary St 69, Astana &bull; Tel: +7 (706) 605 5465</p>
+      <p class="mb-0">&copy; 2026 Dias Tursynbay &amp; Adilet Ainadinov. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle for interactive Accordion -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

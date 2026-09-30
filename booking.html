@@ -7,135 +7,213 @@
   <meta name="author" content="Adilet Ainadinov">
   <meta name="description" content="Station reservation and seat booking form for QazaqPeek Cyber Club in Astana on Kenesary 69.">
   <title>QazaqPeek Cyber Club - Book a Station</title>
-  
-  <!-- Bootstrap 5.3.3 CDN link linked before custom stylesheet so custom rules override where needed -->
-  <!-- Bootstrap 5.3.3 CDN used for responsive form controls, alert component, navbar toggler, and utility classes -->
+
+  <!-- Using Bootstrap version 5.3.3 from CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Custom stylesheets linked after Bootstrap CDN -->
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/adilet.css">
 </head>
-<body class="bg-dark text-light">
+<body class="bg-light">
 
-  <!-- Responsive Navigation Header using Bootstrap Navbar with Toggler -->
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary bg-opacity-25 border-bottom border-secondary shadow-sm py-3">
-      <div class="container">
-        <a class="navbar-brand fw-bold text-accent" href="index.html">QazaqPeek Cyber Club</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="mainNavbar">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
-            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="services.html">Zones &amp; Tariffs</a></li>
-            <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
-            <li class="nav-item"><a class="nav-link active fw-bold text-accent" href="booking.html">Book a Station</a></li>
-            <li class="nav-item"><a class="nav-link" href="login.html">Login / Register</a></li>
-            <li class="nav-item"><a class="nav-link" href="pc-specs.html">PC Specs</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+  <!-- Using container-fluid so the club header spans the full width of the viewport -->
+  <header class="container-fluid bg-dark text-white py-3 border-bottom border-danger">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+      <h1 class="h3 mb-2 mb-md-0 fw-bold">QazaqPeek Cyber Club Astana</h1>
+      <nav>
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link text-light px-2" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-light px-2" href="services.html">Zones &amp; Tariffs</a></li>
+          <li class="nav-item"><a class="nav-link text-light px-2" href="events.html">Events</a></li>
+          <li class="nav-item"><a class="nav-link text-danger fw-bold px-2" href="booking.html">Book a Station</a></li>
+          <li class="nav-item"><a class="nav-link text-light px-2" href="login.html">Login / Register</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <!-- Container Choice Comment: Chosen container over container-fluid here to center and constrain form controls for comfortable user entry on desktop -->
-  <main class="container py-4">
-
-    <!-- Title Card -->
-    <div class="adilet-form-card p-4 mb-4 rounded-3 border border-secondary shadow">
-      <h1 class="display-6 fw-bold text-accent mb-2 text-center text-md-start">Reserve a Gaming Station</h1>
-      <p class="lead text-light mb-0 text-center text-md-start">
-        Book your PC in advance at Kenesary 69 to guarantee your seat and monitor zone.
-      </p>
+  <!-- Using standard container to keep the reservation form readable and centered -->
+  <main class="container my-5">
+    
+    <div class="p-4 mb-4 bg-white rounded-3 shadow-sm text-center text-md-start">
+      <h2 class="display-6 fw-bold">Reserve Your Gaming Rig</h2>
+      <article>
+        <h3 class="h5 text-danger fw-semibold mt-2">Booking Guidelines &amp; Location</h3>
+        <p class="lead text-muted mb-2">
+          Secure your seat in advance to avoid waiting during peak tournament evenings. Stations are held for fifteen minutes past arrival time before release.
+        </p>
+        <p class="small text-secondary mb-0">
+          Find us on <a href="https://2gis.kz/astana" target="_blank" rel="noopener noreferrer" class="link-danger fw-semibold">2GIS Map — Kenesary Street 69</a> or reach our administrator directly via telephone at <a href="tel:+77066055465" class="text-dark fw-semibold">+7 (706) 605 5465</a> or email at <a href="mailto:info@qazaqpeek.kz" class="text-dark fw-semibold">info@qazaqpeek.kz</a>.
+        </p>
+      </article>
     </div>
 
-    <!-- Bootstrap Component: Alert -->
-    <!-- Component Name: Bootstrap Alert -->
-    <!-- Modifications: Adapted markup from official Bootstrap 5 documentation for reservation policy notices, customized with flex alignment and info styling -->
-    <div class="alert alert-info bg-opacity-10 text-info border-info d-flex align-items-center mb-4 shadow-sm" role="alert">
-      <div class="me-3 fs-4">ℹ️</div>
-      <div>
-        <strong>Reservation Hold Policy:</strong> Reservations are held for 15 minutes past arrival time. For night packages (22:00-06:00), physical photo ID is required.
+    <!-- Responsive Grid: 3 blocks responding to screen width -->
+    <div class="row g-4 mb-5">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-0">
+          <div class="card-body">
+            <h4 class="h6 card-title fw-bold text-uppercase text-secondary">Standard Zone</h4>
+            <p class="card-text text-muted small">Core i5, RTX 3060, 165Hz displays. Perfect for solo queues and casual play.</p>
+            <span class="badge bg-secondary">600 ₸ / hour</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nesting requirement: nested row inside a column element -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-danger">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <h4 class="h6 card-title fw-bold text-uppercase text-danger mb-0">VIP Boot Camp</h4>
+              <span class="badge bg-danger">PRO</span>
+            </div>
+            <!-- Nested row inside column -->
+            <div class="row g-2 my-2 py-2 border-top border-bottom bg-light rounded">
+              <div class="col-7 small text-muted">RTX 4080 • 280Hz</div>
+              <div class="col-5 small text-end fw-bold text-danger">1 500 ₸/hr</div>
+            </div>
+            <p class="card-text text-muted small">5-man isolated soundproof room designed for competitive team practice.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-0">
+          <div class="card-body">
+            <h4 class="h6 card-title fw-bold text-uppercase text-secondary">Night Grind Slot</h4>
+            <p class="card-text text-muted small">All-night package from 22:00 to 08:00 with reserved station and energy drink.</p>
+            <!-- Button disabled state requirement -->
+            <button type="button" class="btn btn-sm btn-secondary" disabled>Slots Full for Today</button>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Booking Form wrapped in Bootstrap Grid -->
-    <section class="adilet-form-card p-4 rounded-3 border border-secondary shadow mb-5">
-      <h2 class="h4 fw-bold text-accent mb-4 border-bottom border-secondary pb-2">Station Booking Form</h2>
+    <!-- Booking Form Section -->
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-10">
+        <div class="card shadow-sm border-0 p-4">
+          
+          <form method="POST" action="booking.html">
+            <fieldset>
+              <legend class="h4 border-bottom pb-2 mb-4 text-danger fw-bold">Station Reservation Details</legend>
 
-      <form action="#" method="post">
-        
-        <!-- Row 1: Name and Phone -->
-        <div class="row g-3 mb-3">
-          <div class="col-12 col-md-6">
-            <label for="fullName" class="form-label text-light fw-bold">Full Name:</label>
-            <input type="text" id="fullName" name="fullName" class="form-control bg-dark text-light border-secondary" placeholder="Dias Tursynbay" required>
+              <div class="row g-3 mb-3">
+                <div class="col-12 col-md-6">
+                  <label for="client-name" class="form-label fw-semibold">Full Name or Gamer Tag:</label>
+                  <input type="text" class="form-control" id="client-name" name="client_name" placeholder="e.g., Dias / ShadowAce" required>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label for="client-email" class="form-label fw-semibold">Email Address:</label>
+                  <input type="email" class="form-control" id="client-email" name="client_email" placeholder="gamer@example.kz" required>
+                </div>
+              </div>
+
+              <div class="row g-3 mb-3">
+                <div class="col-12 col-md-6">
+                  <label for="client-phone" class="form-label fw-semibold">Phone Number:</label>
+                  <input type="tel" class="form-control" id="client-phone" name="client_phone" placeholder="+7 706 000 0000" required>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label for="booking-date" class="form-label fw-semibold">Reservation Date:</label>
+                  <input type="date" class="form-control" id="booking-date" name="booking_date" required>
+                </div>
+              </div>
+
+              <div class="row g-3 mb-3">
+                <div class="col-12 col-md-6">
+                  <label for="party-size" class="form-label fw-semibold">Number of Players (1–5):</label>
+                  <input type="number" class="form-control" id="party-size" name="party_size" min="1" max="5" value="1" required>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label for="time-slot" class="form-label fw-semibold">Preferred Time Slot:</label>
+                  <select class="form-select" id="time-slot" name="time_slot" required>
+                    <option value="">-- Choose a package --</option>
+                    <option value="morning">Morning Warmup (08:00 - 14:00)</option>
+                    <option value="evening">Peak Evening (17:00 - 22:00)</option>
+                    <option value="night">Night Grind (22:00 - 08:00)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-semibold d-block">Zone Category:</label>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="zone-standard" name="zone_tier" value="standard" checked>
+                  <label class="form-check-label" for="zone-standard">Standard</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="zone-vip" name="zone_tier" value="vip">
+                  <label class="form-check-label" for="zone-vip">VIP 1</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="zone-bootcamp" name="zone_tier" value="bootcamp">
+                  <label class="form-check-label" for="zone-bootcamp">VIP 2</label>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="special-notes" class="form-label fw-semibold">Special Requests (e.g., custom games to pre-install):</label>
+                <textarea class="form-control" id="special-notes" name="special_notes" rows="3" placeholder="Mention titles to update beforehand..."></textarea>
+              </div>
+
+              <div class="form-check mb-4">
+                <input class="form-check-input" type="checkbox" id="policy-agree" name="policy_agree" required>
+                <label class="form-check-label text-muted small" for="policy-agree">
+                  I agree to the <span class="text-danger fw-semibold">house conduct and hardware liability rules</span>.
+                </label>
+              </div>
+
+              <div class="d-flex gap-2">
+                <button type="button" class="btn btn-danger btn-lg flex-grow-1" data-bs-toggle="modal" data-bs-target="modal-confirm">
+                  Submit Reservation
+                </button>
+                <button type="reset" class="btn btn-outline-secondary">Reset Form</button>
+              </div>
+            </fieldset>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap Component: Modal dialog. Added for reservation verification before submission -->
+    <div class="modal fade" id="modal-confirm" tabindex="-1" aria-labelledby="modalHeading" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-dark text-white">
+            <h5 class="modal-title" id="modalHeading">Confirm Reservation</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="col-12 col-md-6">
-            <label for="phoneNum" class="form-label text-light fw-bold">Phone Number (Kaspi):</label>
-            <input type="tel" id="phoneNum" name="phoneNum" class="form-control bg-dark text-light border-secondary" placeholder="+7 707 123 4567" required>
+          <div class="modal-body">
+            <p class="mb-2">Your rig will be reserved for 15 minutes past arrival time.</p>
+            <p class="text-muted small mb-0">Please present your gamer tag or phone number to the admin at Kenesary 69 upon arrival.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Edit Details</button>
+            <button type="button" class="btn btn-success btn-sm">Confirm Booking</button>
           </div>
         </div>
+      </div>
+    </div>
 
-        <!-- Row 2: Zone Select and Pass Package -->
-        <div class="row g-3 mb-3">
-          <div class="col-12 col-md-6">
-            <label for="zoneSelect" class="form-label text-light fw-bold">Select Gaming Zone:</label>
-            <select id="zoneSelect" name="zoneSelect" class="form-select bg-dark text-light border-secondary" required>
-              <option value="standard">Standard Zone (240Hz ASUS)</option>
-              <option value="vip">VIP Pro Lounge (360Hz BenQ)</option>
-              <option value="bootcamp">Bootcamp Team Room (5 Rigs)</option>
-            </select>
-          </div>
-          <div class="col-12 col-md-6">
-            <label for="packageSelect" class="form-label text-light fw-bold">Tariff Package:</label>
-            <select id="packageSelect" name="packageSelect" class="form-select bg-dark text-light border-secondary" required>
-              <option value="hourly">1 Hour Pass</option>
-              <option value="3hour">3 Hour Package</option>
-              <option value="night">Night Pass (22:00 - 06:00)</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Row 3: Date and Time -->
-        <div class="row g-3 mb-4">
-          <div class="col-12 col-md-6">
-            <label for="bookingDate" class="form-label text-light fw-bold">Reservation Date:</label>
-            <input type="date" id="bookingDate" name="bookingDate" class="form-control bg-dark text-light border-secondary" required>
-          </div>
-          <div class="col-12 col-md-6">
-            <label for="bookingTime" class="form-label text-light fw-bold">Arrival Time:</label>
-            <input type="time" id="bookingTime" name="bookingTime" class="form-control bg-dark text-light border-secondary" required>
-          </div>
-        </div>
-
-        <!-- Submit Button -->
-        <div class="d-flex justify-content-between align-items-center">
-          <span class="small text-muted d-none d-md-block">* Confirmation SMS sent automatically</span>
-          <button type="submit" class="btn btn-primary btn-lg shadow">Confirm Booking</button>
-        </div>
-
-      </form>
-    </section>
-
+    <div class="text-end mt-4">
+      <a href="booking.html" class="btn btn-sm btn-outline-dark back-to-top">Top</a>
+    </div>
   </main>
 
-  <!-- Back to Top Button -->
-  <div class="back-to-top-btn">
-    <a href="#top" class="btn btn-info btn-sm shadow fw-bold text-dark">↑ Top</a>
-  </div>
-
-  <!-- Footer -->
-  <footer class="bg-secondary bg-opacity-25 border-top border-secondary py-4 text-center text-muted mt-5">
-    <div class="container">
-      <p class="mb-1 text-light">QazaqPeek Cyber Club &bull; Kenesary St 69, Astana &bull; Tel: +7 (706) 605 5465</p>
-      <p class="small mb-0">&copy; 2026 Dias Tursynbay &amp; Adilet Ainadinov. All rights reserved.</p>
+  <footer class="container-fluid bg-dark text-white py-4 mt-auto">
+    <div class="container text-center small text-secondary">
+      <p class="mb-1">QazaqPeek Cyber Club &bull; Kenesary St 69, Astana &bull; Tel: +7 (706) 605 5465</p>
+      <p class="mb-0">&copy; 2026 Dias Tursynbay &amp; Adilet Ainadinov. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Bootstrap 5.3.3 JavaScript Bundle CDN -->
+  <!-- Bootstrap JS Bundle for interactive Modal -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
