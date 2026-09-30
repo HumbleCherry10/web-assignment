@@ -25,3 +25,7 @@ In accordance with course AI policy, this log records questions asked to AI duri
 ## Session 6 — September 27, 2026 (Assignment 3)
 * **Prompt:** How to customize Bootstrap Accordion components using dark utility background classes?
 * **Response Summary:** Add `bg-dark`, `text-light`, and `bg-custom-card` classes to `.accordion-item` and `.accordion-button` to blend the official Bootstrap accordion markup seamlessly into dark gaming lounge color themes.
+
+## Session 7 — September 30, 2026 (Assignment 3 Sync)
+* **Prompt:** How to sync and harmonize navigation bars across all 7 Bootstrap pages after pulling new branch commits?
+* **Response Summary:** Standardize navigation markup to use `<nav class="navbar navbar-expand-lg navbar-dark ...">` with `navbar-toggler` on all 7 pages (`index.html`, `services.html`, `events.html`, `booking.html`, `login.html`, `pc-specs.html`, `rules.html`), ensuring active state highlights and zero horizontal scrollbar on mobile.

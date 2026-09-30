@@ -1,8 +1,9 @@
 /* 
 ================================================================================
-QAZAQPEEK CYBER CLUB - ADILET AINADINOV'S STYLESHEET (adilet.css)
-Student: Adilet Ainadinov
-Bootstrap 5.3 Correction Layer
+QAZAQPEEK CYBER CLUB - ADILET AINADINOV'S STYLESHEET (css/adilet.css)
+Author: Adilet Ainadinov
+Bootstrap 5.3 Minimal Correction Layer for Booking, Login, Rules, & PC Specs
+================================================================================
 */
 
 :root {
@@ -19,26 +20,12 @@ Bootstrap 5.3 Correction Layer
   box-shadow: 0 0 0 0.25rem rgba(56, 189, 248, 0.25);
 }
 
-/* Retained requirement: Pseudo-element ::after marking mandatory form labels */
+/* Pseudo-element ::after marking mandatory form labels */
 label.required-field::after {
   content: " *";
   color: var(--qp-accent);
   font-weight: bold;
 }
-
-/* Terminal / Code blocks styling */
-pre {
-  background-color: #000000;
-  color: var(--qp-accent);
-  padding: 15px;
-  border-radius: 4px;
-  overflow-x: auto;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 14px;
-QAZAQPEEK CYBER CLUB - ADILET'S CORRECTION LAYER (css/adilet.css)
-Author: Adilet Ainadinov
-Minimal custom styles for Booking, Login, and PC Specs pages.
-*/
 
 /* Custom form container background */
 .adilet-form-card {
@@ -61,11 +48,22 @@ Minimal custom styles for Booking, Login, and PC Specs pages.
   z-index: 1030;
 }
 
-/* Minor card polish */
+/* Card hover animation polish */
 .card {
   transition: transform 0.15s ease-in-out;
 }
 
 .card:hover {
   transform: translateY(-2px);
+}
+
+/* Code block terminal styling */
+pre {
+  background-color: #000000;
+  color: var(--qp-accent);
+  padding: 15px;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
 }

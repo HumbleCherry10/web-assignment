@@ -2,37 +2,221 @@
 ================================================================================
 QAZAQPEEK CYBER CLUB - BASE CORRECTION LAYER (css/base.css)
 Authors: Dias Tursynbay & Adilet Ainadinov
-Bootstrap 5.3.3 handles layout, grid, spacing, navigation, and components.
-This file contains minimal brand color overrides (<30 lines).
+Bootstrap 5.3.3 Custom Theme & High-Contrast Readability Layer
 ================================================================================
 */
 
+:root {
+  --qp-bg-dark: #0f172a;
+  --qp-card-bg: #1e293b;
+  --qp-card-header: #162032;
+  --qp-border: #334155;
+  --qp-accent: #38bdf8;
+  --qp-accent-hover: #7dd3fc;
+  --qp-text-primary: #f8fafc;
+  --qp-text-muted: #94a3b8;
+  --qp-text-secondary: #cbd5e1;
+}
+
+/* Global Body Styling */
 body {
-  background-color: #0f172a;
-  color: #f1f5f9;
+  background-color: var(--qp-bg-dark);
+  color: var(--qp-text-primary);
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+/* Fix Bootstrap Invisible / Low-Contrast Muted & Secondary Text */
+.text-muted, small.text-muted {
+  color: var(--qp-text-muted) !important;
+}
+
+.text-secondary {
+  color: var(--qp-text-secondary) !important;
+}
+
+/* Global Link Styling */
+a {
+  color: var(--qp-accent);
+  transition: color 0.15s ease-in-out;
+}
+
+a:hover {
+  color: var(--qp-accent-hover);
 }
 
 /* QazaqPeek Brand Accent Overrides */
 .navbar-brand {
   font-weight: 700;
-  color: #38bdf8 !important;
+  color: var(--qp-accent) !important;
   letter-spacing: 0.5px;
 }
 
+.text-accent, a.text-accent {
+  color: var(--qp-accent) !important;
+}
+
+/* Custom Navigation Bar Enhancement */
+.navbar-dark .navbar-nav .nav-link {
+  color: #cbd5e1;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: var(--qp-accent);
+  background-color: rgba(56, 189, 248, 0.08);
+}
+
+.navbar-dark .navbar-nav .nav-link.active {
+  color: var(--qp-accent) !important;
+  background-color: rgba(56, 189, 248, 0.15);
+  border-left: 3px solid var(--qp-accent);
+}
+
+@media (min-width: 992px) {
+  .navbar-dark .navbar-nav .nav-link.active {
+    border-left: none;
+    border-bottom: 2px solid var(--qp-accent);
+    border-radius: 4px 4px 0 0;
+  }
+}
+
 /* Card & Dark Section Backgrounds */
-.bg-custom-card {
-  background-color: #1e293b;
-  border: 1px solid #334155;
+.bg-custom-card, .adilet-form-card {
+  background-color: var(--qp-card-bg);
+  border: 1px solid var(--qp-border);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
 }
 
-/* Accent Color Links */
-a.text-accent, .text-accent {
-  color: #38bdf8 !important;
+.card {
+  background-color: var(--qp-card-bg);
+  border: 1px solid var(--qp-border);
+  border-radius: 12px;
+  color: var(--qp-text-primary);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Subtle focus ring override */
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.6);
+}
+
+.card-header {
+  background-color: var(--qp-card-header);
+  border-bottom: 1px solid var(--qp-border);
+  color: var(--qp-text-primary);
+}
+
+/* Accordion Component Fix (Eliminates White-on-White / Invisible Text) */
+.accordion-item {
+  background-color: var(--qp-card-bg) !important;
+  border: 1px solid var(--qp-border) !important;
+  border-radius: 8px !important;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+}
+
+.accordion-button {
+  background-color: var(--qp-card-bg) !important;
+  color: var(--qp-accent) !important;
+  font-weight: 600;
+  box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: var(--qp-card-header) !important;
+  color: var(--qp-accent) !important;
+  border-bottom: 1px solid var(--qp-border);
+}
+
+.accordion-button::after {
+  filter: invert(65%) sepia(85%) saturate(400%) hue-rotate(165deg);
+}
+
+.accordion-body {
+  background-color: var(--qp-bg-dark) !important;
+  color: var(--qp-text-secondary) !important;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Form Controls & Inputs Styling */
+.form-control, .form-select {
+  background-color: var(--qp-bg-dark) !important;
+  color: var(--qp-text-primary) !important;
+  border: 1px solid var(--qp-border) !important;
+  border-radius: 6px;
+}
+
+.form-control::placeholder {
+  color: #64748b !important;
+  opacity: 1;
+}
+
+.form-select option {
+  background-color: var(--qp-bg-dark);
+  color: var(--qp-text-primary);
+}
+
 .form-control:focus, .form-select:focus, .btn:focus {
-  border-color: #38bdf8;
-  box-shadow: 0 0 0 0.25rem rgba(56, 189, 248, 0.25);
+  border-color: var(--qp-accent) !important;
+  box-shadow: 0 0 0 0.25rem rgba(56, 189, 248, 0.25) !important;
+}
+
+/* Alert Component Styling */
+.alert-info {
+  background-color: rgba(56, 189, 248, 0.12) !important;
+  border: 1px solid var(--qp-accent) !important;
+  color: #e0f2fe !important;
+  border-radius: 8px;
+}
+
+/* Modal Dialog Styling */
+.modal-content {
+  background-color: var(--qp-card-bg);
+  border: 1px solid var(--qp-border);
+  color: var(--qp-text-primary);
+  border-radius: 12px;
+}
+
+.modal-header {
+  background-color: var(--qp-card-header);
+  border-bottom: 1px solid var(--qp-border);
+}
+
+.modal-footer {
+  background-color: var(--qp-card-header);
+  border-top: 1px solid var(--qp-border);
+}
+
+.modal-body {
+  color: var(--qp-text-secondary);
+}
+
+/* Table Styling Overrides */
+.table-dark {
+  --bs-table-bg: var(--qp-card-bg);
+  --bs-table-striped-bg: rgba(255, 255, 255, 0.02);
+  --bs-table-hover-bg: rgba(56, 189, 248, 0.08);
+  --bs-table-border-color: var(--qp-border);
+  color: var(--qp-text-primary);
+}
+
+.table-dark th {
+  background-color: var(--qp-card-header);
+  color: var(--qp-accent);
+  font-weight: 700;
+  border-bottom: 2px solid var(--qp-accent);
+}
+
+/* Back to Top Floating Button */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1030;
 }

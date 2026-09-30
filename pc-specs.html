@@ -14,6 +14,7 @@
   
   <!-- Custom stylesheets linked after Bootstrap CDN -->
   <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/dias.css">
   <link rel="stylesheet" href="css/adilet.css">
 </head>
 <body class="bg-dark text-light">
@@ -34,6 +35,7 @@
             <li class="nav-item"><a class="nav-link" href="booking.html">Book a Station</a></li>
             <li class="nav-item"><a class="nav-link" href="login.html">Login / Register</a></li>
             <li class="nav-item"><a class="nav-link active fw-bold text-accent" href="pc-specs.html">PC Specs</a></li>
+            <li class="nav-item"><a class="nav-link" href="rules.html">Rules &amp; FAQ</a></li>
           </ul>
         </div>
       </div>
@@ -51,6 +53,9 @@
       </p>
     </div>
 
+    <!-- Bootstrap Component: Cards & Badges -->
+    <!-- Component Name: Bootstrap Cards & Badges -->
+    <!-- Modifications: Hardware spec cards with status badges and dark custom theme styling -->
     <!-- Responsive Grid Section 1: Hardware Station Cards responding at 3 breakpoints (col-12 on phone, col-md-6 on tablet, col-lg-4 on desktop) -->
     <section class="mb-5">
       <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Arena Hardware Zones</h2>
@@ -79,7 +84,8 @@
           </div>
         </div>
 
-        <!-- Station Card 2 -->
+        <!-- Station Card 2 (with Grid Nesting Demonstration) -->
+        <!-- Comment on Nesting: Here we nest a row inside col-lg-4 to display spec highlights side-by-side -->
         <div class="col-12 col-md-6 col-lg-4">
           <div class="card bg-custom-card text-light h-100 shadow-sm border-info">
             <div class="card-header bg-dark d-flex justify-content-between align-items-center">
@@ -87,6 +93,11 @@
               <span class="badge bg-warning text-dark">15 PCs</span>
             </div>
             <div class="card-body">
+              <!-- Nested Grid Row inside column -->
+              <div class="row g-2 my-2 py-2 border-top border-bottom border-secondary bg-dark rounded">
+                <div class="col-7 small text-muted">RTX 4080 • 360Hz</div>
+                <div class="col-5 small text-end fw-bold text-accent">1,200 KZT/hr</div>
+              </div>
               <ul class="list-unstyled mb-3">
                 <li class="mb-2"><strong>GPU:</strong> NVIDIA RTX 4080 Super</li>
                 <li class="mb-2"><strong>CPU:</strong> AMD Ryzen 7 7800X3D</li>
@@ -133,8 +144,8 @@
       <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Sanitization &amp; Peripheral Care Schedule</h2>
       
       <!-- Responsive display utility: hide extra technical note on smaller phone screens to avoid clutter -->
-      <div class="alert alert-dark border-secondary d-none d-md-block mb-3">
-        <span class="fw-bold">Notice:</span> All keycaps, mice, and headsets undergo UV-C disinfection and alcohol wiping between guest sessions.
+      <div class="alert alert-info bg-opacity-10 text-info border-info d-none d-md-block mb-3 shadow-sm">
+        <span class="fw-bold me-2">ℹ️ Sanitization Notice:</span> All keycaps, mice, and headsets undergo UV-C disinfection and alcohol wiping between guest sessions.
       </div>
 
       <div class="table-responsive">
