@@ -6,10 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Adilet Ainadinov">
   <meta name="description" content="Member portal login and account registration for QazaqPeek Cyber Club in Astana on Kenesary 69.">
-  <title>QazaqPeek Cyber Club - Member Login &amp; Register</title>
+  <title>QazaqPeek Cyber Club - Login &amp; Register</title>
   
-  <!-- Bootstrap 5.3.3 CDN link linked before custom stylesheet so custom rules override where needed -->
-  <!-- Bootstrap 5.3.3 CDN used for responsive layout, grid system, navbar toggler, cards, forms, and utility styling -->
+  <!-- Bootstrap 5.3.3 CDN stylesheet -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom stylesheets linked after Bootstrap CDN -->
@@ -17,7 +16,7 @@
   <link rel="stylesheet" href="css/dias.css">
   <link rel="stylesheet" href="css/adilet.css">
 </head>
-<body class="bg-dark text-light">
+<body id="top" class="bg-dark text-light">
 
   <!-- Responsive Navigation Header using Bootstrap Navbar with Toggler -->
   <header>
@@ -42,21 +41,18 @@
     </nav>
   </header>
 
-  <!-- Container Choice Comment: Chosen container over container-fluid here to center login and registration forms for clean user interface on desktop -->
+  <!-- Container chosen to center login and registration forms for clean user interface on desktop -->
   <main class="container py-4">
 
     <!-- Title Banner -->
     <div class="adilet-form-card p-4 mb-4 rounded-3 border border-secondary shadow">
-      <h1 class="display-6 fw-bold text-accent mb-2 text-center text-md-start">Member Portal &amp; Registration</h1>
+      <h1 class="display-6 fw-bold text-accent mb-2 text-center text-md-start">Member Portal &amp; Player Account</h1>
       <p class="lead text-light mb-0 text-center text-md-start">
         Sign in to your QazaqPeek account to manage game time balance, bonus points, and tournament seats.
       </p>
     </div>
 
-    <!-- Bootstrap Component: Cards & Forms -->
-    <!-- Component Name: Bootstrap Cards & Forms -->
-    <!-- Modifications: Side-by-side authentication cards styled with custom dark background classes -->
-    <!-- Responsive Grid: 2 side-by-side forms responding at breakpoints (col-12 on mobile, col-md-6 on desktop) -->
+    <!-- Authentication Forms Grid -->
     <div class="row g-4 mb-5">
       
       <!-- Form 1: Member Login -->
@@ -65,22 +61,43 @@
           <div class="card-header bg-dark border-secondary">
             <h2 class="h4 mb-0 fw-bold text-accent">Existing Member Login</h2>
           </div>
-          <div class="card-body">
-            <form action="#" method="post">
-              <div class="mb-3">
-                <label for="loginPhone" class="form-label fw-bold">Phone Number or Username:</label>
-                <input type="text" id="loginPhone" name="loginPhone" class="form-control bg-dark text-light border-secondary" placeholder="+7 707 123 4567" required>
-              </div>
+          <div class="card-body d-flex flex-column justify-content-between">
+            <form id="login-form" action="login.html" method="POST">
+              <fieldset>
+                <legend class="visually-hidden">Member Login Credentials</legend>
+                
+                <div class="mb-3">
+                  <label for="loginPhone" class="form-label fw-bold">Phone Number or Username:</label>
+                  <input type="text" id="loginPhone" name="loginPhone" class="form-control bg-dark text-light border-secondary" placeholder="+7 707 123 4567" required>
+                </div>
 
-              <div class="mb-4">
-                <label for="loginPassword" class="form-label fw-bold">Password / PIN:</label>
-                <input type="password" id="loginPassword" name="loginPassword" class="form-control bg-dark text-light border-secondary" placeholder="••••••••" required>
-              </div>
+                <div class="mb-3">
+                  <label for="loginPassword" class="form-label fw-bold">Password / PIN:</label>
+                  <input type="password" id="loginPassword" name="loginPassword" class="form-control bg-dark text-light border-secondary" placeholder="••••••••" required>
+                </div>
 
-              <div class="d-flex justify-content-between align-items-center">
-                <a href="#" class="small text-accent text-decoration-none">Forgot PIN?</a>
-                <button type="submit" class="btn btn-primary shadow">Log In</button>
-              </div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <a href="#pin-recovery-help" data-bs-toggle="collapse" class="small text-accent text-decoration-none" role="button" aria-expanded="false" aria-controls="pin-recovery-help">Forgot PIN?</a>
+                  <button type="submit" id="login-submit-btn" class="btn btn-primary shadow">Log In</button>
+                </div>
+
+                <!-- Collapsible PIN Recovery Helper -->
+                <div class="collapse mb-3" id="pin-recovery-help">
+                  <div class="p-3 bg-dark rounded border border-secondary text-muted small">
+                    To reset your account PIN, contact our administrator on WhatsApp at <a href="tel:+77066055465" class="text-accent fw-semibold">+7 (706) 605 5465</a> or visit the reception desk at Kenesary 69.
+                  </div>
+                </div>
+
+                <!-- Explanation of Submission Result -->
+                <p class="small text-muted mb-0">
+                  * Logging in displays your remaining account balance and active discount tier.
+                </p>
+
+                <!-- Feedback Container for JavaScript Hook -->
+                <div id="login-feedback" class="alert alert-info mt-3 mb-0 d-none" role="alert">
+                  Authenticating player session... Welcome back!
+                </div>
+              </fieldset>
             </form>
           </div>
         </div>
@@ -92,33 +109,72 @@
           <div class="card-header bg-dark border-secondary">
             <h2 class="h4 mb-0 fw-bold text-accent">Register New Player Account</h2>
           </div>
-          <div class="card-body">
-            <form action="#" method="post">
-              <div class="mb-3">
-                <label for="regNickname" class="form-label fw-bold">Gamer Nickname:</label>
-                <input type="text" id="regNickname" name="regNickname" class="form-control bg-dark text-light border-secondary" placeholder="e.g. S1mple_Astana" required>
-              </div>
+          <div class="card-body d-flex flex-column justify-content-between">
+            <form id="register-form" action="login.html" method="POST">
+              <fieldset>
+                <legend class="visually-hidden">New Account Registration</legend>
 
-              <div class="mb-3">
-                <label for="regPhone" class="form-label fw-bold">Mobile Phone (Kaspi):</label>
-                <input type="tel" id="regPhone" name="regPhone" class="form-control bg-dark text-light border-secondary" placeholder="+7 706 605 5465" required>
-              </div>
+                <div class="mb-3">
+                  <label for="regNickname" class="form-label fw-bold">Gamer Nickname:</label>
+                  <input type="text" id="regNickname" name="regNickname" class="form-control bg-dark text-light border-secondary" placeholder="e.g. S1mple_Astana" required>
+                </div>
 
-              <div class="mb-4">
-                <label for="regPass" class="form-label fw-bold">Create Password:</label>
-                <input type="password" id="regPass" name="regPass" class="form-control bg-dark text-light border-secondary" placeholder="Create 6-digit PIN" required>
-              </div>
+                <div class="mb-3">
+                  <label for="regPhone" class="form-label fw-bold">Mobile Phone (for Kaspi &amp; SMS):</label>
+                  <input type="tel" id="regPhone" name="regPhone" class="form-control bg-dark text-light border-secondary" placeholder="+7 706 605 5465" required>
+                </div>
 
-              <div class="d-flex justify-content-between align-items-center">
-                <span class="small text-muted d-none d-md-block">* 500 KZT bonus balance on signup</span>
-                <button type="submit" class="btn btn-outline-info shadow">Register Account</button>
-              </div>
+                <div class="mb-3">
+                  <label for="regPass" class="form-label fw-bold">Create 6-Digit PIN:</label>
+                  <input type="password" id="regPass" name="regPass" class="form-control bg-dark text-light border-secondary" placeholder="Create 6-digit PIN" required>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="small text-muted d-none d-md-block">* 500 KZT bonus balance on signup</span>
+                  <button type="submit" id="register-submit-btn" class="btn btn-outline-info shadow">Register Account</button>
+                </div>
+
+                <!-- Explanation of Submission Result -->
+                <p class="small text-muted mb-0">
+                  * Creating an account generates your unique gamer ID for instant check-in at Kenesary 69.
+                </p>
+
+                <!-- Feedback Container for JavaScript Hook -->
+                <div id="register-feedback" class="alert alert-success mt-3 mb-0 d-none" role="alert">
+                  Account created successfully! Your 500 KZT welcome bonus is active.
+                </div>
+              </fieldset>
             </form>
           </div>
         </div>
       </div>
 
     </div>
+
+    <!-- Member Benefits Section (Completes Page Layout) -->
+    <section class="mb-5">
+      <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Membership Benefits</h2>
+      <div class="row g-4">
+        <div class="col-12 col-md-4">
+          <div class="p-4 bg-custom-card rounded-3 border border-secondary h-100 shadow-sm">
+            <h3 class="h5 text-accent fw-bold mb-2">🎁 500 KZT Bonus</h3>
+            <p class="small text-muted mb-0">Every newly registered player receives 500 KZT introductory credit towards their first game session at Kenesary 69.</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="p-4 bg-custom-card rounded-3 border border-secondary h-100 shadow-sm">
+            <h3 class="h5 text-accent fw-bold mb-2">⚡ Automatic Top-ups</h3>
+            <p class="small text-muted mb-0">Top up directly with Kaspi QR without interrupting active matches or standing in queue at reception.</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="p-4 bg-custom-card rounded-3 border border-secondary h-100 shadow-sm">
+            <h3 class="h5 text-accent fw-bold mb-2">🏆 Tournament Priority</h3>
+            <p class="small text-muted mb-0">Members receive early bird slot reservation in weekly CS2 and Dota 2 LAN brackets before public registration opens.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
   </main>
 
@@ -130,8 +186,8 @@
   <!-- Footer -->
   <footer class="bg-secondary bg-opacity-25 border-top border-secondary py-4 text-center text-muted mt-5">
     <div class="container">
-      <p class="mb-1 text-light">QazaqPeek Cyber Club &bull; Kenesary St 69, Astana &bull; Tel: +7 (706) 605 5465</p>
-      <p class="small mb-0">&copy; 2026 Dias Tursynbay &amp; Adilet Ainadinov. All rights reserved.</p>
+      <p class="mb-1 text-light">QazaqPeek Cyber Club &bull; Kenesary St 69, 2<sup>nd</sup> Floor<br>Astana, Kazakhstan &bull; Tel: <a href="tel:+77066055465" class="text-accent text-decoration-none">+7 (706) 605 5465</a></p>
+      <p class="mb-0"><small class="text-muted">&copy; 2026 Dias Tursynbay &amp; Adilet Ainadinov. All rights reserved.</small></p>
     </div>
   </footer>
 

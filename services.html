@@ -8,8 +8,7 @@
   <meta name="description" content="Pricing matrix, zone specifications, and tariff packages for QazaqPeek Cyber Club in Astana on Kenesary 69.">
   <title>QazaqPeek Cyber Club - Zones &amp; Tariffs</title>
   
-  <!-- Bootstrap 5.3.3 CDN link linked before custom stylesheet so custom rules override where needed -->
-  <!-- Bootstrap 5.3.3 CDN used for responsive layout, container-fluid, nested grid, accordion component, and utility styling -->
+  <!-- Bootstrap 5.3.3 CDN stylesheet -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom stylesheets linked after Bootstrap CDN -->
@@ -17,7 +16,7 @@
   <link rel="stylesheet" href="css/dias.css">
   <link rel="stylesheet" href="css/adilet.css">
 </head>
-<body class="bg-dark text-light">
+<body id="top" class="bg-dark text-light">
 
   <!-- Responsive Navigation Header using Bootstrap Navbar with Toggler -->
   <header>
@@ -42,7 +41,7 @@
     </nav>
   </header>
 
-  <!-- Container Choice Comment: Chosen container-fluid over container here to allow maximum horizontal space for tariff tables and pricing matrices across desktop monitors -->
+  <!-- Container-fluid chosen to allow maximum horizontal space for tariff tables and pricing matrices across desktop monitors -->
   <main class="container-fluid px-4 py-4">
 
     <!-- Page Title Header -->
@@ -53,19 +52,13 @@
       </p>
     </div>
 
-    <!-- Bootstrap Component: Cards & Badges -->
-    <!-- Component Name: Bootstrap Cards & Badges -->
-    <!-- Modifications: Featured tariff package cards with refresh rate badges -->
-    <!-- Grid Nesting Demonstration: Nesting a .row inside a .col-lg-8 column -->
+    <!-- Featured Tariff Packages -->
     <section class="mb-5">
       <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Featured Tariff Packages</h2>
       
       <div class="row g-4">
-        <!-- Outer Left Column (8 units wide on desktop) containing NESTED ROW -->
+        <!-- Outer Left Column with Nested Grid Row -->
         <div class="col-12 col-lg-8">
-          
-          <!-- Nested Grid Row inside column -->
-          <!-- Comment on Nesting: Here we nest a row inside col-lg-8 to split featured packages into 2 side-by-side cards -->
           <div class="row g-3">
             <div class="col-12 col-md-6">
               <div class="card bg-custom-card text-light h-100 border-secondary shadow-sm">
@@ -73,10 +66,14 @@
                   <h3 class="h5 mb-0 fw-bold">Standard Arena</h3>
                   <span class="badge bg-info text-dark">240Hz</span>
                 </div>
-                <div class="card-body">
-                  <p class="h4 fw-bold text-accent mb-2">700 KZT <span class="fs-6 text-muted">/ hr</span></p>
-                  <p class="small text-light">Full access to Standard Zone PCs, mechanical keyboards, and 240Hz monitors.</p>
-                  <a href="booking.html" class="btn btn-outline-info btn-sm">Book Standard</a>
+                <div class="card-body d-flex flex-column justify-content-between">
+                  <div>
+                    <p class="h4 fw-bold text-accent mb-2">700 KZT <span class="fs-6 text-muted">/ hr</span></p>
+                    <p class="small text-light">Full access to Standard Zone PCs, mechanical keyboards, and 240Hz ASUS monitors.</p>
+                  </div>
+                  <div>
+                    <a href="booking.html" id="btn-book-standard" class="btn btn-outline-info btn-sm w-100">Book Standard</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -87,24 +84,31 @@
                   <h3 class="h5 mb-0 fw-bold text-accent">VIP Pro Zone</h3>
                   <span class="badge bg-warning text-dark">360Hz</span>
                 </div>
-                <div class="card-body">
-                  <p class="h4 fw-bold text-accent mb-2">1,200 KZT <span class="fs-6 text-muted">/ hr</span></p>
-                  <p class="small text-light">RTX 4080 Super rigs, 360Hz DyAc monitors, and noise-isolated sound booths.</p>
-                  <a href="booking.html" class="btn btn-primary btn-sm">Book VIP Seat</a>
+                <div class="card-body d-flex flex-column justify-content-between">
+                  <div>
+                    <p class="h4 fw-bold text-accent mb-2">1,200 KZT <span class="fs-6 text-muted">/ hr</span></p>
+                    <p class="small text-light">RTX 4080 Super rigs, 360Hz DyAc+ monitors, and noise-isolated sound booths.</p>
+                  </div>
+                  <div>
+                    <a href="booking.html" id="btn-book-vip" class="btn btn-primary btn-sm w-100">Book VIP Seat</a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
 
-        <!-- Outer Right Column (4 units wide on desktop) -->
+        <!-- Outer Right Column -->
         <div class="col-12 col-lg-4">
-          <div class="bg-custom-card p-4 rounded-3 border border-secondary h-100 shadow-sm">
-            <h3 class="h5 fw-bold text-accent mb-2">Night Package Special</h3>
-            <p class="display-6 fw-bold text-light mb-2">3,500 <span class="fs-5 text-muted">KZT</span></p>
-            <p class="small text-light mb-3">8 Hours of uninterrupted play from 22:00 to 06:00 (Includes energy drink or coffee).</p>
-            <a href="booking.html" class="btn btn-info btn-sm fw-bold text-dark w-100">Reserve Night Pass</a>
+          <div class="bg-custom-card p-4 rounded-3 border border-secondary h-100 shadow-sm d-flex flex-column justify-content-between">
+            <div>
+              <h3 class="h5 fw-bold text-accent mb-2">Night Package Special</h3>
+              <p class="display-6 fw-bold text-light mb-2">3,500 <span class="fs-5 text-muted">KZT</span></p>
+              <p class="small text-light mb-3">8 Hours of uninterrupted play from 22:00 to 06:00 (Includes energy drink or coffee from bar).</p>
+            </div>
+            <div>
+              <a href="booking.html" id="btn-book-night" class="btn btn-info btn-sm fw-bold text-dark w-100">Reserve Night Pass</a>
+            </div>
           </div>
         </div>
       </div>
@@ -116,6 +120,7 @@
       
       <div class="table-responsive">
         <table class="table table-dark table-striped table-hover table-bordered mb-0 align-middle">
+          <caption class="text-muted small pt-2">Official rates and package discounts at QazaqPeek Cyber Club, Kenesary 69.</caption>
           <thead>
             <tr>
               <th scope="col">Zone Name</th>
@@ -152,49 +157,90 @@
       </div>
     </section>
 
-    <!-- Bootstrap Component: Accordion -->
-    <!-- Component Name: Bootstrap Accordion -->
-    <!-- Modifications: Adapted markup from official Bootstrap 5 documentation for QazaqPeek Club Rules & Frequently Asked Questions, custom styled with dark background utility classes -->
-    <section class="mb-5">
-      <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Club Guidelines &amp; FAQ</h2>
+    <!-- Session Cost Estimator (Prepared Hooks for JavaScript) -->
+    <section id="tariff-estimator" class="mb-5">
+      <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Tariff &amp; Session Cost Estimator</h2>
       
-      <div class="accordion accordion-flush rounded border border-secondary shadow-sm" id="rulesAccordion">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+          <div class="bg-custom-card p-4 rounded-3 border border-secondary shadow-sm">
+            <h3 class="h5 text-light fw-bold mb-3">Calculate Estimated Play Cost</h3>
+            <p class="small text-muted mb-4">Choose your preferred zone and session duration to view real-time estimates before booking.</p>
+            
+            <form id="calculator-form" action="services.html" method="POST">
+              <div class="row g-3 mb-3">
+                <div class="col-12 col-md-6">
+                  <label for="calc-zone" class="form-label text-light fw-semibold">Select Gaming Zone:</label>
+                  <select class="form-select" id="calc-zone" name="calc_zone">
+                    <option value="700" selected>Standard Zone (700 KZT/hr)</option>
+                    <option value="1200">VIP Pro Lounge (1,200 KZT/hr)</option>
+                    <option value="5000">Bootcamp Team Room (5,000 KZT/hr)</option>
+                  </select>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="calc-hours" class="form-label text-light fw-semibold">Duration (Hours):</label>
+                  <input type="number" class="form-control" id="calc-hours" name="calc_hours" min="1" max="12" value="3" required>
+                </div>
+              </div>
+
+              <!-- Estimated Output Container with ID for JavaScript Hook -->
+              <div id="calculator-result" class="p-3 bg-dark rounded border border-info text-center my-3">
+                <span class="text-muted small d-block">Estimated Total:</span>
+                <span id="calc-total-display" class="h3 text-accent fw-bold my-1 d-block">2,100 KZT</span>
+                <p class="small text-muted mb-0">Standard rate calculation (700 KZT &times; 3 hrs). Final total confirmed at reception.</p>
+              </div>
+
+              <div class="d-flex gap-2">
+                <a href="booking.html" id="btn-proceed-booking" class="btn btn-info fw-bold text-dark flex-grow-1">Proceed to Reservation</a>
+                <button type="reset" id="btn-reset-calc" class="btn btn-outline-secondary">Reset</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing & Payment FAQ (Harmonized to avoid duplicating rules.html) -->
+    <section class="mb-5">
+      <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Billing &amp; Payment FAQ</h2>
+      
+      <div class="accordion accordion-flush rounded border border-secondary shadow-sm" id="servicesAccordion">
         
         <div class="accordion-item bg-dark text-light border-secondary">
-          <h3 class="accordion-header" id="headingOne">
-            <button class="accordion-button bg-custom-card text-light collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-label="Toggle Age Policy" aria-controls="collapseOne">
-              What is the age policy for night packages at Kenesary 69?
+          <h3 class="accordion-header" id="headingBillingOne">
+            <button class="accordion-button bg-custom-card text-light collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBillingOne" aria-expanded="false" aria-controls="collapseBillingOne">
+              What payment methods are accepted at Kenesary 69?
             </button>
           </h3>
-          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#rulesAccordion">
+          <div id="collapseBillingOne" class="accordion-collapse collapse" aria-labelledby="headingBillingOne" data-bs-parent="#servicesAccordion">
             <div class="accordion-body text-light">
-              According to local municipal laws in Astana, guests under 18 years of age are permitted in the club until 22:00. For night packages (22:00 - 06:00), guests must present physical photo identification.
+              We accept Kaspi QR, bank cards (Visa / Mastercard), and cash at the front reception desk. Registered members can also top up their balance online directly through our member portal.
             </div>
           </div>
         </div>
 
         <div class="accordion-item bg-dark text-light border-secondary">
-          <h3 class="accordion-header" id="headingTwo">
-            <button class="accordion-button bg-custom-card text-light collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-label="Toggle Booking Policy" aria-controls="collapseTwo">
-              Can I bring my own gaming peripherals (mouse, headset, keyboard)?
+          <h3 class="accordion-header" id="headingBillingTwo">
+            <button class="accordion-button bg-custom-card text-light collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBillingTwo" aria-expanded="false" aria-controls="collapseBillingTwo">
+              Can I upgrade from Standard to VIP during an active session?
             </button>
           </h3>
-          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#rulesAccordion">
+          <div id="collapseBillingTwo" class="accordion-collapse collapse" aria-labelledby="headingBillingTwo" data-bs-parent="#servicesAccordion">
             <div class="accordion-body text-light">
-              Yes! All stations have front-accessible USB 3.2 hubs and audio jacks. Administrators can assist you with quick driver setup for custom peripherals.
+              Yes. If a VIP station is unoccupied, ask the front desk administrator to switch your station. Your remaining balance will recalculate proportionally at the VIP rate.
             </div>
           </div>
         </div>
 
         <div class="accordion-item bg-dark text-light border-secondary">
-          <h3 class="accordion-header" id="headingThree">
-            <button class="accordion-button bg-custom-card text-light collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-label="Toggle Reservation Hold" aria-controls="collapseThree">
-              How long are online station reservations held?
+          <h3 class="accordion-header" id="headingBillingThree">
+            <button class="accordion-button bg-custom-card text-light collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBillingThree" aria-expanded="false" aria-controls="collapseBillingThree">
+              How does the Night Package rate work?
             </button>
           </h3>
-          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#rulesAccordion">
+          <div id="collapseBillingThree" class="accordion-collapse collapse" aria-labelledby="headingBillingThree" data-bs-parent="#servicesAccordion">
             <div class="accordion-body text-light">
-              Station reservations are held for 15 minutes past the selected arrival time before being automatically released to walk-in guests.
+              The Night Package runs from 22:00 to 06:00 (8 hours) for a flat 3,500 KZT rate. Guests must check in before 23:00 to lock in the special night package wristband.
             </div>
           </div>
         </div>
@@ -212,8 +258,8 @@
   <!-- Footer -->
   <footer class="bg-secondary bg-opacity-25 border-top border-secondary py-4 text-center text-muted mt-5">
     <div class="container">
-      <p class="mb-1 text-light">QazaqPeek Cyber Club &bull; Kenesary St 69, Astana &bull; Tel: +7 (706) 605 5465</p>
-      <p class="small mb-0">&copy; 2026 Dias Tursynbay &amp; Adilet Ainadinov. All rights reserved.</p>
+      <p class="mb-1 text-light">QazaqPeek Cyber Club &bull; Kenesary St 69, 2<sup>nd</sup> Floor<br>Astana, Kazakhstan &bull; Tel: <a href="tel:+77066055465" class="text-accent text-decoration-none">+7 (706) 605 5465</a></p>
+      <p class="mb-0"><small class="text-muted">&copy; 2026 Dias Tursynbay &amp; Adilet Ainadinov. All rights reserved.</small></p>
     </div>
   </footer>
 

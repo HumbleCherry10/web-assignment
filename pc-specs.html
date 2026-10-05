@@ -6,10 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Adilet Ainadinov">
   <meta name="description" content="Technical hardware specifications and peripheral details for QazaqPeek Cyber Club in Astana on Kenesary 69.">
-  <title>QazaqPeek Cyber Club - PC Specs & Hardware</title>
+  <title>QazaqPeek Cyber Club - PC Specs &amp; Hardware</title>
   
-  <!-- Bootstrap 5.3.3 CDN link linked before custom stylesheet so custom rules override where needed -->
-  <!-- Bootstrap 5.3.3 CDN used for responsive layout, grid system, navbar toggler, cards, tables, and utility classes -->
+  <!-- Bootstrap 5.3.3 CDN stylesheet -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   
   <!-- Custom stylesheets linked after Bootstrap CDN -->
@@ -17,7 +16,7 @@
   <link rel="stylesheet" href="css/dias.css">
   <link rel="stylesheet" href="css/adilet.css">
 </head>
-<body class="bg-dark text-light">
+<body id="top" class="bg-dark text-light">
 
   <!-- Responsive Navigation Header using Bootstrap Navbar with Toggler -->
   <header>
@@ -42,10 +41,10 @@
     </nav>
   </header>
 
-  <!-- Container Choice Comment: Chosen container over container-fluid here to keep hardware specification cards centered and readable on wide desktop displays -->
+  <!-- Container chosen to keep hardware cards centered and readable on desktop screens -->
   <main class="container py-4">
 
-    <!-- Responsive text utility: centered on mobile (text-center), left-aligned on tablet and desktop (text-md-start) -->
+    <!-- Title Banner -->
     <div class="adilet-form-card p-4 mb-4 rounded-3 border border-secondary shadow">
       <h1 class="display-6 fw-bold text-accent mb-2 text-center text-md-start">Hardware Specs &amp; Gaming Gear</h1>
       <p class="lead text-light mb-0 text-center text-md-start">
@@ -53,84 +52,82 @@
       </p>
     </div>
 
-    <!-- Bootstrap Component: Cards & Badges -->
-    <!-- Component Name: Bootstrap Cards & Badges -->
-    <!-- Modifications: Hardware spec cards with status badges and dark custom theme styling -->
-    <!-- Responsive Grid Section 1: Hardware Station Cards responding at 3 breakpoints (col-12 on phone, col-md-6 on tablet, col-lg-4 on desktop) -->
+    <!-- Arena Hardware Zones Grid -->
     <section class="mb-5">
       <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Arena Hardware Zones</h2>
       <div class="row g-4">
         
-        <!-- Station Card 1 -->
+        <!-- Station Card 1: Standard Arena -->
         <div class="col-12 col-md-6 col-lg-4">
           <div class="card bg-custom-card text-light h-100 shadow-sm border-secondary">
             <div class="card-header bg-dark d-flex justify-content-between align-items-center">
               <h3 class="h5 mb-0 fw-bold">Standard Arena</h3>
               <span class="badge bg-info text-dark">40 PCs</span>
             </div>
-            <div class="card-body">
+            <div class="card-body d-flex flex-column justify-content-between">
               <ul class="list-unstyled mb-3">
-                <li class="mb-2"><strong>GPU:</strong> NVIDIA RTX 4070 12GB</li>
-                <li class="mb-2"><strong>CPU:</strong> Intel Core i7-13700F</li>
-                <li class="mb-2"><strong>RAM:</strong> 32GB DDR5 5600MHz</li>
-                <li class="mb-2"><strong>Monitor:</strong> ASUS ROG 240Hz IPS</li>
+                <li class="mb-2"><strong><abbr title="Graphics Processing Unit">GPU</abbr>:</strong> NVIDIA RTX 4070 12GB</li>
+                <li class="mb-2"><strong><abbr title="Central Processing Unit">CPU</abbr>:</strong> Intel Core i7-13700F</li>
+                <li class="mb-2"><strong><abbr title="Random Access Memory">RAM</abbr>:</strong> 32GB DDR5 5600MHz</li>
+                <li class="mb-2"><strong>Monitor:</strong> ASUS ROG 240Hz IPS (1ms)</li>
                 <li class="mb-2"><strong>Headset:</strong> HyperX Cloud II Wireless</li>
               </ul>
-              <div class="d-flex justify-content-between align-items-center mt-3">
-                <span class="small text-muted">Zone 1 &amp; 2</span>
+              <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top border-secondary">
+                <span class="small text-accent fw-bold">700 KZT / hr</span>
                 <a href="booking.html" class="btn btn-outline-info btn-sm">Reserve Seat</a>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Station Card 2 (with Grid Nesting Demonstration) -->
-        <!-- Comment on Nesting: Here we nest a row inside col-lg-4 to display spec highlights side-by-side -->
+        <!-- Station Card 2: VIP Pro Lounge (with Nested Grid) -->
         <div class="col-12 col-md-6 col-lg-4">
           <div class="card bg-custom-card text-light h-100 shadow-sm border-info">
             <div class="card-header bg-dark d-flex justify-content-between align-items-center">
               <h3 class="h5 mb-0 fw-bold text-accent">VIP Pro Lounge</h3>
               <span class="badge bg-warning text-dark">15 PCs</span>
             </div>
-            <div class="card-body">
-              <!-- Nested Grid Row inside column -->
-              <div class="row g-2 my-2 py-2 border-top border-bottom border-secondary bg-dark rounded">
-                <div class="col-7 small text-muted">RTX 4080 • 360Hz</div>
-                <div class="col-5 small text-end fw-bold text-accent">1,200 KZT/hr</div>
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <!-- Nested row inside card column -->
+                <div class="row g-2 my-2 py-2 border-top border-bottom border-secondary bg-dark rounded">
+                  <div class="col-7 small text-muted">RTX 4080 • 360Hz</div>
+                  <div class="col-5 small text-end fw-bold text-accent">1,200 KZT/hr</div>
+                </div>
+                <ul class="list-unstyled mb-3">
+                  <li class="mb-2"><strong><abbr title="Graphics Processing Unit">GPU</abbr>:</strong> NVIDIA RTX 4080 Super 16GB</li>
+                  <li class="mb-2"><strong><abbr title="Central Processing Unit">CPU</abbr>:</strong> AMD Ryzen 7 7800X3D</li>
+                  <li class="mb-2"><strong><abbr title="Random Access Memory">RAM</abbr>:</strong> 64GB DDR5 6000MHz</li>
+                  <li class="mb-2"><strong>Monitor:</strong> BenQ ZOWIE 360Hz DyAc+</li>
+                  <li class="mb-2"><strong>Mouse:</strong> Logitech G Pro X Superlight 2</li>
+                </ul>
               </div>
-              <ul class="list-unstyled mb-3">
-                <li class="mb-2"><strong>GPU:</strong> NVIDIA RTX 4080 Super</li>
-                <li class="mb-2"><strong>CPU:</strong> AMD Ryzen 7 7800X3D</li>
-                <li class="mb-2"><strong>RAM:</strong> 64GB DDR5 6000MHz</li>
-                <li class="mb-2"><strong>Monitor:</strong> BenQ ZOWIE 360Hz DyAc+</li>
-                <li class="mb-2"><strong>Mouse:</strong> Logitech G Pro X Superlight 2</li>
-              </ul>
-              <div class="d-flex justify-content-between align-items-center mt-3">
-                <span class="small text-muted">VIP Room A</span>
+              <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top border-secondary">
+                <span class="small text-muted">VIP Room A &amp; B</span>
                 <a href="booking.html" class="btn btn-primary btn-sm">Book VIP Seat</a>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Station Card 3 -->
+        <!-- Station Card 3: Streamer Booth -->
         <div class="col-12 col-md-6 col-lg-4">
           <div class="card bg-custom-card text-light h-100 shadow-sm border-secondary">
             <div class="card-header bg-dark d-flex justify-content-between align-items-center">
               <h3 class="h5 mb-0 fw-bold">Streamer Booth</h3>
               <span class="badge bg-danger">2 Booths</span>
             </div>
-            <div class="card-body">
+            <div class="card-body d-flex flex-column justify-content-between">
               <ul class="list-unstyled mb-3">
-                <li class="mb-2"><strong>GPU:</strong> NVIDIA RTX 4090 24GB</li>
-                <li class="mb-2"><strong>CPU:</strong> Intel Core i9-14900K</li>
+                <li class="mb-2"><strong><abbr title="Graphics Processing Unit">GPU</abbr>:</strong> NVIDIA RTX 4090 24GB</li>
+                <li class="mb-2"><strong><abbr title="Central Processing Unit">CPU</abbr>:</strong> Intel Core i9-14900K</li>
                 <li class="mb-2"><strong>Audio:</strong> Shure SM7B + GoXLR Mini</li>
-                <li class="mb-2"><strong>Camera:</strong> Sony ZV-E10 Camlink</li>
+                <li class="mb-2"><strong>Camera:</strong> Sony ZV-E10 Camlink 4K</li>
                 <li class="mb-2"><strong>Chair:</strong> Secretlab TITAN Evo 2024</li>
               </ul>
-              <div class="d-flex justify-content-between align-items-center mt-3">
-                <span class="small text-muted">Isolated Booth</span>
-                <button type="button" class="btn btn-secondary btn-sm disabled">Fully Booked Today</button>
+              <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top border-secondary">
+                <span class="small text-accent fw-bold">2,500 KZT / hr</span>
+                <a href="booking.html" class="btn btn-outline-info btn-sm">Inquire Booking</a>
               </div>
             </div>
           </div>
@@ -139,17 +136,17 @@
       </div>
     </section>
 
-    <!-- Table Section for Hardware Maintenance Schedule -->
+    <!-- Maintenance Table Section -->
     <section class="mb-5">
       <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Sanitization &amp; Peripheral Care Schedule</h2>
       
-      <!-- Responsive display utility: hide extra technical note on smaller phone screens to avoid clutter -->
       <div class="alert alert-info bg-opacity-10 text-info border-info d-none d-md-block mb-3 shadow-sm">
-        <span class="fw-bold me-2">ℹ️ Sanitization Notice:</span> All keycaps, mice, and headsets undergo UV-C disinfection and alcohol wiping between guest sessions.
+        <span class="fw-bold me-2">ℹ️ Sanitization Protocol:</span> All keycaps, mice, and headsets undergo UV-C disinfection and alcohol wiping between guest sessions at Kenesary 69.
       </div>
 
       <div class="table-responsive">
         <table class="table table-dark table-striped table-hover table-bordered mb-0 align-middle">
+          <caption class="text-muted small pt-2">Regular equipment maintenance and sanitization log at QazaqPeek Astana.</caption>
           <thead>
             <tr>
               <th scope="col">Hardware Item</th>
@@ -162,7 +159,7 @@
             <tr>
               <th scope="row">Monitors</th>
               <td>ASUS ROG 240Hz &amp; BenQ 360Hz</td>
-              <td>Daily Calibration &amp; Screen Clean</td>
+              <td>Daily Calibration &amp; Microfiber Clean</td>
               <td><span class="badge bg-success">Optimal</span></td>
             </tr>
             <tr>
@@ -174,17 +171,86 @@
             <tr>
               <th scope="row">Mice</th>
               <td>Logitech Superlight &amp; Razer Viper V2 Pro</td>
-              <td>Skate replacement monthly</td>
+              <td>Monthly PTFE Skate Replacement</td>
               <td><span class="badge bg-success">Optimal</span></td>
             </tr>
             <tr>
               <th scope="row">Air Conditioning</th>
               <td>Industrial Ducted Chiller (19&deg;C)</td>
-              <td>Bi-weekly Filter Wash</td>
+              <td>Bi-weekly Filter Wash &amp; Airflow Check</td>
               <td><span class="badge bg-info text-dark">Active 24/7</span></td>
             </tr>
           </tbody>
         </table>
+      </div>
+    </section>
+
+    <!-- Custom Driver & Peripheral Pre-configuration Request Form (Finishes the Logic) -->
+    <section id="driver-request-section" class="mb-5">
+      <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Pre-configure Your Peripherals</h2>
+      
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+          <div class="bg-custom-card p-4 rounded-3 border border-secondary shadow-sm">
+            <h3 class="h5 text-light fw-bold mb-2">Request Custom Software or Drivers</h3>
+            <p class="small text-muted mb-4">
+              Bringing your own gear? Our system administrator can pre-install and update your mouse software, keyboard firmware, or audio EQ before you arrive.
+            </p>
+
+            <form id="driver-request-form" action="pc-specs.html" method="POST">
+              <fieldset>
+                <legend class="visually-hidden">Peripheral Configuration Request</legend>
+
+                <div class="row g-3 mb-3">
+                  <div class="col-12 col-md-6">
+                    <label for="driver-software" class="form-label text-light fw-semibold">Software / Driver Suite:</label>
+                    <select class="form-select bg-dark text-light border-secondary" id="driver-software" name="driver_software" required>
+                      <option value="wooting" selected>Wooting Wootility (Rapid Trigger)</option>
+                      <option value="ghub">Logitech G HUB</option>
+                      <option value="synapse">Razer Synapse 3</option>
+                      <option value="steelseries">SteelSeries GG / Sonar</option>
+                      <option value="zowie">ZOWIE Driverless USB</option>
+                    </select>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="target-zone" class="form-label text-light fw-semibold">Reserved Zone:</label>
+                    <select class="form-select bg-dark text-light border-secondary" id="target-zone" name="target_zone" required>
+                      <option value="standard" selected>Standard Arena (Zone 1-2)</option>
+                      <option value="vip">VIP Pro Lounge</option>
+                      <option value="bootcamp">Bootcamp Team Room</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                  <div class="col-12 col-md-6">
+                    <label for="gamer-phone" class="form-label text-light fw-semibold">Contact Phone (Kaspi/SMS):</label>
+                    <input type="tel" class="form-control bg-dark text-light border-secondary" id="gamer-phone" name="gamer_phone" placeholder="+7 706 605 5465" required>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="dpi-notes" class="form-label text-light fw-semibold">Specific DPI / Polling Rate (Optional):</label>
+                    <input type="text" class="form-control bg-dark text-light border-secondary" id="dpi-notes" name="dpi_notes" placeholder="e.g. 800 DPI, 1000Hz, 1.2 in-game sens">
+                  </div>
+                </div>
+
+                <div class="d-flex gap-2">
+                  <button type="submit" id="btn-submit-driver" class="btn btn-info fw-bold text-dark flex-grow-1">
+                    Submit Pre-configuration Request
+                  </button>
+                  <button type="reset" id="btn-reset-driver" class="btn btn-outline-secondary">Reset</button>
+                </div>
+
+                <p class="small text-muted mt-3 mb-0">
+                  * Submission logs your request with our technical admin. Profiles are loaded onto your assigned rig 10 minutes prior to session start.
+                </p>
+
+                <div id="driver-feedback" class="alert alert-success mt-4 d-none" role="alert">
+                  <strong>Request Logged!</strong> The technical admin has scheduled your peripheral software profile.
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -198,8 +264,8 @@
   <!-- Footer -->
   <footer class="bg-secondary bg-opacity-25 border-top border-secondary py-4 text-center text-muted mt-5">
     <div class="container">
-      <p class="mb-1 text-light">QazaqPeek Cyber Club &bull; Kenesary St 69, Astana &bull; Tel: +7 (706) 605 5465</p>
-      <p class="small mb-0">&copy; 2026 Dias Tursynbay &amp; Adilet Ainadinov. All rights reserved.</p>
+      <p class="mb-1 text-light">QazaqPeek Cyber Club &bull; Kenesary St 69, 2<sup>nd</sup> Floor<br>Astana, Kazakhstan &bull; Tel: <a href="tel:+77066055465" class="text-accent text-decoration-none">+7 (706) 605 5465</a></p>
+      <p class="mb-0"><small class="text-muted">&copy; 2026 Dias Tursynbay &amp; Adilet Ainadinov. All rights reserved.</small></p>
     </div>
   </footer>
 

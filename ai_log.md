@@ -29,3 +29,11 @@ In accordance with course AI policy, this log records questions asked to AI duri
 ## Session 7 — September 30, 2026 (Assignment 3 Sync)
 * **Prompt:** How to sync and harmonize navigation bars across all 7 Bootstrap pages after pulling new branch commits?
 * **Response Summary:** Standardize navigation markup to use `<nav class="navbar navbar-expand-lg navbar-dark ...">` with `navbar-toggler` on all 7 pages (`index.html`, `services.html`, `events.html`, `booking.html`, `login.html`, `pc-specs.html`, `rules.html`), ensuring active state highlights and zero horizontal scrollbar on mobile.
+
+## Session 8 — October 3, 2026 (Midterm Project — JavaScript Freeze & DOM Hooks)
+* **Prompt:** What does an HTML/CSS freeze mean for preparing JavaScript DOM hooks, and how should ID naming and empty result containers be structured?
+* **Response Summary:** An HTML/CSS freeze means all static elements, interactive hooks, and presentation state classes that JavaScript will later interact with must exist in advance in markup and stylesheets. This requires assigning lowercase, hyphenated English IDs to all forms, inputs, buttons, and dynamic blocks, adding empty result/alert containers with IDs for future data injection, and defining state classes (`.hidden`, `.active`, `.selected`, `.error`, `.success`) in CSS so JavaScript only needs to toggle classes on and off.
+
+## Session 9 — October 4, 2026 (Midterm Project — User Journeys & Flow Completeness)
+* **Prompt:** How can a multi-page static website ensure end-to-end logical completeness for a single visitor without a database server?
+* **Response Summary:** Logical completeness requires that every interaction pathway has a definite beginning, working steps, and an on-screen conclusion: every call-to-action button navigates to an actual form or section, forms explicitly explain the submission outcome and feature dedicated visible confirmation blocks, tables and price cards provide calculation hooks and booking links, and no dead links or placeholder elements exist.

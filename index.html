@@ -6,10 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Dias Tursynbay">
   <meta name="description" content="Official website of QazaqPeek Cyber Club in Astana on Kenesary 69, presenting competitive gaming PCs, lounge zones, and venue guidelines.">
-  <title>QazaqPeek Cyber Club Astana - Home</title>
+  <title>QazaqPeek Cyber Club - Home</title>
   
-  <!-- Bootstrap 5.3.3 CDN link linked before custom stylesheet so custom rules override where needed -->
-  <!-- Bootstrap 5.3.3 CDN used for responsive layout, grid system, navbar toggler, cards, and utility classes -->
+  <!-- Bootstrap 5.3.3 CDN stylesheet -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom stylesheets linked after Bootstrap CDN -->
@@ -17,7 +16,7 @@
   <link rel="stylesheet" href="css/dias.css">
   <link rel="stylesheet" href="css/adilet.css">
 </head>
-<body class="bg-dark text-light">
+<body id="top" class="bg-dark text-light">
 
   <!-- Responsive Navigation Header using Bootstrap Navbar with Toggler -->
   <header>
@@ -42,24 +41,29 @@
     </nav>
   </header>
 
-  <!-- Container Choice Comment: Chosen container over container-fluid here to keep central home page content centered and readable on desktop screens -->
+  <!-- Container chosen to center content and maintain readable line lengths on desktop -->
   <main class="container py-4">
 
-    <!-- Hero Section with Responsive Alignment (text-center on phone, text-md-start on desktop) -->
+    <!-- Hero Section with Primary Calls to Action -->
     <div class="dias-hero-banner p-4 mb-4 rounded-3 shadow">
       <h1 class="display-6 fw-bold text-accent mb-2 text-center text-md-start">Welcome to QazaqPeek Esports Lounge</h1>
-      <p class="lead text-light mb-0 text-center text-md-start">
-        Astana's premier competitive gaming venue on Kenesary Street 69.
+      <p class="lead text-light mb-3 text-center text-md-start">
+        Astana's premier competitive gaming venue located at Kenesary Street 69. High-FPS rigs, 360Hz displays, and low-ping fiber.
       </p>
+      <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
+        <a href="booking.html" id="hero-book-btn" class="btn btn-info fw-bold text-dark px-4">Book a Station</a>
+        <a href="services.html" id="hero-tariffs-btn" class="btn btn-outline-info px-4">View Zones &amp; Tariffs</a>
+      </div>
     </div>
 
-    <!-- Same-page jump links styled with Bootstrap badges -->
+    <!-- Same-page jump links -->
     <nav class="mb-4" aria-label="Page contents">
       <p class="mb-0 text-center text-md-start">
         <span class="fw-bold me-2 text-light">Quick jump:</span>
         <a href="#about-section" class="badge bg-dark border border-info text-accent text-decoration-none me-1 px-3 py-2">About Our Club</a>
         <a href="#gallery-section" class="badge bg-dark border border-info text-accent text-decoration-none me-1 px-3 py-2">Club Gallery</a>
-        <a href="#hours-section" class="badge bg-dark border border-info text-accent text-decoration-none px-3 py-2">Operating Hours</a>
+        <a href="#hours-section" class="badge bg-dark border border-info text-accent text-decoration-none me-1 px-3 py-2">Operating Hours</a>
+        <a href="#newsletter-section" class="badge bg-dark border border-info text-accent text-decoration-none px-3 py-2">Club News</a>
       </p>
     </nav>
 
@@ -70,19 +74,21 @@
       <div class="bg-custom-card p-4 rounded-3 border border-secondary mb-3 shadow-sm">
         <h3 class="h5 fw-bold text-light mb-3">About the Venue</h3>
         <p class="text-light">
-          Located at <strong>Kenesary 69</strong> in central <strong>Astana</strong>, <em>QazaqPeek</em> delivers an authentic competitive gaming experience for casual players and tournament teams alike. Our arena features machines configured with high-performance hardware and ultra-responsive <strong>360<abbr title="Hertz">Hz</abbr></strong> monitors.
+          Located at <strong>Kenesary 69</strong> in central <strong>Astana</strong>, <em>QazaqPeek</em> delivers an authentic competitive gaming experience for casual players and tournament teams alike. Our arena features machines configured with high-performance hardware and ultra-responsive <strong>360<abbr title="Hertz">Hz</abbr></strong> monitors. Local esports teams frequently note: <q>QazaqPeek provides the lowest latency and most stable frame rates in the capital.</q>
         </p>
         <p class="text-light mb-0">
-          We maintain strict room climate control at <b>19&deg;C</b> to prevent hardware throttling, while sound-dampening partitions keep team voice comms clear. Whether running five-stack scrims in <mark class="bg-warning text-dark px-1 rounded">Counter-Strike 2</mark> or grinding ranked matches in <i>Dota 2</i>, our network provides low-ping fiber connectivity.
+          We maintain strict room climate control at <b>19&deg;C</b> to prevent hardware thermal throttling, while sound-dampening partitions keep team voice comms clear. Whether running five-stack scrims in <mark class="bg-warning text-dark px-1 rounded">Counter-Strike 2</mark> or grinding ranked matches in <i>Dota 2</i>, our network provides direct fiber connectivity with single-digit ping to Frankfurt and Stockholm servers.
         </p>
       </div>
 
-      <figure class="blockquote bg-dark p-3 rounded border-start border-4 border-info shadow-sm mb-0">
-        <p class="mb-2 fst-italic text-light">
-          &ldquo;We founded QazaqPeek on Kenesary to give local players a tournament-grade setup with stable ping and modern peripherals without compromises.&rdquo;
-        </p>
+      <figure class="bg-dark p-3 rounded border-start border-4 border-info shadow-sm mb-0">
+        <blockquote class="blockquote mb-2 text-light">
+          <p class="fst-italic mb-0">
+            &ldquo;We founded QazaqPeek on Kenesary to give local players a tournament-grade setup with stable ping and modern peripherals without compromises.&rdquo;
+          </p>
+        </blockquote>
         <figcaption class="blockquote-footer text-muted mb-0">
-          <cite title="Shift Administrator">Alikhan Nurpeisov</cite>, Shift Administrator
+          <cite title="Shift Administrator">Alikhan Nurpeisov</cite>, Shift Administrator at Kenesary 69
         </figcaption>
       </figure>
     </section>
@@ -92,32 +98,31 @@
       <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Club Facilities &amp; Equipment</h2>
       <p class="text-muted mb-4">Explore our venue facilities, high-end peripheral options, and tournament arenas.</p>
 
-      <!-- Replaced manual float image block with responsive Bootstrap flex row -->
       <div class="row align-items-center bg-custom-card p-3 rounded-3 border border-secondary mb-4 shadow-sm">
         <div class="col-12 col-md-4 mb-3 mb-md-0 text-center">
-          <img src="images/storefront.jpg" alt="Entrance storefront facade of QazaqPeek Cyber Club" class="img-fluid rounded shadow facility-img-thumb">
+          <figure class="mb-0">
+            <img src="images/storefront.jpg" alt="Entrance storefront facade of QazaqPeek Cyber Club" class="img-fluid rounded shadow facility-img-thumb">
+            <figcaption class="small text-muted mt-2">Front entrance at Kenesary 69</figcaption>
+          </figure>
         </div>
         <div class="col-12 col-md-8">
           <h3 class="h5 text-accent fw-bold mb-2">24/7 Front Desk Reception</h3>
-          <p class="text-light mb-0">
+          <p class="text-light mb-2">
             Our main entrance welcomes guests 24 hours a day on Kenesary Street 69. The reception hall is staffed continuously by technical administrators ready to assist with account top-ups, custom game installations, and tournament seat reservations.
           </p>
+          <a href="services.html" class="btn btn-outline-info btn-sm">Explore Zone Rates &rarr;</a>
         </div>
       </div>
 
-      <!-- Bootstrap Component: Cards & Badges -->
-      <!-- Component Name: Bootstrap Cards & Badges -->
-      <!-- Modifications: Facility cards with status badges and dark custom theme styling -->
-      <!-- Responsive Grid: 2 facility cards responding at breakpoints (col-12 on mobile, col-md-6 on tablet/desktop) -->
       <div class="row g-4">
         <div class="col-12 col-md-6">
           <div class="card bg-custom-card text-light h-100 shadow-sm border-secondary position-relative">
-            <!-- Badge component -->
             <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-3 fw-bold">Popular Zone</span>
             <img src="images/interior.jpg" alt="Interior view of main arena hall" class="card-img-top facility-img-thumb" style="max-height: 220px; object-fit: cover;">
             <div class="card-body">
               <h3 class="h6 card-title fw-bold text-accent mb-2">Main Arena Hall</h3>
-              <p class="card-text small text-light">Figure 1: Main arena hall equipped with 240Hz &amp; 360Hz esports monitors.</p>
+              <p class="card-text small text-light">Figure 1: Main arena hall equipped with 240Hz &amp; 360Hz esports monitors and ergonomic chairs.</p>
+              <a href="pc-specs.html" class="btn btn-outline-info btn-sm">Check Rig Specs</a>
             </div>
           </div>
         </div>
@@ -128,6 +133,7 @@
             <div class="card-body">
               <h3 class="h6 card-title fw-bold text-accent mb-2">Sanitized Peripherals</h3>
               <p class="card-text small text-light">Figure 2: Mechanical gaming keyboards &amp; lightweight mice sanitized between sessions.</p>
+              <a href="rules.html" class="btn btn-outline-info btn-sm">Read Hardware Rules</a>
             </div>
           </div>
         </div>
@@ -135,16 +141,39 @@
     </section>
 
     <!-- Schedule Section -->
-    <aside id="hours-section" class="bg-custom-card p-4 rounded-3 border border-secondary shadow-sm">
+    <aside id="hours-section" class="bg-custom-card p-4 rounded-3 border border-secondary shadow-sm mb-5">
       <h2 class="h4 fw-bold text-accent mb-2">Schedule &amp; House Policy</h2>
       <p class="text-light mb-0">
         Our club operates <strong>24/7</strong> every day of the week. Night package wristbands are issued starting promptly at <b>22:00</b>. Guests under 18 years of age are admitted until 22:00 according to municipal laws.
       </p>
-      <!-- Responsive display utility: hide minor policy tip on phone screen -->
       <p class="small text-muted mt-2 mb-0 d-none d-md-block">
         * Valid photo identification is required for night package wristbands after 22:00.
       </p>
     </aside>
+
+    <!-- Newsletter & Announcement Form (Prepares Hook for JS) -->
+    <section id="newsletter-section" class="mb-4">
+      <div class="bg-custom-card p-4 rounded-3 border border-secondary shadow-sm">
+        <div class="row align-items-center">
+          <div class="col-12 col-lg-6 mb-3 mb-lg-0">
+            <h2 class="h4 fw-bold text-accent mb-1">Tournament &amp; Promo Alerts</h2>
+            <p class="text-muted small mb-0">Enter your email to receive weekly LAN tournament announcements, night package discounts, and seat reservation reminders.</p>
+          </div>
+          <div class="col-12 col-lg-6">
+            <form id="newsletter-form" action="index.html" method="POST">
+              <div class="input-group">
+                <input type="email" class="form-control bg-dark text-light border-secondary" id="newsletter-email" name="newsletter_email" placeholder="gamer@example.kz" required>
+                <button class="btn btn-info fw-bold text-dark" type="submit" id="newsletter-submit-btn">Subscribe</button>
+              </div>
+              <p class="small text-muted mt-1 mb-0">* Submitting records your email for club updates. No spam guarantee.</p>
+              <div id="newsletter-feedback" class="alert alert-success mt-2 mb-0 d-none" role="alert">
+                Thank you! Your email is registered for tournament notifications.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
 
   </main>
 
@@ -156,8 +185,8 @@
   <!-- Footer -->
   <footer class="bg-secondary bg-opacity-25 border-top border-secondary py-4 text-center text-muted mt-5">
     <div class="container">
-      <p class="mb-1 text-light">QazaqPeek Cyber Club &bull; Kenesary St 69, Astana &bull; Tel: +7 (706) 605 5465</p>
-      <p class="small mb-0">&copy; 2026 Dias Tursynbay &amp; Adilet Ainadinov. All rights reserved.</p>
+      <p class="mb-1 text-light">QazaqPeek Cyber Club &bull; Kenesary St 69, 2<sup>nd</sup> Floor<br>Astana, Kazakhstan &bull; Tel: <a href="tel:+77066055465" class="text-accent text-decoration-none">+7 (706) 605 5465</a></p>
+      <p class="mb-0"><small class="text-muted">&copy; 2026 Dias Tursynbay &amp; Adilet Ainadinov. All rights reserved.</small></p>
     </div>
   </footer>
 

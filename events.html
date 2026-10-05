@@ -8,8 +8,7 @@
   <meta name="description" content="Tournament schedule, LAN competitions, and prize pools at QazaqPeek Cyber Club in Astana on Kenesary 69.">
   <title>QazaqPeek Cyber Club - Tournaments &amp; Events</title>
   
-  <!-- Bootstrap 5.3.3 CDN link linked before custom stylesheet so custom rules override where needed -->
-  <!-- Bootstrap 5.3.3 CDN used for responsive layout, grid cards, badges, button variants, and utility classes -->
+  <!-- Bootstrap 5.3.3 CDN stylesheet -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom stylesheets linked after Bootstrap CDN -->
@@ -17,7 +16,7 @@
   <link rel="stylesheet" href="css/dias.css">
   <link rel="stylesheet" href="css/adilet.css">
 </head>
-<body class="bg-dark text-light">
+<body id="top" class="bg-dark text-light">
 
   <!-- Responsive Navigation Header using Bootstrap Navbar with Toggler -->
   <header>
@@ -42,10 +41,10 @@
     </nav>
   </header>
 
-  <!-- Container Choice Comment: Chosen container over container-fluid here to keep event schedule cards centered and balanced on wide screens -->
+  <!-- Container chosen to keep event cards and forms cleanly centered on desktop screens -->
   <main class="container py-4">
 
-    <!-- Hero Title Box with Responsive Alignment -->
+    <!-- Hero Title Box -->
     <div class="dias-hero-banner p-4 mb-4 rounded-3 shadow">
       <h1 class="display-6 fw-bold text-accent mb-2 text-center text-md-start">Upcoming Tournaments &amp; Community Events</h1>
       <p class="lead text-light mb-0 text-center text-md-start">
@@ -53,64 +52,75 @@
       </p>
     </div>
 
-    <!-- Bootstrap Component: Cards & Badges -->
-    <!-- Component Name: Bootstrap Cards & Badges -->
-    <!-- Modifications: Tournament schedule cards with registration badges and button variants -->
-    <!-- Tournament Grid responding at 3 screen widths (col-12 on phone, col-md-6 on tablet, col-lg-4 on desktop) -->
+    <!-- Quick Filter Hooks (Prepared for JavaScript filtering) -->
+    <div class="d-flex flex-wrap gap-2 mb-4 align-items-center">
+      <span class="fw-semibold text-light me-2">Filter Events:</span>
+      <button type="button" id="filter-all" class="btn btn-sm btn-info fw-bold text-dark">All Events</button>
+      <button type="button" id="filter-open" class="btn btn-sm btn-outline-info">Open for Registration</button>
+      <button type="button" id="filter-completed" class="btn btn-sm btn-outline-secondary">Concluded</button>
+    </div>
+
+    <!-- Tournament Schedule Cards -->
     <section class="mb-5">
       <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Astana Community Schedule</h2>
       
-      <div class="row g-4">
+      <div class="row g-4" id="events-card-container">
         
         <!-- Tournament Card 1 -->
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-6 col-lg-4" id="card-event-cs2">
           <div class="card bg-custom-card text-light h-100 border-secondary shadow-sm">
             <div class="card-header bg-dark d-flex justify-content-between align-items-center">
               <h3 class="h5 mb-0 fw-bold">CS2 Astana Cup 5v5</h3>
               <span class="badge bg-danger">Registration Open</span>
             </div>
-            <div class="card-body">
-              <p class="card-text text-light"><strong>Date:</strong> October 12, 2026 (Saturday)</p>
-              <p class="card-text text-light"><strong>Prize Pool:</strong> 250,000 KZT + VIP Night Passes</p>
-              <p class="card-text small text-muted">Double elimination LAN bracket played in VIP Pro Zone.</p>
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <p class="card-text text-light"><strong>Date:</strong> October 12, 2026 (Saturday)</p>
+                <p class="card-text text-light"><strong>Prize Pool:</strong> 250,000 KZT + VIP Passes</p>
+                <p class="card-text small text-muted">Double elimination LAN bracket played in VIP Pro Zone on 360Hz BenQ rigs.</p>
+              </div>
               <div class="mt-3">
-                <a href="booking.html" class="btn btn-primary btn-sm w-100">Register Squad</a>
+                <a href="#tournament-registration" id="btn-reg-cs2" class="btn btn-primary btn-sm w-100">Register Squad</a>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Tournament Card 2 -->
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-6 col-lg-4" id="card-event-dota">
           <div class="card bg-custom-card text-light h-100 border-secondary shadow-sm">
             <div class="card-header bg-dark d-flex justify-content-between align-items-center">
               <h3 class="h5 mb-0 fw-bold">Dota 2 1v1 Mid Only</h3>
               <span class="badge bg-info text-dark">Solo Event</span>
             </div>
-            <div class="card-body">
-              <p class="card-text text-light"><strong>Date:</strong> October 19, 2026 (Saturday)</p>
-              <p class="card-text text-light"><strong>Prize Pool:</strong> 100,000 KZT Cash</p>
-              <p class="card-text small text-muted">Best of 3 Shadow Fiend / Nevermore mid lane showdown.</p>
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <p class="card-text text-light"><strong>Date:</strong> October 19, 2026 (Saturday)</p>
+                <p class="card-text text-light"><strong>Prize Pool:</strong> 100,000 KZT Cash</p>
+                <p class="card-text small text-muted">Best of 3 Shadow Fiend / Nevermore mid lane showdown. Direct knockout bracket.</p>
+              </div>
               <div class="mt-3">
-                <a href="booking.html" class="btn btn-outline-info btn-sm w-100">Join Solo Bracket</a>
+                <a href="#tournament-registration" id="btn-reg-dota" class="btn btn-outline-info btn-sm w-100">Join Solo Bracket</a>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Tournament Card 3 -->
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-6 col-lg-4" id="card-event-fc24">
           <div class="card bg-custom-card text-light h-100 border-secondary shadow-sm">
             <div class="card-header bg-dark d-flex justify-content-between align-items-center">
               <h3 class="h5 mb-0 fw-bold">FC 24 Console Cup</h3>
               <span class="badge bg-secondary">Completed</span>
             </div>
-            <div class="card-body">
-              <p class="card-text text-light"><strong>Date:</strong> September 20, 2026</p>
-              <p class="card-text text-light"><strong>Winner:</strong> Nursultan "Nurik_FC" B.</p>
-              <p class="card-text small text-muted">PS5 lounge arena tournament concluded last weekend.</p>
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <p class="card-text text-light"><strong>Date:</strong> September 20, 2026</p>
+                <p class="card-text text-light"><strong>Winner:</strong> Nursultan &ldquo;Nurik_FC&rdquo; B.</p>
+                <p class="card-text small text-muted">PS5 lounge arena tournament concluded last weekend. Season standings updated.</p>
+              </div>
               <div class="mt-3">
-                <button type="button" class="btn btn-secondary btn-sm w-100 disabled">Registration Closed</button>
+                <button type="button" class="btn btn-secondary btn-sm w-100 disabled" disabled>Registration Closed</button>
               </div>
             </div>
           </div>
@@ -119,21 +129,119 @@
       </div>
     </section>
 
-    <!-- Tournament Rules & Details Section -->
+    <!-- Tournament Registration Section (Finishes the Logic) -->
+    <section id="tournament-registration" class="mb-5">
+      <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Tournament Entry &amp; Team Sign-Up</h2>
+      
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-9">
+          <div class="bg-custom-card p-4 rounded-3 border border-secondary shadow-sm">
+            <h3 class="h5 text-light fw-bold mb-2">Register for Upcoming LAN Bracket</h3>
+            <p class="small text-muted mb-4">
+              Enter your team roster or solo handle to secure your slot in the tournament seeding. LAN check-in is conducted at reception Kenesary 69.
+            </p>
+
+            <form id="tournament-reg-form" action="events.html" method="POST">
+              <fieldset>
+                <legend class="visually-hidden">Tournament Registration Form</legend>
+
+                <div class="row g-3 mb-3">
+                  <div class="col-12 col-md-6">
+                    <label for="tournament-choice" class="form-label text-light fw-semibold">Select Event:</label>
+                    <select class="form-select bg-dark text-light border-secondary" id="tournament-choice" name="tournament_choice" required>
+                      <option value="">-- Choose tournament --</option>
+                      <option value="cs2" selected>CS2 Astana Cup 5v5 (Oct 12)</option>
+                      <option value="dota">Dota 2 1v1 Mid Only (Oct 19)</option>
+                    </select>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="team-tag" class="form-label text-light fw-semibold">Team Name / Gamer Tag:</label>
+                    <input type="text" class="form-control bg-dark text-light border-secondary" id="team-tag" name="team_tag" placeholder="e.g. Astana Titans / Sh1ro" required>
+                  </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                  <div class="col-12 col-md-6">
+                    <label for="captain-contact" class="form-label text-light fw-semibold">Captain Phone Number:</label>
+                    <input type="tel" class="form-control bg-dark text-light border-secondary" id="captain-contact" name="captain_contact" placeholder="+7 706 000 0000" required>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="discord-tag" class="form-label text-light fw-semibold">Captain Discord / Telegram:</label>
+                    <input type="text" class="form-control bg-dark text-light border-secondary" id="discord-tag" name="discord_tag" placeholder="@captain_tag" required>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="roster-notes" class="form-label text-light fw-semibold">Player Lineup / Steam Profile URLs:</label>
+                  <textarea class="form-control bg-dark text-light border-secondary" id="roster-notes" name="roster_notes" rows="3" placeholder="List nicknames and SteamIDs of all 5 players (or solo ID)..."></textarea>
+                </div>
+
+                <div class="form-check mb-4">
+                  <input class="form-check-input" type="checkbox" id="reg-agree" name="reg_agree" required>
+                  <label class="form-check-label text-muted small" for="reg-agree">
+                    We have read and agree to the tournament regulations and 128-tick server config rules below.
+                  </label>
+                </div>
+
+                <div class="d-flex gap-2">
+                  <button type="submit" id="btn-submit-tournament" class="btn btn-info btn-lg fw-bold text-dark flex-grow-1">
+                    Submit Tournament Registration
+                  </button>
+                  <button type="reset" id="btn-reset-tournament" class="btn btn-outline-secondary">Reset</button>
+                </div>
+
+                <!-- Explanation of Submission Result -->
+                <p class="small text-muted mt-3 mb-0">
+                  * Upon submitting, your team registration code will be generated and shown below. Discord admin will contact your captain to confirm seeding.
+                </p>
+
+                <!-- Containers for JavaScript Results / Messages -->
+                <div id="tournament-feedback" class="alert alert-success mt-4 d-none" role="alert">
+                  <strong>Registration Received!</strong> Your squad has been preliminarily registered. Captains must arrive at reception Kenesary 69 at least 30 minutes before first round.
+                </div>
+                <div id="tournament-error-box" class="alert alert-danger mt-3 d-none" role="alert"></div>
+
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tournament Server & Terminal Guide (Includes semantic code/pre/kbd/samp tags) -->
+    <section class="mb-5">
+      <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Match Server Connection</h2>
+      
+      <div class="bg-custom-card p-4 rounded-3 border border-secondary shadow-sm">
+        <h3 class="h5 text-light fw-bold mb-2">Practice &amp; Warmup Server Info</h3>
+        <p class="text-light small mb-2">
+          Players practicing before tournament day can connect directly to our local high-tick LAN warmup servers from inside the club network.
+        </p>
+        <p class="small text-light mb-2">
+          To connect, press <kbd>~</kbd> to open Developer Console, then paste:
+        </p>
+        <pre><code>connect 192.168.1.100:27015; password qazaqpeek2026</code></pre>
+        <p class="small text-muted mb-0">
+          Expected console handshake: <samp>Connected to QazaqPeek LAN Tournament Server #1 (128 tick)</samp>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Tournament Regulations Section -->
     <section class="mb-5">
       <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Tournament Regulations</h2>
       
       <div class="bg-custom-card p-4 rounded-3 border border-secondary shadow-sm">
         <h3 class="h5 text-light fw-bold mb-3">Participation Rules</h3>
-        <ol class="mb-0 text-light ps-3">
+        <ol type="1" start="1" class="text-light ps-3 mb-3">
           <li class="mb-2">Team captains must check in at reception 30 minutes prior to scheduled match time.</li>
           <li class="mb-2">All matches are played on official tournament servers with 128-tick rate config.</li>
-          <li class="mb-2">Players may use their own Steam accounts and peripheral drivers.</li>
+          <li class="mb-2">Players may use their own Steam accounts and verified peripheral drivers.</li>
+          <li class="mb-2">Unsportsmanlike conduct, cheating, or harassment results in immediate team disqualification.</li>
         </ol>
 
-        <!-- Responsive display utility: hide extra minor hint on phone screens -->
-        <p class="small text-muted mt-3 mb-0 d-none d-md-block">
-          * Prize money is paid out via Kaspi transfer immediately following the grand final awards ceremony.
+        <p class="small text-muted mb-0">
+          * Prize money is paid out via Kaspi transfer immediately following the grand final awards ceremony at Kenesary 69.
         </p>
       </div>
     </section>
@@ -148,8 +256,8 @@
   <!-- Footer -->
   <footer class="bg-secondary bg-opacity-25 border-top border-secondary py-4 text-center text-muted mt-5">
     <div class="container">
-      <p class="mb-1 text-light">QazaqPeek Cyber Club &bull; Kenesary St 69, Astana &bull; Tel: +7 (706) 605 5465</p>
-      <p class="small mb-0">&copy; 2026 Dias Tursynbay &amp; Adilet Ainadinov. All rights reserved.</p>
+      <p class="mb-1 text-light">QazaqPeek Cyber Club &bull; Kenesary St 69, 2<sup>nd</sup> Floor<br>Astana, Kazakhstan &bull; Tel: <a href="tel:+77066055465" class="text-accent text-decoration-none">+7 (706) 605 5465</a></p>
+      <p class="mb-0"><small class="text-muted">&copy; 2026 Dias Tursynbay &amp; Adilet Ainadinov. All rights reserved.</small></p>
     </div>
   </footer>
 

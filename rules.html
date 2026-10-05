@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Adilet Ainadinov">
   <meta name="description" content="House rules, gaming etiquette, hardware conduct and FAQ for QazaqPeek Cyber Club in Astana.">
-  <title>QazaqPeek Cyber Club - House Rules &amp; FAQ</title>
+  <title>QazaqPeek Cyber Club - Rules &amp; FAQ</title>
 
-  <!-- Using Bootstrap version 5.3.3 from CDN -->
+  <!-- Bootstrap 5.3.3 CDN stylesheet -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom stylesheets linked after Bootstrap CDN -->
@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="css/dias.css">
   <link rel="stylesheet" href="css/adilet.css">
 </head>
-<body class="bg-dark text-light">
+<body id="top" class="bg-dark text-light">
 
   <!-- Responsive Navigation Header using Bootstrap Navbar with Toggler -->
   <header>
@@ -41,133 +41,215 @@
     </nav>
   </header>
 
-  <!-- Container Choice Comment: Chosen standard container to ensure readable structured text content -->
+  <!-- Container chosen to ensure readable structured text content on desktop -->
   <main class="container py-4">
 
+    <!-- Title Banner -->
     <div class="adilet-form-card p-4 mb-4 rounded-3 border border-secondary shadow text-center text-md-start">
-      <h2 class="display-6 fw-bold text-accent">📜 Club House Rules &amp; Conduct</h2>
-      <p class="lead text-light mb-0">General regulations, hardware liability policies and answers to common guest questions.</p>
+      <h1 class="display-6 fw-bold text-accent mb-2">Club House Rules &amp; FAQ</h1>
+      <p class="lead text-light mb-0">General regulations, hardware liability policies, and answers to common guest questions.</p>
     </div>
 
-    <!-- Bootstrap Component: Cards & Badges -->
-    <!-- Component Name: Bootstrap Cards & Badges -->
-    <!-- Modifications: Grid cards displaying conduct policies and status badges -->
-    <!-- Responsive Grid Requirement: 3 blocks responding to width (col-12 col-md-6 col-lg-4) -->
-    <div class="row g-4 mb-5">
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card bg-custom-card text-light h-100 shadow-sm border-secondary">
-          <div class="card-body">
-            <h3 class="h5 card-title fw-bold text-accent">1. Hardware Care</h3>
-            <p class="card-text text-muted small">Do not unplug club peripherals. Report sticky keys, monitor defects or headset glitches to staff immediately.</p>
-            <span class="badge bg-info text-dark fw-bold">Strict Policy</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Nesting Requirement: nested row inside a column element -->
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card bg-custom-card text-light h-100 shadow-sm border-info">
-          <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center mb-1">
-              <h3 class="h5 card-title fw-bold text-accent mb-0">2. Outside Food &amp; Drinks</h3>
-              <span class="badge bg-warning text-dark">Notice</span>
-            </div>
-            <!-- Nested row inside column -->
-            <div class="row g-2 my-2 py-2 border-top border-bottom border-secondary bg-dark rounded">
-              <div class="col-7 small text-muted">Bar available 24/7</div>
-              <div class="col-5 small text-end fw-bold text-accent">No hot meals</div>
-            </div>
-            <p class="card-text text-muted small">Drinks with tight secure caps are permitted at all PC desks. Greasy hot snacks must stay in the lounge.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card bg-custom-card text-light h-100 shadow-sm border-secondary">
-          <div class="card-body">
-            <h3 class="h5 card-title fw-bold text-muted">3. Age &amp; Night Grind</h3>
-            <p class="card-text text-muted small">Visitors under 18 must vacate premises by 22:00 according to municipal regulations. ID check is mandatory.</p>
-            <!-- Button disabled state requirement -->
-            <button type="button" class="btn btn-sm btn-secondary" disabled>Night Pass 18+ Only</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bootstrap Component: Accordion -->
-    <!-- Component Name: Bootstrap Accordion -->
-    <!-- Modifications: Adapted official Bootstrap accordion markup for QazaqPeek House Rules & FAQ, custom styled with dark background utility classes -->
-    <div class="row justify-content-center">
-      <div class="col-12 col-lg-10">
-        <div class="adilet-form-card shadow border border-secondary p-4">
-          <h3 class="h4 card-title fw-bold text-accent mb-3">Frequently Asked Questions</h3>
-
-          <!-- Accordion component with custom text -->
-          <div class="accordion accordion-flush rounded border border-secondary" id="faqAccordion">
-            <div class="accordion-item bg-dark text-light border-secondary">
-              <h2 class="accordion-header">
-                <button class="accordion-button bg-custom-card text-light fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne">
-                  Can I bring my own gaming mouse, headset or keyboard?
-                </button>
-              </h2>
-              <div id="faqOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                <div class="accordion-body text-light small">
-                  Yes, personal peripherals are welcome. Please notify the administrator on duty so they can plug your gear into the desk extension hub without bending cables.
-                </div>
+    <!-- Arena Code of Conduct Cards -->
+    <section class="mb-5">
+      <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Arena Code of Conduct</h2>
+      
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card bg-custom-card text-light h-100 shadow-sm border-secondary">
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <h3 class="h5 card-title fw-bold text-accent">1. Hardware Care</h3>
+                <p class="card-text text-muted small">Do not unplug club peripherals. Report sticky key switches, monitor cable glitches, or headset feedback to administrators immediately.</p>
               </div>
-            </div>
-
-            <div class="accordion-item bg-dark text-light border-secondary">
-              <h2 class="accordion-header">
-                <button class="accordion-button bg-custom-card text-light collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo">
-                  What happens if I run out of balance during a competitive match?
-                </button>
-              </h2>
-              <div id="faqTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body text-light small">
-                  The client shell gives an audio alert 5 minutes before expiration. You can top up your balance online via mobile banking without exiting the active game session.
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion-item bg-dark text-light border-secondary">
-              <h2 class="accordion-header">
-                <button class="accordion-button bg-custom-card text-light collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree">
-                  How can I request pre-installation of large updates or new game releases?
-                </button>
-              </h2>
-              <div id="faqThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body text-light small">
-                  Add a comment in the special requests field on our <a href="booking.html" class="text-accent fw-semibold">booking page</a> at least 4 hours before your session start.
-                </div>
+              <div>
+                <span class="badge bg-info text-dark fw-bold">Strict Policy</span>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Buttons section -->
-          <div class="d-flex gap-2 mt-4">
-            <a href="booking.html" class="btn btn-info btn-lg fw-bold text-dark flex-grow-1">Ready to Play? Book a Station</a>
-            <a href="index.html" class="btn btn-outline-secondary">Back to Home</a>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card bg-custom-card text-light h-100 shadow-sm border-info">
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <h3 class="h5 card-title fw-bold text-accent mb-0">2. Outside Food &amp; Drinks</h3>
+                  <span class="badge bg-warning text-dark">Notice</span>
+                </div>
+                <div class="row g-2 my-2 py-2 border-top border-bottom border-secondary bg-dark rounded">
+                  <div class="col-7 small text-muted">Lounge Bar 24/7</div>
+                  <div class="col-5 small text-end fw-bold text-accent">Sealed drinks only</div>
+                </div>
+                <p class="card-text text-muted small">Drinks with tight screw caps are permitted at PC stations. Greasy meals must be eaten in the cafeteria seating lounge.</p>
+              </div>
+              <div>
+                <span class="badge bg-warning text-dark fw-bold">Lounge Cleanliness</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card bg-custom-card text-light h-100 shadow-sm border-secondary">
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <h3 class="h5 card-title fw-bold text-muted">3. Age &amp; Night Grind</h3>
+                <p class="card-text text-muted small">Visitors under 18 must leave the premises by 22:00 in accordance with Astana municipal ordinances. Age check is mandatory.</p>
+              </div>
+              <div>
+                <button type="button" class="btn btn-sm btn-secondary w-100 disabled" disabled>Night Pass 18+ Only</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Back to Top Button -->
-    <div class="back-to-top-btn">
-      <a href="#top" class="btn btn-info btn-sm shadow fw-bold text-dark">↑ Top</a>
-    </div>
+    <!-- Frequently Asked Questions Accordion -->
+    <section class="mb-5">
+      <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Frequently Asked Questions</h2>
+
+      <div class="accordion accordion-flush rounded border border-secondary shadow-sm" id="faqAccordion">
+        
+        <div class="accordion-item bg-dark text-light border-secondary">
+          <h3 class="accordion-header" id="faqHeaderOne">
+            <button class="accordion-button bg-custom-card text-light fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" aria-expanded="true" aria-controls="faqOne">
+              Can I bring my own gaming mouse, headset, or keyboard?
+            </button>
+          </h3>
+          <div id="faqOne" class="accordion-collapse collapse show" aria-labelledby="faqHeaderOne" data-bs-parent="#faqAccordion">
+            <div class="accordion-body text-light small">
+              Yes, personal peripherals are welcome! Please notify the administrator on duty so they can plug your gear into the desk extension hub without straining cables. Custom driver pre-loads can also be requested on our <a href="pc-specs.html#driver-request-section" class="text-accent fw-semibold">PC Specs page</a>.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item bg-dark text-light border-secondary">
+          <h3 class="accordion-header" id="faqHeaderTwo">
+            <button class="accordion-button bg-custom-card text-light collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo" aria-expanded="false" aria-controls="faqTwo">
+              What happens if my session balance runs low during a competitive match?
+            </button>
+          </h3>
+          <div id="faqTwo" class="accordion-collapse collapse" aria-labelledby="faqHeaderTwo" data-bs-parent="#faqAccordion">
+            <div class="accordion-body text-light small">
+              The club desktop shell plays a soft warning chime 5 minutes before your time expires. You can scan the desktop Kaspi QR code to top up immediately without leaving your match.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item bg-dark text-light border-secondary">
+          <h3 class="accordion-header" id="faqHeaderThree">
+            <button class="accordion-button bg-custom-card text-light collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree" aria-expanded="false" aria-controls="faqThree">
+              How can I request pre-installation of large updates or new game releases?
+            </button>
+          </h3>
+          <div id="faqThree" class="accordion-collapse collapse" aria-labelledby="faqHeaderThree" data-bs-parent="#faqAccordion">
+            <div class="accordion-body text-light small">
+              Enter the requested game title in the special requests notes field on our <a href="booking.html" class="text-accent fw-semibold">booking page</a> at least 3 hours prior to your scheduled arrival.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Esports & Hardware Glossary (Definition List Requirement) -->
+    <section class="mb-5">
+      <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Esports &amp; Venue Glossary</h2>
+      
+      <div class="bg-custom-card p-4 rounded-3 border border-secondary shadow-sm">
+        <dl class="row mb-0">
+          <dt class="col-sm-3 text-accent fw-bold">Tick Rate</dt>
+          <dd class="col-sm-9 text-light mb-3">The rate at which the server calculates physical updates per second. QazaqPeek match servers run at 128-tick for tournament consistency.</dd>
+          
+          <dt class="col-sm-3 text-accent fw-bold">LAN Latency</dt>
+          <dd class="col-sm-9 text-light mb-3">Internal network response time between client machines and club routers, maintained below 1 millisecond.</dd>
+          
+          <dt class="col-sm-3 text-accent fw-bold">DyAc+ Technology</dt>
+          <dd class="col-sm-9 text-light mb-3">BenQ's Dynamic Accuracy technology which minimizes screen motion blur during high-speed crosshair flicking in tactical shooters.</dd>
+          
+          <dt class="col-sm-3 text-accent fw-bold">Bootcamp Room</dt>
+          <dd class="col-sm-9 text-light mb-0">A soundproof isolated 5-man team suite equipped with dedicated webcams and team comms for competitive practice.</dd>
+        </dl>
+      </div>
+    </section>
+
+    <!-- Inquiry / Contact Admin Form (Finishes the Logic) -->
+    <section id="inquiry-section" class="mb-5">
+      <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Ask an Administrator</h2>
+      
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+          <div class="bg-custom-card p-4 rounded-3 border border-secondary shadow-sm">
+            <h3 class="h5 text-light fw-bold mb-2">Have a Question About Club Policies?</h3>
+            <p class="small text-muted mb-4">Send a direct inquiry to our reception desk at Kenesary 69. We respond within 15 minutes.</p>
+
+            <form id="inquiry-form" action="rules.html" method="POST">
+              <fieldset>
+                <legend class="visually-hidden">Administrator Inquiry Form</legend>
+
+                <div class="row g-3 mb-3">
+                  <div class="col-12 col-md-6">
+                    <label for="inquiry-name" class="form-label text-light fw-semibold">Your Name:</label>
+                    <input type="text" class="form-control bg-dark text-light border-secondary" id="inquiry-name" name="inquiry_name" placeholder="e.g. Dias" required>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="inquiry-contact" class="form-label text-light fw-semibold">Phone or Email:</label>
+                    <input type="text" class="form-control bg-dark text-light border-secondary" id="inquiry-contact" name="inquiry_contact" placeholder="+7 706 ... or email" required>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="inquiry-topic" class="form-label text-light fw-semibold">Inquiry Topic:</label>
+                  <select class="form-select bg-dark text-light border-secondary" id="inquiry-topic" name="inquiry_topic">
+                    <option value="rules" selected>House Rules &amp; Conduct</option>
+                    <option value="hardware">Hardware &amp; Peripherals</option>
+                    <option value="booking">Group / Bootcamp Reservation</option>
+                    <option value="tournaments">Tournament Eligibility</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="inquiry-message" class="form-label text-light fw-semibold">Your Question:</label>
+                  <textarea class="form-control bg-dark text-light border-secondary" id="inquiry-message" name="inquiry_message" rows="3" placeholder="Type your question here..." required></textarea>
+                </div>
+
+                <div class="d-flex gap-2">
+                  <button type="submit" id="btn-submit-inquiry" class="btn btn-info fw-bold text-dark flex-grow-1">Send Inquiry</button>
+                  <button type="reset" id="btn-reset-inquiry" class="btn btn-outline-secondary">Reset</button>
+                </div>
+
+                <p class="small text-muted mt-3 mb-0">
+                  * Our duty administrator will reach out to your contact number within 15 minutes.
+                </p>
+
+                <div id="inquiry-feedback" class="alert alert-success mt-4 d-none" role="alert">
+                  <strong>Inquiry Dispatched!</strong> Your message has been routed to the reception admin desk.
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top-btn">
+    <a href="#top" class="btn btn-info btn-sm shadow fw-bold text-dark">↑ Top</a>
+  </div>
 
   <!-- Footer -->
   <footer class="bg-secondary bg-opacity-25 border-top border-secondary py-4 text-center text-muted mt-5">
     <div class="container">
-      <p class="mb-1 text-light">QazaqPeek Cyber Club &bull; Kenesary St 69, Astana &bull; Tel: +7 (706) 605 5465</p>
-      <p class="small mb-0">&copy; 2026 Dias Tursynbay &amp; Adilet Ainadinov. All rights reserved.</p>
+      <p class="mb-1 text-light">QazaqPeek Cyber Club &bull; Kenesary St 69, 2<sup>nd</sup> Floor<br>Astana, Kazakhstan &bull; Tel: <a href="tel:+77066055465" class="text-accent text-decoration-none">+7 (706) 605 5465</a></p>
+      <p class="mb-0"><small class="text-muted">&copy; 2026 Dias Tursynbay &amp; Adilet Ainadinov. All rights reserved.</small></p>
     </div>
   </footer>
 
-  <!-- Bootstrap JS Bundle for interactive Accordion -->
+  <!-- Bootstrap 5.3.3 JavaScript Bundle CDN -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

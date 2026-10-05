@@ -3,8 +3,17 @@
 QAZAQPEEK CYBER CLUB - BASE CORRECTION LAYER (css/base.css)
 Authors: Dias Tursynbay & Adilet Ainadinov
 Bootstrap 5.3.3 Custom Theme & High-Contrast Readability Layer
+5-Color Brand Palette:
+  1. #0f172a (Deep Midnight Dark - body background)
+  2. #1e293b (Slate Navy - card & section containers)
+  3. #162032 (Header Navy - navbar & modal headers)
+  4. #334155 (Slate Border - card & input borders)
+  5. #38bdf8 (Cyber Cyan Accent - buttons, links, highlights)
 ================================================================================
 */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
 :root {
   --qp-bg-dark: #0f172a;
@@ -219,4 +228,39 @@ a:hover {
   bottom: 24px;
   right: 24px;
   z-index: 1030;
+}
+
+/* 
+================================================================================
+JAVASCRIPT FREEZE: PREPARED STATE CLASSES
+These classes are prepared for JavaScript DOM manipulation in upcoming assignments.
+================================================================================
+*/
+.hidden,
+.is-hidden {
+  display: none !important;
+}
+
+.active,
+.is-active {
+  color: var(--qp-accent) !important;
+  border-color: var(--qp-accent) !important;
+}
+
+.selected,
+.is-selected {
+  background-color: rgba(56, 189, 248, 0.15) !important;
+  border-color: var(--qp-accent) !important;
+}
+
+.error,
+.is-error {
+  border-color: #ef4444 !important;
+  color: #fca5a5 !important;
+}
+
+.success,
+.is-success {
+  border-color: #22c55e !important;
+  color: #86efac !important;
 }
