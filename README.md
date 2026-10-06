@@ -10,12 +10,12 @@ Bootstrap handles the core layout, responsive grid system, mobile navigation tog
   - `index.html` (Home page — Bootstrap grid, cards, badges, responsive utilities)
   - `services.html` (Zones & Tariffs page — `container-fluid`, nested grid, Accordion component)
   - `events.html` (Tournaments page — Grid cards, registration badges, button variants)
+  - `pc-specs.html` (Hardware Specs page — Grid cards, maintenance table, badge status)
   - `css/dias.css` (Dias's minimal correction layer)
 
 * **Adilet Ainadinov**:
   - `booking.html` (Book a Station page — Form grid, Modal component, floating controls)
   - `login.html` (Login & Register page — Card layout for forms)
-  - `pc-specs.html` (Hardware Specs page — Grid cards, maintenance table, badge status)
   - `rules.html` (House Rules & FAQ page — Accordion component & nested grid cards)
   - `css/adilet.css` (Adilet's minimal correction layer)
 
