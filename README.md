@@ -12,9 +12,25 @@
 
 This project delivers a complete, cohesive, and production-ready web platform for QazaqPeek Cyber Club. Every user pathway has a concrete start, working interactive steps, and an on-screen conclusion. In strict adherence to the midterm specification, no custom JavaScript logic is executed; instead, all elements, lowercase hyphenated DOM IDs, empty dynamic containers, and CSS state classes have been prepared and frozen for the upcoming JavaScript assignments.
 
+<<<<<<< HEAD
 ---
 
 ## 2. Team Work Division (2 Students)
+=======
+## Authors & Work Division
+* **Dias Tursynbay**:
+  - `index.html` (Home page — Bootstrap grid, cards, badges, responsive utilities)
+  - `services.html` (Zones & Tariffs page — `container-fluid`, nested grid, Accordion component)
+  - `events.html` (Tournaments page — Grid cards, registration badges, button variants)
+  - `pc-specs.html` (Hardware Specs page — Grid cards, maintenance table, badge status)
+  - `css/dias.css` (Dias's minimal correction layer)
+
+* **Adilet Ainadinov**:
+  - `booking.html` (Book a Station page — Form grid, Modal component, floating controls)
+  - `login.html` (Login & Register page — Card layout for forms)
+  - `rules.html` (House Rules & FAQ page — Accordion component & nested grid cards)
+  - `css/adilet.css` (Adilet's minimal correction layer)
+>>>>>>> origin/main
 
 The project work, page authoring, and architectural responsibilities are divided equally between two team members:
 
@@ -24,6 +40,7 @@ The project work, page authoring, and architectural responsibilities are divided
 * **`events.html` (Tournaments & Schedule):** Authored the esports LAN competition calendar, tournament status badges, filter buttons with JavaScript hooks, direct tournament entry & team sign-up form with on-screen confirmation, and tournament server connection guide with semantic `code`, `pre`, `kbd`, and `samp` tags.
 * **`css/dias.css`:** Authored Dias's custom stylesheet layer (hero banner gradient, image scale transitions, card highlight classes).
 
+<<<<<<< HEAD
 ### Adilet Ainadinov
 * **`booking.html` (Station Reservation):** Authored the comprehensive seat booking page with uniform cards for Standard, VIP 1, and VIP 2, guidelines with nested lists, simplified 3-step reservation form with full HTML5 input types, real tariff packages (Hourly, 2+1, 3+2, Morning, Day, Night), estimated base rate indicator, modal reservation preview dialog, and on-screen booking voucher confirmation container.
 * **`login.html` (Member Portal & Registration):** Authored the dual authentication page with separate Member Login and New Account Registration forms, collapsible PIN recovery assistance helper, membership perks grid (welcome bonus, Kaspi QR top-up, priority seating), and status feedback containers.
@@ -184,3 +201,21 @@ git add .
 git commit -m "feat: complete Midterm Project with finished logic, unified design, and JavaScript freeze"
 git tag midterm
 ```
+
+---
+
+## 9. File Organization
+* `index.html`: Home page
+* `services.html`: Zones and price matrix (with Accordion component & nested grid)
+* `events.html`: Upcoming tournament schedule
+* `booking.html`: Station reservation form (with Modal component)
+* `login.html`: Member login and registration
+* `pc-specs.html`: Gaming PC hardware & peripheral specifications
+* `rules.html`: House Rules & FAQ (with Accordion component & nested grid)
+* `css/base.css`: Shared Bootstrap correction layer
+* `css/dias.css`: Dias's correction layer
+* `css/adilet.css`: Adilet's correction layer
+* `css_changes.txt`: Inventory of removed CSS rules and replacement Bootstrap classes
+* `ai_log.md`: AI interaction log
+* `screenshots/`: Responsive screenshots at mobile (375px), tablet (768px), and desktop widths
+* `images/`: Local photos from Kenesary 69
