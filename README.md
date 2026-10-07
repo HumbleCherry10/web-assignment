@@ -19,15 +19,15 @@ This project delivers a complete, cohesive, and production-ready web platform fo
 The project work, page authoring, and architectural responsibilities are divided equally between two team members:
 
 ### Dias Tursynbay
-* **`index.html` (Club Home & Overview):** Authored the main landing page, hero banner with direct call-to-action buttons, quick in-page anchor jump navigation, real quotation figure with cite, photo gallery with semantic figure/figcaption tags, operating hours aside, and newsletter subscription form with status feedback.
-* **`services.html` (Zones & Tariffs):** Authored the full-width (`container-fluid`) tariff catalog, featured zone pricing cards with direct booking links, complete rate table with semantic caption/scope, interactive session cost estimator form with DOM calculation hooks, and billing/payment FAQ accordion.
+* **`index.html` (Club Home & Overview):** Authored the main landing page, hero banner with direct call-to-action buttons, quick in-page anchor jump navigation, real quotation figure with cite, verified 2GIS player reviews section (4.8★ rating with authentic client links), club photo gallery with semantic figure/figcaption tags, operating hours aside, and newsletter subscription form with status feedback.
+* **`services.html` (Zones & Tariffs):** Authored the tariff catalog with uniform cards for Standard, VIP 1, and VIP 2, official venue price & spec posters gallery, complete rate matrix table with semantic caption/scope covering hourly, 2+1, 3+2, morning, day, and night packages, interactive session cost estimator form with DOM calculation hooks, and billing/payment FAQ accordion.
 * **`events.html` (Tournaments & Schedule):** Authored the esports LAN competition calendar, tournament status badges, filter buttons with JavaScript hooks, direct tournament entry & team sign-up form with on-screen confirmation, and tournament server connection guide with semantic `code`, `pre`, `kbd`, and `samp` tags.
 * **`css/dias.css`:** Authored Dias's custom stylesheet layer (hero banner gradient, image scale transitions, card highlight classes).
 
 ### Adilet Ainadinov
-* **`booking.html` (Station Reservation):** Authored the comprehensive seat booking page, guidelines with nested lists, station zone preview cards, reservation form with full HTML5 input types (`text`, `email`, `tel`, `date`, `number`, `radio`, `checkbox`, `select`, `textarea`), estimated base rate indicator, modal reservation preview dialog, and on-screen booking voucher confirmation container.
+* **`booking.html` (Station Reservation):** Authored the comprehensive seat booking page with uniform cards for Standard, VIP 1, and VIP 2, guidelines with nested lists, simplified 3-step reservation form with full HTML5 input types, real tariff packages (Hourly, 2+1, 3+2, Morning, Day, Night), estimated base rate indicator, modal reservation preview dialog, and on-screen booking voucher confirmation container.
 * **`login.html` (Member Portal & Registration):** Authored the dual authentication page with separate Member Login and New Account Registration forms, collapsible PIN recovery assistance helper, membership perks grid (welcome bonus, Kaspi QR top-up, priority seating), and status feedback containers.
-* **`pc-specs.html` (Hardware Specs & Care):** Authored the technical hardware breakdown cards across Standard, VIP Pro, and Streamer zones, hardware sanitization and maintenance table with caption/scope, and custom peripheral driver pre-configuration request form with confirmation alert.
+* **`pc-specs.html` (Hardware Specs & Care):** Authored the technical hardware breakdown with uniform cards for Standard (i5-14400F, RTX 4060/5060, 280Hz ASUS), VIP 1 (i5-14600KF, RTX 5060, 310Hz ASUS), and VIP 2 (Ryzen 7 7800X3D, RTX 5060 Ti, 360Hz Alienware), hardware sanitization and maintenance table with caption/scope, and custom peripheral driver pre-configuration request form with confirmation alert.
 * **`rules.html` (House Rules & Conduct):** Authored the venue conduct cards, accordion FAQ for club house rules, esports terminology definition list (`dl`, `dt`, `dd`), and "Ask an Administrator" question submission form with status container.
 * **`css/adilet.css`:** Authored Adilet's custom stylesheet layer (form containers, required field indicator pseudo-elements, input focus styling).
 
@@ -42,12 +42,12 @@ The project work, page authoring, and architectural responsibilities are divided
 
 | File | Page Title | Author | Key Components & Logic | W3C Status |
 | :--- | :--- | :--- | :--- | :--- |
-| **`index.html`** | Home | Dias Tursynbay | Hero banner, CTA buttons, gallery cards with captions, quotes, newsletter form | 0 Errors |
-| **`services.html`** | Zones & Tariffs | Dias Tursynbay | Fluid rate table, zone cards, session cost estimator, billing FAQ accordion | 0 Errors |
+| **`index.html`** | Home | Dias Tursynbay | Hero banner, CTA buttons, verified 2GIS reviews (4.8★), gallery cards with captions, quotes, newsletter form | 0 Errors |
+| **`services.html`** | Zones & Tariffs | Dias Tursynbay | Uniform Standard/VIP1/VIP2 cards, official poster gallery, complete rate matrix, cost estimator, billing FAQ | 0 Errors |
 | **`events.html`** | Tournaments & Events | Dias Tursynbay | LAN schedule, event filters, team sign-up form, server terminal guide | 0 Errors |
-| **`booking.html`** | Book a Station | Adilet Ainadinov | Station booking form, nested guidelines, rate preview, modal verification dialog | 0 Errors |
+| **`booking.html`** | Book a Station | Adilet Ainadinov | Uniform zone cards, 3-step booking form, real tariff packages, live voucher preview modal | 0 Errors |
 | **`login.html`** | Login & Register | Adilet Ainadinov | Member login, new player registration, PIN recovery collapse, perks cards | 0 Errors |
-| **`pc-specs.html`** | PC Specs & Hardware | Adilet Ainadinov | Rig spec cards, maintenance schedule table, driver pre-load request form | 0 Errors |
+| **`pc-specs.html`** | PC Specs & Hardware | Adilet Ainadinov | Uniform rig cards (Standard/VIP1/VIP2), maintenance schedule table, driver pre-load request form | 0 Errors |
 | **`rules.html`** | Rules & FAQ | Adilet Ainadinov | Conduct cards, club rules accordion, esports definition list, inquiry form | 0 Errors |
 
 ---
@@ -60,11 +60,11 @@ In accordance with the midterm requirements, every visitor path starts, proceeds
 * **Visitor Goal:** A gamer wants to view PC zone rates, calculate the price for a 3-hour evening session, and reserve a Standard Zone station.
 * **Start:** Visitor lands on `index.html` and clicks the hero CTA button **"View Zones & Tariffs"**.
 * **Steps:**
-  1. Visitor arrives at `services.html`, reviews the featured tariff cards (Standard: 700 KZT/hr; VIP Pro: 1,200 KZT/hr) and the detailed rate matrix table.
-  2. Scrolls down to the **Tariff & Session Cost Estimator**, selects "Standard Zone" (700 KZT/hr) and enters "3" hours.
-  3. Reviews the estimated total display box (`#calc-total-display`: 2,100 KZT) and clicks **"Proceed to Reservation"**.
-  4. Visitor arrives at `booking.html`, where the form allows them to specify Gamer Tag ("Dias / ShadowAce"), email, phone number, reservation date, evening slot (17:00-22:00), and check the box accepting house rules.
-  5. Visitor clicks **"Confirm & Reserve Station"** (or opens **"Preview Verification"** modal to double-check).
+  1. Visitor arrives at `services.html`, reviews the uniform tariff cards (Standard: 800 KZT/hr; VIP 1: 1,200 KZT/hr; VIP 2: 1,500 KZT/hr) and the detailed rate matrix table.
+  2. Scrolls down to the **Tariff & Session Cost Estimator**, selects "Standard Zone" (800 KZT/hr) and enters "3" hours.
+  3. Reviews the estimated total display box (`#calc-total-display`: 2,400 KZT) and clicks **"Proceed to Reservation"**.
+  4. Visitor arrives at `booking.html`, reviews the uniform Standard, VIP 1, and VIP 2 cards, and uses the 3-step reservation form to specify Gamer Tag ("Dias / ShadowAce"), phone number, email, reservation date, chooses Standard Arena with Package "2+1" (or Hourly), and checks the house rules agreement box.
+  5. Visitor clicks **"Confirm & Reserve Station"** (or opens **"Preview Voucher"** modal to double-check).
 * **End:** The booking form's dedicated confirmation container (`#booking-confirmation`) displays the official confirmation voucher, reservation reference code (`QP-2026-AST`), and instructions that the station is held for 15 minutes at Kenesary 69.
 
 ### Journey 2: Registering a 5-Man Squad for the CS2 LAN Tournament
@@ -133,6 +133,7 @@ Two days prior to submission, each team member performed an end-to-end audit of 
 | **Oct 3, 2026** | Dias Tursynbay | `booking.html`, `login.html`, `rules.html` | Missing `<h1>` headings on `booking.html` and `rules.html`; unclosed `<article>` tag on `booking.html`; `href="#"` and `action="#"` on `login.html`. | Added unique `<h1>` tags to both pages; closed the unclosed `<article>` tag; replaced dead `#` links with working collapsible recovery helper `#pin-recovery-help` and valid form action targets. |
 | **Oct 3, 2026** | Adilet Ainadinov | `services.html`, `events.html`, `index.html` | Tariff prices on `booking.html` (600/1500 ₸) did not match `services.html` (700/1200 KZT); tournament cards on `events.html` redirected to generic booking form without a tournament registration mechanism. | Synchronized all rates across all 7 pages to official club prices; authored dedicated Tournament Registration section with squad roster form and server terminal guide on `events.html`. |
 | **Oct 4, 2026** | Both Students | All 7 Pages & Stylesheets | Duplicate FAQ questions between `services.html` and `rules.html`; missing state classes for JavaScript freeze; tables missing `<caption>`. | Refactored `services.html` FAQ to focus exclusively on billing, Kaspi payments, and hourly rates; added definition list to `rules.html`; added descriptive `<caption>` tags to all tables; declared state classes in `css/base.css`. |
+| **Oct 7, 2026** | Both Students | All 7 Pages & Images | Mismatched hardware specs and tariffs vs authentic venue reception posters; booking form was cluttered; missing verified 2GIS player reviews. | Replaced all fictional specs with official club hardware (Intel 14th Gen, Ryzen 7 7800X3D, RTX 50-series, ASUS TUF 280Hz/310Hz, Alienware 360Hz, AULA F75, VGN, MCHOSE mice); standardized uniform cards for Standard, VIP 1, and VIP 2; integrated real 2GIS verified reviews with direct URLs; redesigned booking flow into an intuitive 3-step visual interface. |
 
 ---
 

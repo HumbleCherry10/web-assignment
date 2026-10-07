@@ -52,63 +52,194 @@
       </p>
     </div>
 
-    <!-- Featured Tariff Packages -->
+    <!-- Featured Tariff Packages: Uniform Cards for Standard, VIP 1, and VIP 2 -->
     <section class="mb-5">
-      <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Featured Tariff Packages</h2>
+      <div class="d-flex flex-wrap justify-content-between align-items-center border-bottom border-secondary pb-2 mb-3">
+        <h2 class="h3 fw-bold text-accent mb-0">Official Gaming Zones &amp; Rates</h2>
+        <span class="badge bg-info text-dark fw-bold">Real Astana Venue Rates &bull; 24/7 Open</span>
+      </div>
       
       <div class="row g-4">
-        <!-- Outer Left Column with Nested Grid Row -->
-        <div class="col-12 col-lg-8">
-          <div class="row g-3">
-            <div class="col-12 col-md-6">
-              <div class="card bg-custom-card text-light h-100 border-secondary shadow-sm">
-                <div class="card-header bg-dark d-flex justify-content-between align-items-center">
-                  <h3 class="h5 mb-0 fw-bold">Standard Arena</h3>
-                  <span class="badge bg-info text-dark">240Hz</span>
-                </div>
-                <div class="card-body d-flex flex-column justify-content-between">
-                  <div>
-                    <p class="h4 fw-bold text-accent mb-2">700 KZT <span class="fs-6 text-muted">/ hr</span></p>
-                    <p class="small text-light">Full access to Standard Zone PCs, mechanical keyboards, and 240Hz ASUS monitors.</p>
-                  </div>
-                  <div>
-                    <a href="booking.html" id="btn-book-standard" class="btn btn-outline-info btn-sm w-100">Book Standard</a>
-                  </div>
-                </div>
-              </div>
+        <!-- Uniform Card 1: Standard Arena -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card bg-custom-card text-light h-100 border-secondary shadow-sm d-flex flex-column justify-content-between">
+            <div class="card-header bg-dark d-flex justify-content-between align-items-center py-3">
+              <h3 class="h5 mb-0 fw-bold text-light">Standard</h3>
+              <span class="badge bg-info text-dark fw-bold">280Hz ASUS TUF</span>
             </div>
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <div class="d-flex align-items-baseline mb-2">
+                  <span class="h3 fw-bold text-accent mb-0">800 KZT</span>
+                  <span class="text-muted ms-2">/ hour</span>
+                </div>
+                
+                <!-- Nested row inside card for package rates -->
+                <div class="row g-1 text-center small my-2 py-2 bg-dark rounded border border-secondary">
+                  <div class="col-4 border-end border-secondary">
+                    <span class="text-muted d-block" style="font-size: 0.72rem;">PKG 2+1</span>
+                    <strong class="text-light">1,600 ₸</strong>
+                  </div>
+                  <div class="col-4 border-end border-secondary">
+                    <span class="text-muted d-block" style="font-size: 0.72rem;">PKG 3+2</span>
+                    <strong class="text-light">2,400 ₸</strong>
+                  </div>
+                  <div class="col-4">
+                    <span class="text-muted d-block" style="font-size: 0.72rem;">NIGHT (10H)</span>
+                    <strong class="text-warning">3,000 ₸</strong>
+                  </div>
+                </div>
 
-            <div class="col-12 col-md-6">
-              <div class="card bg-custom-card text-light h-100 border-info shadow-sm">
-                <div class="card-header bg-dark d-flex justify-content-between align-items-center">
-                  <h3 class="h5 mb-0 fw-bold text-accent">VIP Pro Zone</h3>
-                  <span class="badge bg-warning text-dark">360Hz</span>
-                </div>
-                <div class="card-body d-flex flex-column justify-content-between">
-                  <div>
-                    <p class="h4 fw-bold text-accent mb-2">1,200 KZT <span class="fs-6 text-muted">/ hr</span></p>
-                    <p class="small text-light">RTX 4080 Super rigs, 360Hz DyAc+ monitors, and noise-isolated sound booths.</p>
-                  </div>
-                  <div>
-                    <a href="booking.html" id="btn-book-vip" class="btn btn-primary btn-sm w-100">Book VIP Seat</a>
-                  </div>
-                </div>
+                <ul class="list-unstyled small text-light mt-3 mb-3">
+                  <li class="mb-1"><strong class="text-muted">CPU:</strong> Intel Core i5-14400F</li>
+                  <li class="mb-1"><strong class="text-muted">GPU:</strong> RTX 4060, 4060 Ti, 5060</li>
+                  <li class="mb-1"><strong class="text-muted">Display:</strong> ASUS TUF Gaming 280Hz</li>
+                  <li class="mb-1"><strong class="text-muted">Peripherals:</strong> AULA F75, Logitech G102</li>
+                  <li class="mb-1"><strong class="text-muted">Audio &amp; Chair:</strong> HyperX Cloud II, DXRacer Prince</li>
+                </ul>
+              </div>
+
+              <div>
+                <a href="booking.html" id="btn-book-standard" class="btn btn-outline-info btn-sm w-100 fw-bold">Book Standard Station</a>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Outer Right Column -->
-        <div class="col-12 col-lg-4">
-          <div class="bg-custom-card p-4 rounded-3 border border-secondary h-100 shadow-sm d-flex flex-column justify-content-between">
-            <div>
-              <h3 class="h5 fw-bold text-accent mb-2">Night Package Special</h3>
-              <p class="display-6 fw-bold text-light mb-2">3,500 <span class="fs-5 text-muted">KZT</span></p>
-              <p class="small text-light mb-3">8 Hours of uninterrupted play from 22:00 to 06:00 (Includes energy drink or coffee from bar).</p>
+        <!-- Uniform Card 2: VIP 1 Zone -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card bg-custom-card text-light h-100 border-info shadow-sm d-flex flex-column justify-content-between">
+            <div class="card-header bg-dark d-flex justify-content-between align-items-center py-3">
+              <h3 class="h5 mb-0 fw-bold text-accent">VIP 1</h3>
+              <span class="badge bg-warning text-dark fw-bold">310Hz ASUS TUF</span>
             </div>
-            <div>
-              <a href="booking.html" id="btn-book-night" class="btn btn-info btn-sm fw-bold text-dark w-100">Reserve Night Pass</a>
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <div class="d-flex align-items-baseline mb-2">
+                  <span class="h3 fw-bold text-accent mb-0">1,200 KZT</span>
+                  <span class="text-muted ms-2">/ hour</span>
+                </div>
+                
+                <!-- Nested row inside card for package rates -->
+                <div class="row g-1 text-center small my-2 py-2 bg-dark rounded border border-secondary">
+                  <div class="col-4 border-end border-secondary">
+                    <span class="text-muted d-block" style="font-size: 0.72rem;">PKG 2+1</span>
+                    <strong class="text-light">2,400 ₸</strong>
+                  </div>
+                  <div class="col-4 border-end border-secondary">
+                    <span class="text-muted d-block" style="font-size: 0.72rem;">PKG 3+2</span>
+                    <strong class="text-light">3,600 ₸</strong>
+                  </div>
+                  <div class="col-4">
+                    <span class="text-muted d-block" style="font-size: 0.72rem;">NIGHT (10H)</span>
+                    <strong class="text-warning">4,000 ₸</strong>
+                  </div>
+                </div>
+
+                <ul class="list-unstyled small text-light mt-3 mb-3">
+                  <li class="mb-1"><strong class="text-muted">CPU:</strong> Intel Core i5-14600KF</li>
+                  <li class="mb-1"><strong class="text-muted">GPU:</strong> NVIDIA GeForce RTX 5060</li>
+                  <li class="mb-1"><strong class="text-muted">Display:</strong> ASUS TUF Gaming 310Hz</li>
+                  <li class="mb-1"><strong class="text-muted">Peripherals:</strong> AULA F75, VGN Gaming Mouse</li>
+                  <li class="mb-1"><strong class="text-muted">Audio &amp; Chair:</strong> HyperX Cloud II, DXRacer Prince</li>
+                </ul>
+              </div>
+
+              <div>
+                <a href="booking.html" id="btn-book-vip" class="btn btn-info btn-sm w-100 fw-bold text-dark">Book VIP 1 Station</a>
+              </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Uniform Card 3: VIP 2 Zone -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card bg-custom-card text-light h-100 border-secondary shadow-sm d-flex flex-column justify-content-between">
+            <div class="card-header bg-dark d-flex justify-content-between align-items-center py-3">
+              <h3 class="h5 mb-0 fw-bold text-warning">VIP 2</h3>
+              <span class="badge bg-danger text-light fw-bold">360Hz Alienware</span>
+            </div>
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <div class="d-flex align-items-baseline mb-2">
+                  <span class="h3 fw-bold text-accent mb-0">1,500 KZT</span>
+                  <span class="text-muted ms-2">/ hour</span>
+                </div>
+                
+                <!-- Nested row inside card for package rates -->
+                <div class="row g-1 text-center small my-2 py-2 bg-dark rounded border border-secondary">
+                  <div class="col-4 border-end border-secondary">
+                    <span class="text-muted d-block" style="font-size: 0.72rem;">PKG 2+1</span>
+                    <strong class="text-light">3,000 ₸</strong>
+                  </div>
+                  <div class="col-4 border-end border-secondary">
+                    <span class="text-muted d-block" style="font-size: 0.72rem;">PKG 3+2</span>
+                    <strong class="text-light">4,500 ₸</strong>
+                  </div>
+                  <div class="col-4">
+                    <span class="text-muted d-block" style="font-size: 0.72rem;">NIGHT (10H)</span>
+                    <strong class="text-warning">5,000 ₸</strong>
+                  </div>
+                </div>
+
+                <ul class="list-unstyled small text-light mt-3 mb-3">
+                  <li class="mb-1"><strong class="text-muted">CPU:</strong> AMD Ryzen 7 7800X3D</li>
+                  <li class="mb-1"><strong class="text-muted">GPU:</strong> NVIDIA GeForce RTX 5060 Ti</li>
+                  <li class="mb-1"><strong class="text-muted">Display:</strong> Alienware 360Hz Gaming</li>
+                  <li class="mb-1"><strong class="text-muted">Peripherals:</strong> AULA F75, MCHOSE A5 Ultra</li>
+                  <li class="mb-1"><strong class="text-muted">Audio &amp; Chair:</strong> HyperX Cloud II, DXRacer Prince</li>
+                </ul>
+              </div>
+
+              <div>
+                <a href="booking.html" id="btn-book-vip2" class="btn btn-outline-warning btn-sm w-100 fw-bold">Book VIP 2 Station</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Official Venue Posters & Price Sheets Gallery -->
+    <section class="mb-5">
+      <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Official Club Posters &amp; Hardware Specs</h2>
+      <p class="text-muted small mb-3">Original price sheets and rig specification posters displayed at our Kenesary 69 reception desk.</p>
+      
+      <div class="row g-3">
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="card bg-custom-card h-100 border-secondary text-center p-2">
+            <img src="images/standard.png" alt="Standard Zone Rig Specs Poster" class="img-fluid rounded mb-2 facility-img-thumb" style="max-height: 180px; object-fit: contain;">
+            <span class="small fw-bold text-light">Standard Specs</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="card bg-custom-card h-100 border-secondary text-center p-2">
+            <img src="images/standard_price.png" alt="Standard Zone Price Poster" class="img-fluid rounded mb-2 facility-img-thumb" style="max-height: 180px; object-fit: contain;">
+            <span class="small fw-bold text-light">Standard Prices</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="card bg-custom-card h-100 border-secondary text-center p-2">
+            <img src="images/VIP 1.png" alt="VIP 1 Zone Rig Specs Poster" class="img-fluid rounded mb-2 facility-img-thumb" style="max-height: 180px; object-fit: contain;">
+            <span class="small fw-bold text-accent">VIP 1 Specs</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="card bg-custom-card h-100 border-secondary text-center p-2">
+            <img src="images/VIP 1_price.png" alt="VIP 1 Zone Price Poster" class="img-fluid rounded mb-2 facility-img-thumb" style="max-height: 180px; object-fit: contain;">
+            <span class="small fw-bold text-accent">VIP 1 Prices</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="card bg-custom-card h-100 border-secondary text-center p-2">
+            <img src="images/VIP 2.png" alt="VIP 2 Zone Rig Specs Poster" class="img-fluid rounded mb-2 facility-img-thumb" style="max-height: 180px; object-fit: contain;">
+            <span class="small fw-bold text-warning">VIP 2 Specs</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="card bg-custom-card h-100 border-secondary text-center p-2">
+            <img src="images/VIP 2_price.png" alt="VIP 2 Zone Price Poster" class="img-fluid rounded mb-2 facility-img-thumb" style="max-height: 180px; object-fit: contain;">
+            <span class="small fw-bold text-warning">VIP 2 Prices</span>
           </div>
         </div>
       </div>
@@ -124,33 +255,45 @@
           <thead>
             <tr>
               <th scope="col">Zone Name</th>
-              <th scope="col">Monitors &amp; GPU</th>
-              <th scope="col">Hourly Rate</th>
-              <th scope="col">3-Hour Pass</th>
-              <th scope="col">Night Pass (22:00-06:00)</th>
+              <th scope="col">Hardware &amp; Monitor</th>
+              <th scope="col">1 Hour</th>
+              <th scope="col">2+1 Pkg</th>
+              <th scope="col">3+2 Pkg</th>
+              <th scope="col">Morning (08:00–12:00)</th>
+              <th scope="col">Day (12:00–18:00)</th>
+              <th scope="col">Night (22:00–08:00)</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row">Standard Zone</th>
-              <td>240Hz ASUS &bull; RTX 4070</td>
-              <td>700 KZT</td>
-              <td>1,800 KZT</td>
-              <td>3,500 KZT</td>
+              <th scope="row">Standard</th>
+              <td>i5-14400F &bull; RTX 4060/5060 &bull; 280Hz ASUS</td>
+              <td class="fw-bold text-accent">800 ₸</td>
+              <td>1,600 ₸</td>
+              <td>2,400 ₸</td>
+              <td>1,500 ₸</td>
+              <td>2,000 ₸</td>
+              <td class="text-warning fw-bold">3,000 ₸</td>
             </tr>
             <tr>
-              <th scope="row">VIP Lounge</th>
-              <td>360Hz BenQ &bull; RTX 4080 Super</td>
-              <td>1,200 KZT</td>
-              <td>3,200 KZT</td>
-              <td>6,000 KZT</td>
+              <th scope="row" class="text-accent">VIP 1</th>
+              <td>i5-14600KF &bull; RTX 5060 &bull; 310Hz ASUS</td>
+              <td class="fw-bold text-accent">1,200 ₸</td>
+              <td>2,400 ₸</td>
+              <td>3,600 ₸</td>
+              <td>1,500 ₸</td>
+              <td>2,500 ₸</td>
+              <td class="text-warning fw-bold">4,000 ₸</td>
             </tr>
             <tr>
-              <th scope="row">Bootcamp Team Room</th>
-              <td>5x 360Hz Rigs &bull; Scrim Setup</td>
-              <td>5,000 KZT (5 PCs)</td>
-              <td>13,500 KZT</td>
-              <td>24,000 KZT</td>
+              <th scope="row" class="text-warning">VIP 2</th>
+              <td>Ryzen 7 7800X3D &bull; RTX 5060 Ti &bull; 360Hz Alienware</td>
+              <td class="fw-bold text-accent">1,500 ₸</td>
+              <td>3,000 ₸</td>
+              <td>4,500 ₸</td>
+              <td>2,000 ₸</td>
+              <td>3,500 ₸</td>
+              <td class="text-warning fw-bold">5,000 ₸</td>
             </tr>
           </tbody>
         </table>
@@ -163,37 +306,37 @@
       
       <div class="bg-custom-card p-4 rounded-3 border border-secondary shadow-sm">
         <h3 class="h5 text-light fw-bold mb-3">Calculate Estimated Play Cost</h3>
-            <p class="small text-muted mb-4">Choose your preferred zone and session duration to view real-time estimates before booking.</p>
-            
-            <form id="calculator-form" action="services.html" method="POST">
-              <div class="row g-3 mb-3">
-                <div class="col-12 col-md-6">
-                  <label for="calc-zone" class="form-label text-light fw-semibold">Select Gaming Zone:</label>
-                  <select class="form-select" id="calc-zone" name="calc_zone">
-                    <option value="700" selected>Standard Zone (700 KZT/hr)</option>
-                    <option value="1200">VIP Pro Lounge (1,200 KZT/hr)</option>
-                    <option value="5000">Bootcamp Team Room (5,000 KZT/hr)</option>
-                  </select>
-                </div>
-                <div class="col-12 col-md-6">
-                  <label for="calc-hours" class="form-label text-light fw-semibold">Duration (Hours):</label>
-                  <input type="number" class="form-control" id="calc-hours" name="calc_hours" min="1" max="12" value="3" required>
-                </div>
-              </div>
-
-              <!-- Estimated Output Container with ID for JavaScript Hook -->
-              <div id="calculator-result" class="p-3 bg-dark rounded border border-info text-center my-3">
-                <span class="text-muted small d-block">Estimated Total:</span>
-                <span id="calc-total-display" class="h3 text-accent fw-bold my-1 d-block">2,100 KZT</span>
-                <p class="small text-muted mb-0">Standard rate calculation (700 KZT &times; 3 hrs). Final total confirmed at reception.</p>
-              </div>
-
-              <div class="d-flex gap-2">
-                <a href="booking.html" id="btn-proceed-booking" class="btn btn-info fw-bold text-dark flex-grow-1">Proceed to Reservation</a>
-                <button type="reset" id="btn-reset-calc" class="btn btn-outline-secondary">Reset</button>
-              </div>
-            </form>
+        <p class="small text-muted mb-4">Choose your preferred zone and session duration to view real-time estimates before booking.</p>
+        
+        <form id="calculator-form" action="services.html" method="POST">
+          <div class="row g-3 mb-3">
+            <div class="col-12 col-md-6">
+              <label for="calc-zone" class="form-label text-light fw-semibold">Select Gaming Zone:</label>
+              <select class="form-select" id="calc-zone" name="calc_zone">
+                <option value="800" selected>Standard Zone (800 KZT/hr)</option>
+                <option value="1200">VIP 1 Zone (1,200 KZT/hr)</option>
+                <option value="1500">VIP 2 Zone (1,500 KZT/hr)</option>
+              </select>
+            </div>
+            <div class="col-12 col-md-6">
+              <label for="calc-hours" class="form-label text-light fw-semibold">Duration (Hours):</label>
+              <input type="number" class="form-control" id="calc-hours" name="calc_hours" min="1" max="12" value="3" required>
+            </div>
           </div>
+
+          <!-- Estimated Output Container with ID for JavaScript Hook -->
+          <div id="calculator-result" class="p-3 bg-dark rounded border border-info text-center my-3">
+            <span class="text-muted small d-block">Estimated Total:</span>
+            <span id="calc-total-display" class="h3 text-accent fw-bold my-1 d-block">2,400 KZT</span>
+            <p class="small text-muted mb-0">Standard rate calculation (800 KZT &times; 3 hrs = 2,400 KZT). Package discounts (e.g. &ldquo;2+1&rdquo; for 1,600 KZT) applied automatically at reception.</p>
+          </div>
+
+          <div class="d-flex gap-2">
+            <a href="booking.html" id="btn-proceed-booking" class="btn btn-info fw-bold text-dark flex-grow-1">Proceed to Reservation</a>
+            <button type="reset" id="btn-reset-calc" class="btn btn-outline-secondary">Reset</button>
+          </div>
+        </form>
+      </div>
     </section>
 
     <!-- Pricing & Payment FAQ (Harmonized to avoid duplicating rules.html) -->
@@ -223,7 +366,7 @@
           </h3>
           <div id="collapseBillingTwo" class="accordion-collapse collapse" aria-labelledby="headingBillingTwo" data-bs-parent="#servicesAccordion">
             <div class="accordion-body text-light">
-              Yes. If a VIP station is unoccupied, ask the front desk administrator to switch your station. Your remaining balance will recalculate proportionally at the VIP rate.
+              Yes. If a VIP 1 or VIP 2 station is unoccupied, ask the front desk administrator to switch your station. Your remaining balance will recalculate proportionally at the respective VIP rate.
             </div>
           </div>
         </div>
@@ -231,12 +374,12 @@
         <div class="accordion-item bg-dark text-light border-secondary">
           <h3 class="accordion-header" id="headingBillingThree">
             <button class="accordion-button bg-custom-card text-light collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBillingThree" aria-expanded="false" aria-controls="collapseBillingThree">
-              How does the Night Package rate work?
+              How do the 2+1, 3+2, and Night Packages work?
             </button>
           </h3>
           <div id="collapseBillingThree" class="accordion-collapse collapse" aria-labelledby="headingBillingThree" data-bs-parent="#servicesAccordion">
             <div class="accordion-body text-light">
-              The Night Package runs from 22:00 to 06:00 (8 hours) for a flat 3,500 KZT rate. Guests must check in before 23:00 to lock in the special night package wristband.
+              With <strong>2+1</strong> you play 3 hours paying for 2 (1,600 ₸ Standard / 2,400 ₸ VIP 1 / 3,000 ₸ VIP 2). With <strong>3+2</strong> you get 5 hours for the price of 3. The <strong>Night Package</strong> runs for 10 full hours from 22:00 to 08:00 (Standard: 3,000 ₸, VIP 1: 4,000 ₸, VIP 2: 5,000 ₸). Photo ID is required after 22:00.
             </div>
           </div>
         </div>
