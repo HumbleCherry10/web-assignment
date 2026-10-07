@@ -271,13 +271,17 @@
             </div>
 
             <div class="row g-3 mb-3">
-              <div class="col-12 col-md-6">
+              <div class="col-12 col-md-4">
                 <label for="client-email" class="form-label text-light fw-semibold">Email Address:</label>
                 <input type="email" class="form-control bg-dark text-light border-secondary" id="client-email" name="client_email" placeholder="gamer@example.kz" required>
               </div>
-              <div class="col-12 col-md-6">
+              <div class="col-12 col-md-4">
                 <label for="booking-date" class="form-label text-light fw-semibold">Reservation Date:</label>
                 <input type="date" class="form-control bg-dark text-light border-secondary" id="booking-date" name="booking_date" required>
+              </div>
+              <div class="col-12 col-md-4">
+                <label for="booking-time" class="form-label text-light fw-semibold">Arrival Time:</label>
+                <input type="time" class="form-control bg-dark text-light border-secondary" id="booking-time" name="booking_time" value="18:00" required>
               </div>
             </div>
 
@@ -331,8 +335,9 @@
               <hr class="border-secondary">
               <div class="d-flex flex-wrap justify-content-between small">
                 <span>Voucher Code: <strong id="booking-reference-code">QP-2026-AST</strong></span>
-                <span>Hold Period: <strong>15 Minutes Past Arrival</strong></span>
-                <span>Reception Phone: <strong>+7 (706) 605 5465</strong></span>
+                <span>Arrival: <strong id="booking-confirmed-time">Date &amp; Time Confirmed</strong></span>
+                <span>Hold Period: <strong>15 Mins Past Arrival</strong></span>
+                <span>Reception: <strong>+7 (706) 605 5465</strong></span>
               </div>
             </div>
 

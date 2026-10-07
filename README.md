@@ -80,7 +80,7 @@ In accordance with the midterm requirements, every visitor path starts, proceeds
   1. Visitor arrives at `services.html`, reviews the uniform tariff cards (Standard: 800 KZT/hr; VIP 1: 1,200 KZT/hr; VIP 2: 1,500 KZT/hr) and the detailed rate matrix table.
   2. Scrolls down to the **Tariff & Session Cost Estimator**, selects "Standard Zone" (800 KZT/hr) and enters "3" hours.
   3. Reviews the estimated total display box (`#calc-total-display`: 2,400 KZT) and clicks **"Proceed to Reservation"**.
-  4. Visitor arrives at `booking.html`, reviews the uniform Standard, VIP 1, and VIP 2 cards, and uses the 3-step reservation form to specify Gamer Tag ("Dias / ShadowAce"), phone number, email, reservation date, chooses Standard Arena with Package "2+1" (or Hourly), and checks the house rules agreement box.
+  4. Visitor arrives at `booking.html`, reviews the uniform Standard, VIP 1, and VIP 2 cards, and uses the 3-step reservation form to specify Gamer Tag ("Dias / ShadowAce"), phone number, email, reservation date, arrival time (18:00), chooses Standard Arena with Package "2+1" (or Hourly), and checks the house rules agreement box.
   5. Visitor clicks **"Confirm & Reserve Station"** (or opens **"Preview Voucher"** modal to double-check).
 * **End:** The booking form's dedicated confirmation container (`#booking-confirmation`) displays the official confirmation voucher, reservation reference code (`QP-2026-AST`), and instructions that the station is held for 15 minutes at Kenesary 69.
 
@@ -114,7 +114,7 @@ As required by the midterm freeze policy, all necessary HTML element hooks, Engl
 
 ### Lowercase Hyphenated IDs Inventory
 * **Forms:** `#booking-form`, `#login-form`, `#register-form`, `#tournament-reg-form`, `#calculator-form`, `#driver-request-form`, `#inquiry-form`, `#newsletter-form`
-* **Inputs & Controls:** `#client-name`, `#client-email`, `#client-phone`, `#booking-date`, `#party-size`, `#time-slot`, `#zone-standard`, `#zone-vip`, `#zone-bootcamp`, `#special-notes`, `#policy-agree`, `#loginPhone`, `#loginPassword`, `#regNickname`, `#regPhone`, `#regPass`, `#tournament-choice`, `#team-tag`, `#captain-contact`, `#discord-tag`, `#roster-notes`, `#reg-agree`, `#calc-zone`, `#calc-hours`, `#driver-software`, `#target-zone`, `#gamer-phone`, `#dpi-notes`, `#inquiry-name`, `#inquiry-contact`, `#inquiry-topic`, `#inquiry-message`, `#newsletter-email`
+* **Inputs & Controls:** `#client-name`, `#client-email`, `#client-phone`, `#booking-date`, `#booking-time`, `#party-size`, `#time-slot`, `#zone-standard`, `#zone-vip`, `#zone-bootcamp`, `#special-notes`, `#policy-agree`, `#loginPhone`, `#loginPassword`, `#regNickname`, `#regPhone`, `#regPass`, `#tournament-choice`, `#team-tag`, `#captain-contact`, `#discord-tag`, `#roster-notes`, `#reg-agree`, `#calc-zone`, `#calc-hours`, `#driver-software`, `#target-zone`, `#gamer-phone`, `#dpi-notes`, `#inquiry-name`, `#inquiry-contact`, `#inquiry-topic`, `#inquiry-message`, `#newsletter-email`
 * **Action Buttons:** `#hero-book-btn`, `#hero-tariffs-btn`, `#booking-submit-btn`, `#booking-reset-btn`, `#login-submit-btn`, `#register-submit-btn`, `#btn-reg-cs2`, `#btn-reg-dota`, `#btn-submit-tournament`, `#btn-reset-tournament`, `#filter-all`, `#filter-open`, `#filter-completed`, `#btn-proceed-booking`, `#btn-reset-calc`, `#btn-submit-driver`, `#btn-reset-driver`, `#btn-submit-inquiry`, `#btn-reset-inquiry`, `#newsletter-submit-btn`
 * **Dynamic Content & Result Containers:**
   * `#booking-confirmation`: Station booking voucher output block
@@ -165,7 +165,7 @@ The project demonstrates complete, cumulative fulfillment of every assignment in
    * Real lists: Nested unordered lists (`<ul>/<li>/<ul>`), ordered list with attributes (`<ol type="1" start="1">`), and definition list (`<dl>`, `<dt>`, `<dd>`).
    * Rich semantic text tags: `<strong>`, `<em>`, `<b>`, `<i>`, `<mark>`, `<small>`, `<sub>`, `<sup>`, `<abbr title="...">`, `<blockquote>`, `<q>`, `<cite>`, `<code>`, `<pre>`, `<kbd>`, `<samp>`, `<hr>`, `<br>`.
    * Real HTML entities: `&copy;`, `&bull;`, `&deg;`, `&rdquo;`, `&ldquo;`, `&times;`, `&rarr;`.
-   * Comprehensive forms with `fieldset`, `legend`, `label for`, and input types: `text`, `email`, `tel`, `number`, `date`, `radio`, `checkbox`, `select/option`, `textarea`, `submit`, `reset`.
+   * Comprehensive forms with `fieldset`, `legend`, `label for`, and input types: `text`, `email`, `tel`, `number`, `date`, `time`, `radio`, `checkbox`, `select/option`, `textarea`, `submit`, `reset`.
 
 2. **Assignment 2 (CSS Fundamentals & Layouts):**
    * 5-color palette documented in `css/base.css` (`#0f172a`, `#1e293b`, `#162032`, `#334155`, `#38bdf8`).
