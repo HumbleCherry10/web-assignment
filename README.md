@@ -12,25 +12,21 @@
 
 This project delivers a complete, cohesive, and production-ready web platform for QazaqPeek Cyber Club. Every user pathway has a concrete start, working interactive steps, and an on-screen conclusion. In strict adherence to the midterm specification, no custom JavaScript logic is executed; instead, all elements, lowercase hyphenated DOM IDs, empty dynamic containers, and CSS state classes have been prepared and frozen for the upcoming JavaScript assignments.
 
-<<<<<<< HEAD
 ---
 
 ## 2. Team Work Division (2 Students)
-=======
-## Authors & Work Division
 * **Dias Tursynbay**:
-  - `index.html` (Home page — Bootstrap grid, cards, badges, responsive utilities)
-  - `services.html` (Zones & Tariffs page — `container-fluid`, nested grid, Accordion component)
-  - `events.html` (Tournaments page — Grid cards, registration badges, button variants)
-  - `pc-specs.html` (Hardware Specs page — Grid cards, maintenance table, badge status)
+  - `index.html` (Club Home & Overview — 2GIS Reviews engine, Hero CTA, Gallery highlights, Newsletter)
+  - `services.html` (Zones & Tariffs — Tariff catalog, Rate matrix, Interactive Session Cost Estimator)
+  - `events.html` (Tournaments & Schedule — LAN schedule, Category filters, 5-Man Squad Registration)
   - `css/dias.css` (Dias's minimal correction layer)
 
 * **Adilet Ainadinov**:
-  - `booking.html` (Book a Station page — Form grid, Modal component, floating controls)
-  - `login.html` (Login & Register page — Card layout for forms)
-  - `rules.html` (House Rules & FAQ page — Accordion component & nested grid cards)
+  - `booking.html` (Station Reservation — Dynamic Station Seating Engine, Live Price Calculator, Voucher Generation)
+  - `login.html` (Member Security Portal — Dual authentication, Regex Password Checklist, Show/Hide Password)
+  - `pc-specs.html` (Hardware Specs & Care — Rig specs, Maintenance schedule, Driver pre-load request form)
+  - `rules.html` (House Rules & FAQ — Conduct cards, FAQ accordion filter, Inquiry form)
   - `css/adilet.css` (Adilet's minimal correction layer)
->>>>>>> origin/main
 
 The project work, page authoring, and architectural responsibilities are divided equally between two team members:
 
@@ -40,7 +36,6 @@ The project work, page authoring, and architectural responsibilities are divided
 * **`events.html` (Tournaments & Schedule):** Authored the esports LAN competition calendar, tournament status badges, filter buttons with JavaScript hooks, direct tournament entry & team sign-up form with on-screen confirmation, and tournament server connection guide with semantic `code`, `pre`, `kbd`, and `samp` tags.
 * **`css/dias.css`:** Authored Dias's custom stylesheet layer (hero banner gradient, image scale transitions, card highlight classes).
 
-<<<<<<< HEAD
 ### Adilet Ainadinov
 * **`booking.html` (Station Reservation):** Authored the comprehensive seat booking page with uniform cards for Standard, VIP 1, and VIP 2, guidelines with nested lists, simplified 3-step reservation form with full HTML5 input types, real tariff packages (Hourly, 2+1, 3+2, Morning, Day, Night), estimated base rate indicator, modal reservation preview dialog, and on-screen booking voucher confirmation container.
 * **`login.html` (Member Portal & Registration):** Authored the dual authentication page with separate Member Login and New Account Registration forms, collapsible PIN recovery assistance helper, membership perks grid (welcome bonus, Kaspi QR top-up, priority seating), and status feedback containers.
@@ -219,3 +214,26 @@ git tag midterm
 * `ai_log.md`: AI interaction log
 * `screenshots/`: Responsive screenshots at mobile (375px), tablet (768px), and desktop widths
 * `images/`: Local photos from Kenesary 69
+
+---
+
+## 10. Assignment 4–5 Functionality Plan (JavaScript & DOM)
+
+In strict accordance with the Assignment 4–5 specification, HTML and CSS markup remain frozen from the `midterm` tag (`af0f2d5`). Only script links with `defer` are introduced. All new dynamic elements are injected through JavaScript DOM methods, and states are managed via `classList` using midterm state classes (`.active`, `.selected`, `.hidden`, `.error`, `.success`).
+
+### Individual & Team Substantial Features Matrix
+
+| Page | Visitor Goal | Planned Function | Expected Result | Responsible Student |
+| :--- | :--- | :--- | :--- | :--- |
+| **All Pages** | Check if club is open and navigate smoothly with accessible feedback | `initSiteWideFeatures()` in `js/main.js` | Highlights active navbar link; live Astana UTC+5 24/7 club open status; smooth back-to-top button; accessible toast messages. | **Dias & Adilet (Team)** |
+| **`index.html`** | Read authentic player experiences, filter by category/rating, search reviews, and submit personal review | `renderReviews()`, `filterReviews()`, `handleReviewSubmit()` in `js/home.js` | Displays 2GIS reviews from an array of 6+ objects; dynamic category filtering & live search; dynamic submission form with character counter and safe `textContent` injection. | **Dias Tursynbay** |
+| **`events.html`** | Browse upcoming LAN competitions, filter by registration status, and register a 5-man squad | `renderEvents()`, `filterEvents()`, `handleTournamentSignup()` in `js/events.js` | Renders tournament cards from an array of 6+ events; filter by All/Open/Concluded with count and empty state; form validation (team tag, captain phone, Discord handle, 5-player check); demo seed code generated via `Math.random()`. | **Dias Tursynbay** |
+| **`services.html`** | Calculate total gaming costs for selected zones/hours and discover package savings (2+1, 3+2, Night) | `calculateSessionCost()`, `renderPackageRecommendation()` in `js/services.js` | Real-time calculation on input/change events; displays total price in KZT; dynamically recommends best-fit discounted packages; deep-links selections to reservation. | **Dias Tursynbay** |
+| **`booking.html`** | Select stations on an interactive seating map, choose package, and receive instant booking voucher | `renderSeatMap()`, `calculateBookingTotal()`, `validateBookingForm()` in `js/booking.js` | Dynamic DOM generation of PC stations across Standard, VIP 1, and VIP 2 zones; live pay-at-desk total; 4-field validation (name, phone, email, date/time, seat-to-party cross check); instant demo voucher with `Math.random()` reference number. | **Adilet Ainadinov** |
+| **`login.html`** | Create a member account with a secure password and test credentials with immediate feedback | `initPasswordValidator()`, `validateAuthForm()` in `js/login.js` | DOM-generated live regex password strength checklist (8+ chars, uppercase, lowercase, number, special char); confirm password matching; accessible Show/Hide password toggle; demo disclaimer. | **Adilet Ainadinov** |
+| **`pc-specs.html`** | Request driver and DPI pre-configuration for tournament peripherals before visiting | `handleDriverRequest()`, `renderDriverSummary()` in `js/specs.js` | Form validation for peripheral software, zone selection, phone, and DPI notes; on-screen confirmation banner with timestamp and demo reference code. | **Adilet Ainadinov** |
+| **`rules.html`** | Search club house rules and submit an inquiry to club management | `filterFAQ()`, `handleInquirySubmit()` in `js/specs.js` | Live keyword filter across accordion FAQ items; question inquiry form validation with character counter and demonstration response alert. | **Adilet Ainadinov** |
+
+### Milestone Stages & Git Tags
+* **Assignment 4 (`tag: assignment-4`):** Variables (`const`/`let`), operators, `Math.random()`, conditions, logical operators, arrays ($\ge 6$ objects with $\ge 4$ properties), loops/traversals, and $\ge 4$ reusable functions with parameters and return values.
+* **Assignment 5 (`tag: assignment-5`):** DOM creation/removal, attributes/classes, events (`submit`, `click`, `input`/`change`), and complete 4-field form validation flows with field-level errors and demonstration summaries.
