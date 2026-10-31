@@ -53,3 +53,69 @@ In accordance with course AI policy, this log records questions asked to AI duri
 ## Session 13 — October 24, 2026 (Assignment 5 — Form Validation & Regex Password Checklist)
 * **Prompt:** How should client-side form validation be structured to display field-level error messages, focus the first invalid field, and display a live regular expression password checklist without saving passwords?
 * **Response Summary:** Listen to `input` events on the password and confirmation inputs to dynamically evaluate length (`/.{8,}/`), uppercase (`/[A-Z]/`), lowercase (`/[a-z]/`), digit (`/[0-9]/`), special character, and equality, updating checklist icon states and colors in real time. On form submission, run field-level checks, focus `firstInvalidField`, prevent default browser submission, and display a demonstration summary voucher with a `Math.random()` reference number while never persisting password values.
+
+## Session 14 — October 31, 2026 (Assignment 6 — jQuery Architecture & Lifecycle)
+* **Prompt:** What is the fundamental difference between `$(document).ready()` and native `DOMContentLoaded`, which jQuery version should be linked, and where should CDN links be positioned?
+* **Response Summary:** `$(document).ready()` (or its short form `$(function() { ... })`) ensures that scripts execute only after the browser has completed parsing the HTML Document Object Model, preventing null reference errors when querying DOM elements. If a selector runs before the DOM is ready, it returns an empty jQuery object (`length === 0`). Linking jQuery 3.7.1 from the official CDN directly before application scripts ensures the library is globally available in `window.jQuery` and `window.$` prior to any custom code execution.
+
+## Session 15 — October 31, 2026 (Assignment 6 — Event Delegation vs Direct Binding)
+* **Prompt:** Why does direct event binding like `$('.station-btn').on('click', ...)` fail for elements generated dynamically from an array, and how does event delegation solve this?
+* **Response Summary:** When direct binding is executed on page load, jQuery queries the DOM and binds listeners only to matching elements present in memory at that exact moment. If station buttons or tournament cards are rendered later from JavaScript arrays via `.append()`, they have no listeners attached. Event delegation (`$('#parent').on('click', '.child', handler)`) binds a single listener to a static ancestor already present in markup; when a child element is clicked, the event bubbles up the DOM tree, where the delegated parent intercepts it and executes the handler with `$(this)` bound to the target child.
+
+## Session 16 — October 31, 2026 (Assignment 6 — DOM Manipulation: text() vs html() and attr() vs prop())
+* **Prompt:** What are the exact differences between `.text()` and `.html()`, and between `.attr()` and `.prop()` when inspecting a checkbox element?
+* **Response Summary:** `.text()` reads or sets raw text content, automatically escaping HTML entities (`<`, `>`, `&`) to defend against XSS injection; `.html()` parses and injects HTML markup tags directly into the DOM. For checkboxes, `.attr('checked')` retrieves the static HTML markup attribute present when the document was parsed, whereas `.prop('checked')` queries the live, boolean JavaScript DOM property (`true` or `false`), accurately reflecting user clicks in real time.
+
+## Session 17 — October 31, 2026 (Assignment 6 — Traversal, Chaining & Animated Effects)
+* **Prompt:** How do jQuery traversal methods (`.find()`, `.closest()`, `.siblings()`) and method chaining work together with animated effects (`.slideDown()`, `.slideUp()`) without writing new CSS rules?
+* **Response Summary:** jQuery methods return the jQuery collection, enabling fluent chaining (e.g. `$(this).siblings().removeClass('active').end().addClass('active')`). Traversal navigates relative to the event target (`$(this)`): `.closest('.card')` moves up to the parent container, and `.find('.btn')` drills down into children without needing distinct IDs. Animated effects (`.slideDown(400, callback)`) interpolate height and opacity over a specified millisecond duration, triggering completion callbacks for smooth auto-scrolling once the animation finishes.
+
+## Session 18 — October 31, 2026 (Assignment 6 — Form Validation & Security Architecture)
+* **Prompt:** How should jQuery form validation handle field-level errors and why does client-side validation never replace server-side validation?
+* **Response Summary:** Client validation intercepts submission via `event.preventDefault()`, trims inputs with `$.trim()`, applies regex validation to emails and phone numbers, and injects individual error feedback next to each invalid input (`.addClass('is-invalid')`) while focusing the first invalid field. Errors clear instantly upon user typing via `.on('input change')`. Browser validation provides immediate user feedback and reduces bad traffic, but it provides zero actual security because any client can disable JavaScript, edit HTML attributes in DevTools, or submit direct malicious requests using cURL or Postman. Strict server-side validation remains mandatory.
+
+
+## Session 19 — October 31, 2026 (Code Refactoring, Minimalism & Human-Written Polish)
+* **Prompt:** How can we refactor and shrink the JavaScript and jQuery code across the cyber club project to make it concise, human-written, and readable while maintaining 100% compliance with course rubrics?
+* **Response Summary:** Replaced verbose multi-paragraph comments and AI-style JSDoc essays with concise 1-2 line student notes specifically required for oral defense (lifecycle, method comparisons, delegation mechanics, chaining, preventDefault, and client-vs-server checks); streamlined DOM manipulation into simple declarative logic; eliminated redundant wrappers and inline style assignments; maintained simple, natural variable naming; and updated the line-by-line checklist to ensure seamless defense verification.
+
+
+---
+
+### Session 20: October 31, 2026 - Station Grid Architecture (5-Per-Row), Spec Cleanup & Selected State High Visibility
+* **Objective:** Restructure cyber club floor map stations to exact zone allocations (Standard: 10, VIP 1: 10, VIP 2: 5), arrange buttons in rows of 5 with automatic row break, remove hardware characteristics across containers, price tags, and Step 2, and fix selected station button styling from low-contrast translucent gray to vibrant solid cyan.
+* **Key Changes:**
+  - Standard Arena updated to 10 stations (A1-A10) in 2 rows of 5.
+  - VIP 1 Lounge expanded from 6 to 10 stations (B1-B10) in 2 rows of 5.
+  - VIP 2 Bootcamp set to 5 stations (C1-C5) in 1 row of 5.
+  - Chunked station rendering dynamically into .station-row of 5 items with flex-fill equal distribution.
+  - Removed hardware specs text (monitors, refresh rates, CPU/GPU) from cards, header badges, radio labels, and Step 2 notes placeholder.
+  - Overrode .station-btn.selected in css/adilet.css with solid #00e5ff cyan, #050b14 text, and cyan glow to prevent translucent gray washout.
+  - Synchronized checklist.txt and README.md line citations for Method Chain 1 and related jQuery requirements.
+* **Response Summary:** Minimalist, high-performance UI achieved with zero console errors, exact station counts, clean 5-column grid layout, and high-visibility interactive selection.
+
+
+---
+
+### Session 21: October 31, 2026 - Login & Register Single Centered Card with Tabs (Eliminated Side-by-Side Stretching)
+* **Objective:** Address user feedback regarding login.html: eliminate side-by-side layout where one form was stretched to match the other, and create a clean, modern, centered auth card with tabs.
+* **Key Changes:**
+  - Replaced the two-column grid (col-md-6 + col-md-6) with a single, perfectly proportioned, centered container (col-12 col-md-8 col-lg-5 mx-auto).
+  - Added an accessible tab switcher (#authTabs) in the card header with active neon cyan pills for **Log In** and **Register**.
+  - Wrapped forms in #auth-login-pane and #auth-register-pane so only the active pane is displayed, fitting its natural height without stretching or blank vertical gaps.
+  - Added quick-toggle footer links (*New to QazaqPeek? Create an Account &rarr;* and *Already a member? Sign In &rarr;*).
+  - Implemented hash checking in login.js so direct links (login.html#register) automatically reveal the registration form.
+  - Retained all functional elements and IDs (#login-form, #register-form, Show/Hide password toggles, Confirm Password, and Live Password Checklist).
+* **Response Summary:** Completely resolved stretching and side-by-side clutter, producing an authentic, clean, professional cyber club portal.
+
+
+---
+
+### Session 22: October 31, 2026 - Full-Width Balanced Auth Layout on login.html (Space Fill & No Stretching)
+* **Objective:** Address user feedback that the narrow centered card left too much empty space on desktop. Redesign login.html to fill the entire container width symmetrically without side-by-side form stretching.
+* **Key Changes:**
+  - Implemented a full-width 2-column esports portal grid (col-12 col-lg-6 + col-12 col-lg-6 with align-items-stretch).
+  - **Left Column:** Auth Card with sleek Tab Switcher (**Log In** & **Register**), showing only one form at a time to prevent stretching.
+  - **Right Column:** Member Advantages & Venue Access card (500 ₸ Bonus, Kaspi QR Top-Ups, Tournament Priority, Location, 24/7 Hours, Reception phone).
+  - Eliminates all empty voids on desktop viewports, provides balanced visual weight, and preserves all JavaScript validation and security features.
+* **Response Summary:** Full-width, professional layout achieved with zero console errors and 100% preservation of midterm freeze constraints.

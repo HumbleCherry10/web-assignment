@@ -1,469 +1,430 @@
 /**
- * ================================================================================
- * QAZAQPEEK CYBER CLUB ASTANA — THEATER-STYLE SEATING MAP & BOOKING ENGINE
- * File: js/booking.js
+ * QazaqPeek Cyber Club Astana - Seating Map & Booking Engine
  * Author: Adilet Ainadinov
- * Features:
- *   - Visual Cyber Club Seating Map dynamically injected via JavaScript DOM methods
- *   - 20 Stations across Standard Arena, VIP 1 Lounge, and VIP 2 Bootcamp
- *   - Real-time Station Selection, Zone Sync & Party Size Auto-Adjustment
- *   - Live Price Calculator synchronizing tariff packages and duration
- *   - Complete 4-Field Form Validation + Date & Cross-field validations
- *   - Instant Demonstration Voucher with Math.random() Reference Code
- * ================================================================================
+ * Rewritten with jQuery 3.7.1 for Assignment 6
  */
 
 'use strict';
 
-/**
- * 1. OFFICIAL VENUE PRICING MATRIX & SEATING DATA
- */
+// Pricing table for different zones and packages (in KZT)
 const BOOKING_PRICING = {
   hourly: { standard: 800, vip1: 1200, vip2: 1500, label: 'Hourly Rate' },
-  pkg_2plus1: { standard: 1600, vip1: 2400, vip2: 3000, label: 'Package "2+1" (3 Hours)' },
-  pkg_3plus2: { standard: 2400, vip1: 3600, vip2: 4500, label: 'Package "3+2" (5 Hours)' },
+  pkg_2plus1: { standard: 1600, vip1: 2400, vip2: 3000, label: 'Package 2+1 (3 Hours)' },
+  pkg_3plus2: { standard: 2400, vip1: 3600, vip2: 4500, label: 'Package 3+2 (5 Hours)' },
   morning: { standard: 1500, vip1: 1500, vip2: 2000, label: 'Morning Package (08:00 - 12:00)' },
   day: { standard: 2000, vip1: 2500, vip2: 3500, label: 'Day Package (12:00 - 18:00)' },
   night: { standard: 3000, vip1: 4000, vip2: 5000, label: 'Night Package (22:00 - 08:00)' }
 };
 
-/**
- * Station map configuration: 20 real rigs
- */
+// 25 Gaming Stations across 3 club zones (Standard: 10, VIP 1: 10, VIP 2: 5)
 const CLUB_STATIONS = [
-  // Standard Arena (A1 - A10)
-  { id: 'A1', zone: 'standard', name: 'PC A1', specs: 'i5-14400F • RTX 4060 • 280Hz ASUS', status: 'available' },
-  { id: 'A2', zone: 'standard', name: 'PC A2', specs: 'i5-14400F • RTX 4060 • 280Hz ASUS', status: 'available' },
-  { id: 'A3', zone: 'standard', name: 'PC A3', specs: 'i5-14400F • RTX 4060 • 280Hz ASUS', status: 'occupied' },
-  { id: 'A4', zone: 'standard', name: 'PC A4', specs: 'i5-14400F • RTX 4060 • 280Hz ASUS', status: 'available' },
-  { id: 'A5', zone: 'standard', name: 'PC A5', specs: 'i5-14400F • RTX 4060 • 280Hz ASUS', status: 'available' },
-  { id: 'A6', zone: 'standard', name: 'PC A6', specs: 'i5-14400F • RTX 5060 • 280Hz ASUS', status: 'available' },
-  { id: 'A7', zone: 'standard', name: 'PC A7', specs: 'i5-14400F • RTX 5060 • 280Hz ASUS', status: 'occupied' },
-  { id: 'A8', zone: 'standard', name: 'PC A8', specs: 'i5-14400F • RTX 5060 • 280Hz ASUS', status: 'available' },
-  { id: 'A9', zone: 'standard', name: 'PC A9', specs: 'i5-14400F • RTX 5060 • 280Hz ASUS', status: 'available' },
-  { id: 'A10', zone: 'standard', name: 'PC A10', specs: 'i5-14400F • RTX 5060 • 280Hz ASUS', status: 'available' },
-  // VIP 1 Lounge (B1 - B6)
-  { id: 'B1', zone: 'vip1', name: 'VIP B1', specs: 'i5-14600KF • RTX 5060 • 310Hz ASUS', status: 'available' },
-  { id: 'B2', zone: 'vip1', name: 'VIP B2', specs: 'i5-14600KF • RTX 5060 • 310Hz ASUS', status: 'available' },
-  { id: 'B3', zone: 'vip1', name: 'VIP B3', specs: 'i5-14600KF • RTX 5060 • 310Hz ASUS', status: 'available' },
-  { id: 'B4', zone: 'vip1', name: 'VIP B4', specs: 'i5-14600KF • RTX 5060 • 310Hz ASUS', status: 'occupied' },
-  { id: 'B5', zone: 'vip1', name: 'VIP B5', specs: 'i5-14600KF • RTX 5060 • 310Hz ASUS', status: 'available' },
-  { id: 'B6', zone: 'vip1', name: 'VIP B6', specs: 'i5-14600KF • RTX 5060 • 310Hz ASUS', status: 'available' },
-  // VIP 2 Bootcamp (C1 - C4)
-  { id: 'C1', zone: 'vip2', name: 'Bootcamp C1', specs: 'Ryzen 7 7800X3D • RTX 5060 Ti • 360Hz Alienware', status: 'available' },
-  { id: 'C2', zone: 'vip2', name: 'Bootcamp C2', specs: 'Ryzen 7 7800X3D • RTX 5060 Ti • 360Hz Alienware', status: 'available' },
-  { id: 'C3', zone: 'vip2', name: 'Bootcamp C3', specs: 'Ryzen 7 7800X3D • RTX 5060 Ti • 360Hz Alienware', status: 'available' },
-  { id: 'C4', zone: 'vip2', name: 'Bootcamp C4', specs: 'Ryzen 7 7800X3D • RTX 5060 Ti • 360Hz Alienware', status: 'available' }
+  { id: 'A1', zone: 'standard', name: 'PC A1', status: 'available' },
+  { id: 'A2', zone: 'standard', name: 'PC A2', status: 'available' },
+  { id: 'A3', zone: 'standard', name: 'PC A3', status: 'occupied' },
+  { id: 'A4', zone: 'standard', name: 'PC A4', status: 'available' },
+  { id: 'A5', zone: 'standard', name: 'PC A5', status: 'available' },
+  { id: 'A6', zone: 'standard', name: 'PC A6', status: 'available' },
+  { id: 'A7', zone: 'standard', name: 'PC A7', status: 'occupied' },
+  { id: 'A8', zone: 'standard', name: 'PC A8', status: 'available' },
+  { id: 'A9', zone: 'standard', name: 'PC A9', status: 'available' },
+  { id: 'A10', zone: 'standard', name: 'PC A10', status: 'available' },
+  { id: 'B1', zone: 'vip1', name: 'VIP B1', status: 'available' },
+  { id: 'B2', zone: 'vip1', name: 'VIP B2', status: 'available' },
+  { id: 'B3', zone: 'vip1', name: 'VIP B3', status: 'available' },
+  { id: 'B4', zone: 'vip1', name: 'VIP B4', status: 'occupied' },
+  { id: 'B5', zone: 'vip1', name: 'VIP B5', status: 'available' },
+  { id: 'B6', zone: 'vip1', name: 'VIP B6', status: 'available' },
+  { id: 'B7', zone: 'vip1', name: 'VIP B7', status: 'available' },
+  { id: 'B8', zone: 'vip1', name: 'VIP B8', status: 'occupied' },
+  { id: 'B9', zone: 'vip1', name: 'VIP B9', status: 'available' },
+  { id: 'B10', zone: 'vip1', name: 'VIP B10', status: 'available' },
+  { id: 'C1', zone: 'vip2', name: 'Bootcamp C1', status: 'available' },
+  { id: 'C2', zone: 'vip2', name: 'Bootcamp C2', status: 'available' },
+  { id: 'C3', zone: 'vip2', name: 'Bootcamp C3', status: 'available' },
+  { id: 'C4', zone: 'vip2', name: 'Bootcamp C4', status: 'available' },
+  { id: 'C5', zone: 'vip2', name: 'Bootcamp C5', status: 'available' }
 ];
 
-/**
- * 2. REUSABLE FUNCTIONS WITH PARAMETERS & RETURN VALUES
- */
-
-/**
- * Calculate total booking cost based on selected zone tier, package, and seat count.
- * @param {'standard'|'vip1'|'vip2'} zone - Selected zone
- * @param {string} packageKey - Key matching BOOKING_PRICING
- * @param {number} seatCount - Number of stations reserved
- * @returns {number} Total estimated cost in KZT
- */
-function calculateBookingPrice(zone, packageKey, seatCount) {
-  const packageRates = BOOKING_PRICING[packageKey] || BOOKING_PRICING.hourly;
-  const ratePerSeat = packageRates[zone] || 800;
-  const validSeats = Math.max(1, seatCount);
-  return ratePerSeat * validSeats;
+// Helper to format currency
+function formatKZT(amount) {
+  if (typeof amount !== 'number' || isNaN(amount) || amount < 0) return '0 ₸';
+  return amount.toLocaleString('ru-KZ') + ' ₸';
 }
 
-/**
- * Generate a random demonstration voucher confirmation code.
- * Meaningful usage: creates realistic venue reservation voucher ID.
- * @returns {string} e.g. "QP-2026-AST-7842"
- */
+// Calculate total cost for selected stations and tariff
+function calculateBookingPrice(zone, packageKey, seatCount) {
+  const rates = BOOKING_PRICING[packageKey] || BOOKING_PRICING.hourly;
+  const pricePerSeat = rates[zone] || 800;
+  return pricePerSeat * Math.max(1, seatCount);
+}
+
+// Generate demo voucher reference code
 function generateVoucherCode() {
   const randomSuffix = Math.floor(1000 + Math.random() * 9000);
   return `QP-2026-AST-${randomSuffix}`;
 }
 
-/**
- * 3. DOM SETUP & BOOKING LOGIC
- */
+// jQuery 3.7.1: $(document).ready ensures DOM is fully parsed before attaching handlers or querying nodes
+$(document).ready(function () {
+  const $form = $('#booking-form');
+  if ($form.length === 0) return;
 
-document.addEventListener('DOMContentLoaded', () => {
-  const bookingForm = document.getElementById('booking-form');
-  if (!bookingForm) return;
+  const selectedSeats = new Set();
 
-  // Midterm Prepared Form Controls
-  const zoneStandardRadio = document.getElementById('zone-standard');
-  const zoneVipRadio = document.getElementById('zone-vip');
-  const zoneBootcampRadio = document.getElementById('zone-bootcamp');
-  const timeSlotSelect = document.getElementById('time-slot');
-  const partySizeInput = document.getElementById('party-size');
-  const clientNameInput = document.getElementById('client-name');
-  const clientPhoneInput = document.getElementById('client-phone');
-  const clientEmailInput = document.getElementById('client-email');
-  const bookingDateInput = document.getElementById('booking-date');
-  const bookingTimeInput = document.getElementById('booking-time');
-  const specialNotesInput = document.getElementById('special-notes');
-  const policyAgreeCheckbox = document.getElementById('policy-agree');
-  const totalDisplay = document.getElementById('booking-total-display');
-  const confirmationAlert = document.getElementById('booking-confirmation');
-  const errorAlert = document.getElementById('booking-error');
+  // Set min date to today using .attr() and default value with .val()
+  const todayStr = new Date().toISOString().split('T')[0];
+  const $dateInput = $('#booking-date').attr('min', todayStr);
+  if (!$dateInput.val()) $dateInput.val(todayStr);
 
-  // Currently selected station IDs
-  let selectedSeats = new Set();
+  // Pre-fill zone from URL param if available (e.g. ?zone=vip1)
+  const paramZone = new URLSearchParams(window.location.search).get('zone');
+  if (paramZone === 'vip1') $('#zone-vip').prop('checked', true);
+  if (paramZone === 'vip2') $('#zone-bootcamp').prop('checked', true);
 
-  // Set min date to today
-  if (bookingDateInput) {
-    const today = new Date().toISOString().split('T')[0];
-    bookingDateInput.min = today;
-    if (!bookingDateInput.value) {
-      bookingDateInput.value = today;
-    }
-  }
-
-  // Pre-fill query parameters if routed from services.html
-  const urlParams = new URLSearchParams(window.location.search);
-  const paramZone = urlParams.get('zone');
-  if (paramZone === 'vip1' && zoneVipRadio) {
-    zoneVipRadio.checked = true;
-  } else if (paramZone === 'vip2' && zoneBootcampRadio) {
-    zoneBootcampRadio.checked = true;
-  }
-
-  /**
-   * Determine currently active zone from radio buttons
-   */
+  // Find currently active zone using attribute selector and :checked filter
   function getSelectedZone() {
-    if (zoneBootcampRadio && zoneBootcampRadio.checked) return 'vip2';
-    if (zoneVipRadio && zoneVipRadio.checked) return 'vip1';
+    const checkedId = $('input[name="zone"]:checked').attr('id');
+    if (checkedId === 'zone-bootcamp') return 'vip2';
+    if (checkedId === 'zone-vip') return 'vip1';
     return 'standard';
   }
 
-  /**
-   * Recalculate and update the live total price display
-   */
-  function refreshTotalDisplay() {
-    const zone = getSelectedZone();
-    const pkg = timeSlotSelect ? timeSlotSelect.value : 'hourly';
-    const count = selectedSeats.size > 0 ? selectedSeats.size : (parseInt(partySizeInput.value, 10) || 1);
-    const total = calculateBookingPrice(zone, pkg, count);
+  // Visual synchronization between Cards, Radio buttons, and Map
+  function highlightActiveZone(zone) {
+    $('.zone-radio-card').removeClass('border-info bg-opacity-75');
+    $(`#zone-radio-card-${zone}`).addClass('border-info');
 
-    if (totalDisplay) {
-      totalDisplay.textContent = typeof formatKZT === 'function' ? formatKZT(total) : `${total} ₸`;
-    }
+    $('.zone-card').removeClass('border-info shadow-lg');
+    $(`#card-zone-${zone}`).addClass('border-info shadow-lg');
+
+    $('.zone-section').removeClass('border-info');
+    $(`.zone-section[data-zone="${zone}"]`).addClass('border-info');
   }
 
-  // 4. DYNAMIC DOM INJECTION: THEATER SEATING MAP
-  // Injected at top of form inside a dedicated dark card
-  const seatingCard = document.createElement('div');
-  seatingCard.className = 'p-3 bg-dark bg-opacity-75 rounded border border-info mb-4 shadow-sm';
-  seatingCard.id = 'dynamic-seating-container';
+  // Recalculate price and update total display with .text()
+  function refreshTotal() {
+    const zone = getSelectedZone();
+    const pkg = $('#time-slot').val() || 'hourly';
+    const partySize = parseInt($('#party-size').val(), 10) || 1;
+    const count = selectedSeats.size > 0 ? selectedSeats.size : partySize;
+    const total = calculateBookingPrice(zone, pkg, count);
+    $('#booking-total-display').text(formatKZT(total));
+  }
 
-  const seatingHeader = document.createElement('div');
-  seatingHeader.className = 'd-flex flex-wrap justify-content-between align-items-center pb-2 mb-3 border-bottom border-secondary';
+  // Synchronize top zone cards with form radio buttons and scroll to map
+  $('.select-zone-btn').on('click', function (e) {
+    e.preventDefault();
+    const zone = $(this).attr('data-zone');
+    if (zone === 'standard') $('#zone-standard').prop('checked', true);
+    if (zone === 'vip1') $('#zone-vip').prop('checked', true);
+    if (zone === 'vip2') $('#zone-bootcamp').prop('checked', true);
 
-  const seatingTitle = document.createElement('h3');
-  seatingTitle.className = 'h6 fw-bold text-accent mb-0';
-  seatingTitle.textContent = 'Interactive Floor Map: Select Your Stations';
+    highlightActiveZone(zone);
+    refreshTotal();
 
-  const legend = document.createElement('div');
-  legend.className = 'small d-flex gap-3 align-items-center mt-2 mt-sm-0';
-  legend.innerHTML = `
-    <span><span class="badge bg-outline-info border border-info text-info me-1">□</span> Available</span>
-    <span><span class="badge bg-info text-dark me-1">■</span> Selected</span>
-    <span><span class="badge bg-secondary text-muted me-1">✕</span> Occupied</span>
-  `;
+    $('html, body').stop(true, true).animate({
+      scrollTop: $('#dynamic-seating-container').offset().top - 80
+    }, 350);
+  });
 
-  seatingHeader.appendChild(seatingTitle);
-  seatingHeader.appendChild(legend);
-  seatingCard.appendChild(seatingHeader);
+  // REWRITTEN FEATURE 1: Dynamic Seating Map & Event Delegation
+  // Replaced ~70 lines of createElement & per-button loop listeners with jQuery $('<div/>'), .append() and .on().
+  // Result is much shorter and clearer because delegation binds a single listener to the parent container.
+  const $seatingCard = $('<div />', {
+    id: 'dynamic-seating-container',
+    class: 'p-3 bg-dark bg-opacity-75 rounded border border-info mb-4 shadow-sm'
+  });
 
-  // Group stations by zone
-  const gridWrapper = document.createElement('div');
-  gridWrapper.className = 'd-flex flex-column gap-3';
+  const $seatingHeader = $('<div />', {
+    class: 'd-flex flex-wrap justify-content-between align-items-center pb-2 mb-3 border-bottom border-secondary',
+    html: '<h3 class="h6 fw-bold text-accent mb-0">Interactive Floor Map: Select Your Stations</h3>' +
+          '<div class="small d-flex gap-3 align-items-center mt-2 mt-sm-0">' +
+          '<span><span class="badge border border-info text-info me-1">□</span> Available</span>' +
+          '<span><span class="badge bg-info text-dark me-1">■</span> Selected</span>' +
+          '<span><span class="badge bg-dark border border-secondary text-secondary me-1"><span class="text-danger fw-bold">✕</span></span> Occupied</span></div>'
+  });
+  $seatingCard.append($seatingHeader);
 
-  const zoneSections = [
-    { zoneKey: 'standard', title: 'Standard Arena (A1 - A10)', badge: '800 ₸/hr • 280Hz' },
-    { zoneKey: 'vip1', title: 'VIP 1 Lounge (B1 - B6)', badge: '1,200 ₸/hr • 310Hz' },
-    { zoneKey: 'vip2', title: 'VIP 2 Bootcamp (C1 - C4)', badge: '1,500 ₸/hr • 360Hz' }
+  const $gridWrapper = $('<div />', { class: 'd-flex flex-column gap-3' });
+  const zones = [
+    { key: 'standard', title: 'Standard Arena (A1 - A10)', badge: '800 ₸/hr' },
+    { key: 'vip1', title: 'VIP 1 Lounge (B1 - B10)', badge: '1,200 ₸/hr' },
+    { key: 'vip2', title: 'VIP 2 Bootcamp (C1 - C5)', badge: '1,500 ₸/hr' }
   ];
 
-  zoneSections.forEach(section => {
-    const rowBox = document.createElement('div');
-    rowBox.className = 'p-2 bg-dark rounded border border-secondary';
-
-    const rowHeader = document.createElement('div');
-    rowHeader.className = 'd-flex justify-content-between align-items-center mb-2 px-1';
-
-    const titleSpan = document.createElement('span');
-    titleSpan.className = 'fw-bold small text-light';
-    titleSpan.textContent = section.title;
-
-    const badgeSpan = document.createElement('span');
-    badgeSpan.className = 'badge bg-secondary text-light small';
-    badgeSpan.textContent = section.badge;
-
-    rowHeader.appendChild(titleSpan);
-    rowHeader.appendChild(badgeSpan);
-    rowBox.appendChild(rowHeader);
-
-    const buttonsContainer = document.createElement('div');
-    buttonsContainer.className = 'd-flex flex-wrap gap-2';
-
-    const zoneStations = CLUB_STATIONS.filter(s => s.zone === section.zoneKey);
-    zoneStations.forEach(station => {
-      const seatBtn = document.createElement('button');
-      seatBtn.type = 'button';
-      seatBtn.className = 'btn btn-sm btn-outline-info text-center';
-      seatBtn.style.minWidth = '54px';
-      seatBtn.dataset.seatId = station.id;
-      seatBtn.dataset.zone = station.zone;
-      seatBtn.title = `${station.name} (${station.specs})`;
-      seatBtn.textContent = station.id;
-
-      if (station.status === 'occupied') {
-        seatBtn.className = 'btn btn-sm btn-outline-secondary text-muted';
-        seatBtn.disabled = true;
-        seatBtn.title = `${station.name} - Occupied by active session`;
-      } else {
-        seatBtn.addEventListener('click', () => {
-          // Max 5 seats
-          if (selectedSeats.has(station.id)) {
-            selectedSeats.delete(station.id);
-            seatBtn.className = 'btn btn-sm btn-outline-info';
-          } else {
-            if (selectedSeats.size >= 5) {
-              if (typeof displayGlobalToast === 'function') {
-                displayGlobalToast('Seat Limit', 'You can select up to 5 gaming stations per reservation.', 'warning');
-              }
-              return;
-            }
-            selectedSeats.add(station.id);
-            seatBtn.className = 'btn btn-sm btn-info text-dark fw-bold selected';
-
-            // Auto-select corresponding zone radio
-            if (station.zone === 'standard' && zoneStandardRadio) zoneStandardRadio.checked = true;
-            if (station.zone === 'vip1' && zoneVipRadio) zoneVipRadio.checked = true;
-            if (station.zone === 'vip2' && zoneBootcampRadio) zoneBootcampRadio.checked = true;
-          }
-
-          // Sync party size
-          if (partySizeInput) {
-            partySizeInput.value = selectedSeats.size > 0 ? selectedSeats.size : 1;
-          }
-
-          updateChips();
-          refreshTotalDisplay();
-        });
-      }
-
-      buttonsContainer.appendChild(seatBtn);
+  $.each(zones, function (_, z) {
+    const $row = $('<div />', {
+      class: 'p-2 bg-dark rounded border border-secondary zone-section',
+      'data-zone': z.key
     });
+    const $header = $('<div />', {
+      class: 'd-flex justify-content-between align-items-center mb-2 px-1',
+      html: `<span class="fw-bold small text-light">${z.title}</span><span class="badge bg-secondary text-light small">${z.badge}</span>`
+    });
+    const $grid = $('<div />', { class: 'd-flex flex-column gap-2 station-grid' });
 
-    rowBox.appendChild(buttonsContainer);
-    gridWrapper.appendChild(rowBox);
+    const stationsInZone = $.grep(CLUB_STATIONS, st => st.zone === z.key);
+    // Arrange stations in rows of 5; if >5, automatically creates a new row below
+    for (let i = 0; i < stationsInZone.length; i += 5) {
+      const chunk = stationsInZone.slice(i, i + 5);
+      const $stationRow = $('<div />', { class: 'd-flex gap-2 station-row' });
+
+      $.each(chunk, function (_, st) {
+        const isOccupied = st.status === 'occupied';
+        const $btn = $('<button />', {
+          type: 'button',
+          class: isOccupied
+            ? 'btn btn-sm btn-dark border-secondary text-secondary station-btn occupied fw-semibold flex-fill'
+            : 'btn btn-sm btn-outline-info station-btn fw-semibold flex-fill',
+          html: isOccupied ? `<span class="text-danger fw-bold me-1">✕</span>${st.id}` : st.id
+        });
+
+        $btn.attr('data-seat-id', st.id);
+        $btn.attr('data-zone', st.zone);
+        $btn.attr('title', `${st.name}${isOccupied ? ' (Occupied)' : ' (Available)'}`);
+
+        if (isOccupied) {
+          $btn.prop('disabled', true);
+        }
+
+        $stationRow.append($btn);
+      });
+
+      $grid.append($stationRow);
+    }
+
+    $row.append($header).append($grid);
+    $gridWrapper.append($row);
   });
 
-  seatingCard.appendChild(gridWrapper);
+  $seatingCard.append($gridWrapper);
 
-  // Selected stations chips row
-  const chipsRow = document.createElement('div');
-  chipsRow.className = 'mt-3 pt-2 border-top border-secondary small text-light d-flex flex-wrap align-items-center gap-2';
-  chipsRow.id = 'selected-chips-row';
+  const $chipsRow = $('<div />', {
+    class: 'mt-3 pt-2 border-top border-secondary small text-light d-flex flex-wrap align-items-center gap-2',
+    html: '<span class="text-secondary">Selected Stations:</span><span id="seats-chips-display" class="text-info fw-semibold">None (click available stations above)</span>'
+  });
+  $seatingCard.append($chipsRow);
 
-  const chipsLabel = document.createElement('span');
-  chipsLabel.className = 'text-muted';
-  chipsLabel.textContent = 'Selected Stations:';
-  chipsRow.appendChild(chipsLabel);
-
-  const chipsContainer = document.createElement('span');
-  chipsContainer.id = 'seats-chips-display';
-  chipsContainer.className = 'text-info';
-  chipsContainer.textContent = 'None (click available stations above)';
-  chipsRow.appendChild(chipsContainer);
-
-  seatingCard.appendChild(chipsRow);
+  const $legend = $form.find('legend:first');
+  if ($legend.length > 0) {
+    $legend.after($seatingCard);
+  } else {
+    $form.prepend($seatingCard);
+  }
 
   function updateChips() {
-    if (selectedSeats.size === 0) {
-      chipsContainer.textContent = 'None (click available stations above)';
+    const text = selectedSeats.size > 0 ? Array.from(selectedSeats).join(', ') : 'None (click available stations above)';
+    $('#seats-chips-display').text(text);
+
+    const count = selectedSeats.size;
+    if (count > 0) {
+      $('#party-size').val(count);
+      $('#party-size-mode').text(`${count} selected on map`).removeClass('bg-secondary').addClass('bg-info text-dark fw-bold');
     } else {
-      chipsContainer.textContent = Array.from(selectedSeats).join(', ');
+      $('#party-size-mode').text('Auto from map').removeClass('bg-info text-dark fw-bold').addClass('bg-secondary text-light');
     }
   }
 
-  // Insert seating map dynamically right after the form fieldset legend
-  const legendEl = bookingForm.querySelector('legend');
-  if (legendEl && legendEl.nextSibling) {
-    legendEl.parentNode.insertBefore(seatingCard, legendEl.nextSibling);
-  } else {
-    bookingForm.insertBefore(seatingCard, bookingForm.firstChild);
-  }
+  // Delegated event handler: binds to parent $seatingCard because station buttons are built dynamically.
+  // Direct binding fails for elements created after page load, while delegation intercepts bubbling events.
+  $seatingCard.on('click', '.station-btn:not([disabled])', function () {
+    const $btn = $(this);
+    const seatId = $btn.attr('data-seat-id');
+    const seatZone = $btn.attr('data-zone');
 
-  // Listeners for radio buttons, package select, and party size
-  [zoneStandardRadio, zoneVipRadio, zoneBootcampRadio].forEach(radio => {
-    if (radio) radio.addEventListener('change', refreshTotalDisplay);
+    if (selectedSeats.has(seatId)) {
+      selectedSeats.delete(seatId);
+      $btn.removeClass('selected').addClass('btn-outline-info');
+    } else {
+      if (selectedSeats.size >= 5) {
+        if (typeof displayGlobalToast === 'function') {
+          displayGlobalToast('Seat Limit', 'You can select up to 5 gaming stations per reservation.', 'warning');
+        }
+        return;
+      }
+      selectedSeats.add(seatId);
+      $btn.removeClass('btn-outline-info').addClass('selected');
+
+      // Sync zone radio with chosen station
+      if (seatZone === 'standard') $('#zone-standard').prop('checked', true);
+      if (seatZone === 'vip1') $('#zone-vip').prop('checked', true);
+      if (seatZone === 'vip2') $('#zone-bootcamp').prop('checked', true);
+
+      highlightActiveZone(seatZone);
+    }
+
+    // Method Chain 1: reaches parent grid, finds selected buttons, picks first, adds highlight class
+    $(this).closest('.station-grid').find('.station-btn.selected').filter(':first').addClass('border-light');
+
+    updateChips();
+    refreshTotal();
   });
-  if (timeSlotSelect) timeSlotSelect.addEventListener('change', refreshTotalDisplay);
-  if (partySizeInput) partySizeInput.addEventListener('input', refreshTotalDisplay);
 
-  // 5. COMPREHENSIVE FORM VALIDATION FLOW
-  bookingForm.noValidate = true;
+  // Reset button clears station selections and resets totals
+  $('#booking-reset-btn').on('click', function () {
+    selectedSeats.clear();
+    $('.station-btn.selected').removeClass('selected border-light').addClass('btn-outline-info');
+    updateChips();
+    refreshTotal();
+    highlightActiveZone('standard');
+  });
 
-  bookingForm.addEventListener('submit', (event) => {
-    event.preventDefault();
+  // Listen to controls for live price calculation and zone highlighting
+  $('input[name="zone"]').on('change', function () {
+    highlightActiveZone(getSelectedZone());
+    refreshTotal();
+  });
+  $('#time-slot').on('change', refreshTotal);
+  $('#party-size').on('input', refreshTotal);
 
-    // Clear previous feedback
-    if (errorAlert) {
-      errorAlert.classList.add('d-none');
-      errorAlert.innerHTML = '';
+  // REWRITTEN FEATURE 2: jQuery Form Validation
+  // Replaced manual error arrays with jQuery .val(), $.trim(), .addClass('is-invalid'), and .slideDown().
+  // Result is cleaner and provides immediate field-level feedback that clears on input.
+  $form.attr('novalidate', 'novalidate');
+
+  function showFieldError($field, msg) {
+    $field.addClass('is-invalid');
+    let $err = $field.siblings('.invalid-feedback');
+    if ($err.length === 0) {
+      $err = $('<div />', { class: 'invalid-feedback text-danger small mt-1 fw-semibold' });
+      $field.after($err);
     }
-    if (confirmationAlert) {
-      confirmationAlert.classList.add('d-none');
-      confirmationAlert.innerHTML = '';
+    $err.text(msg).stop(true, true).slideDown(200);
+  }
+
+  function clearFieldError($field) {
+    $field.removeClass('is-invalid');
+    $field.siblings('.invalid-feedback').stop(true, true).slideUp(150);
+  }
+
+  // Clear error as soon as user types or changes value using $(this)
+  $form.on('input change', 'input, select', function () {
+    clearFieldError($(this));
+  });
+
+  $form.on('submit', function (e) {
+    // preventDefault stops browser reloading page, preserving interactive state and showing confirmation
+    e.preventDefault();
+
+    // Note: Browser checks improve UX, but server validation is mandatory because client code can be bypassed
+    let isValid = true;
+    let $firstInvalid = null;
+
+    $('#booking-error').stop(true, true).slideUp(150);
+    $('#booking-confirmation').stop(true, true).slideUp(150);
+
+    // 1. Gamer Tag / Name (min 2 chars)
+    const $name = $('#client-name');
+    if ($.trim($name.val()).length < 2) {
+      showFieldError($name, 'Please enter your Gamer Tag or Full Name (min 2 chars).');
+      isValid = false;
+      if (!$firstInvalid) $firstInvalid = $name;
+    } else {
+      clearFieldError($name);
     }
 
-    const errors = [];
-    let firstInvalidField = null;
-
-    // Field 1: Gamer Tag / Client Name (trimmed text, min 2 chars)
-    const cleanName = clientNameInput ? clientNameInput.value.trim() : '';
-    if (!cleanName || cleanName.length < 2) {
-      errors.push('Please enter your Gamer Tag or Full Name (at least 2 characters).');
-      if (clientNameInput) {
-        clientNameInput.classList.add('is-invalid');
-        if (!firstInvalidField) firstInvalidField = clientNameInput;
-      }
-    } else if (clientNameInput) {
-      clientNameInput.classList.remove('is-invalid');
-    }
-
-    // Field 2: Phone number (+7 format validation)
-    const cleanPhone = clientPhoneInput ? clientPhoneInput.value.trim() : '';
+    // 2. Phone (+7 format regex)
+    const $phone = $('#client-phone');
     const phoneRegex = /^\+?[0-9\s\-()]{10,18}$/;
-    if (!cleanPhone || !phoneRegex.test(cleanPhone)) {
-      errors.push('Please provide a valid contact telephone number (e.g. +7 706 605 5465).');
-      if (clientPhoneInput) {
-        clientPhoneInput.classList.add('is-invalid');
-        if (!firstInvalidField) firstInvalidField = clientPhoneInput;
-      }
-    } else if (clientPhoneInput) {
-      clientPhoneInput.classList.remove('is-invalid');
+    if (!phoneRegex.test($.trim($phone.val()))) {
+      showFieldError($phone, 'Please provide a valid phone number (e.g. +7 706 605 5465).');
+      isValid = false;
+      if (!$firstInvalid) $firstInvalid = $phone;
+    } else {
+      clearFieldError($phone);
     }
 
-    // Field 3: Email address
-    const cleanEmail = clientEmailInput ? clientEmailInput.value.trim() : '';
+    // 3. Email (format regex)
+    const $email = $('#client-email');
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!cleanEmail || !emailRegex.test(cleanEmail)) {
-      errors.push('Please enter a valid email address (e.g. gamer@example.kz).');
-      if (clientEmailInput) {
-        clientEmailInput.classList.add('is-invalid');
-        if (!firstInvalidField) firstInvalidField = clientEmailInput;
-      }
-    } else if (clientEmailInput) {
-      clientEmailInput.classList.remove('is-invalid');
+    if (!emailRegex.test($.trim($email.val()))) {
+      showFieldError($email, 'Please enter a valid email address.');
+      isValid = false;
+      if (!$firstInvalid) $firstInvalid = $email;
+    } else {
+      clearFieldError($email);
     }
 
-    // Field 4: Booking Date (no past dates!)
-    const dateVal = bookingDateInput ? bookingDateInput.value : '';
-    const todayStr = new Date().toISOString().split('T')[0];
-    if (!dateVal || dateVal < todayStr) {
-      errors.push('Reservation date cannot be in the past.');
-      if (bookingDateInput) {
-        bookingDateInput.classList.add('is-invalid');
-        if (!firstInvalidField) firstInvalidField = bookingDateInput;
-      }
-    } else if (bookingDateInput) {
-      bookingDateInput.classList.remove('is-invalid');
+    // 4. Date (not in the past)
+    const $date = $('#booking-date');
+    if (!$date.val() || $date.val() < todayStr) {
+      showFieldError($date, 'Reservation date cannot be empty or in the past.');
+      isValid = false;
+      if (!$firstInvalid) $firstInvalid = $date;
+    } else {
+      clearFieldError($date);
     }
 
-    // Field 5: Arrival Time
-    const timeVal = bookingTimeInput ? bookingTimeInput.value : '';
-    if (!timeVal) {
-      errors.push('Please select your expected arrival time.');
-      if (bookingTimeInput) {
-        bookingTimeInput.classList.add('is-invalid');
-        if (!firstInvalidField) firstInvalidField = bookingTimeInput;
-      }
-    } else if (bookingTimeInput) {
-      bookingTimeInput.classList.remove('is-invalid');
+    // 5. Arrival Time
+    const $time = $('#booking-time');
+    if (!$time.val()) {
+      showFieldError($time, 'Please select your arrival time.');
+      isValid = false;
+      if (!$firstInvalid) $firstInvalid = $time;
+    } else {
+      clearFieldError($time);
     }
 
-    // Field 6: House Rules Agreement Checkbox
-    if (policyAgreeCheckbox && !policyAgreeCheckbox.checked) {
-      errors.push('You must acknowledge the club reservation terms and 15-minute station hold policy.');
-      policyAgreeCheckbox.classList.add('is-invalid');
-      if (!firstInvalidField) firstInvalidField = policyAgreeCheckbox;
-    } else if (policyAgreeCheckbox) {
-      policyAgreeCheckbox.classList.remove('is-invalid');
+    // 6. Policy Checkbox checked via .prop('checked')
+    const $policy = $('#policy-agree');
+    if (!$policy.prop('checked')) {
+      showFieldError($policy, 'You must accept venue house rules.');
+      isValid = false;
+      if (!$firstInvalid) $firstInvalid = $policy;
+    } else {
+      clearFieldError($policy);
     }
 
-    // Output errors if any
-    if (errors.length > 0) {
-      if (errorAlert) {
-        const errorList = document.createElement('ul');
-        errorList.className = 'mb-0 ps-3';
-        errors.forEach(err => {
-          const li = document.createElement('li');
-          li.textContent = err;
-          errorList.appendChild(li);
-        });
-        errorAlert.appendChild(errorList);
-        errorAlert.classList.remove('d-none');
-      }
-      if (firstInvalidField) {
-        firstInvalidField.focus();
-      }
+    if (!isValid) {
+      if ($firstInvalid) $firstInvalid.focus();
       return;
     }
 
-    // Success State & Voucher Summary
+    // REWRITTEN FEATURE 3: Confirmation Voucher & Effects
+    // Uses jQuery .html(), .slideDown(400, callback), and .stop() for smooth feedback animation.
     const zone = getSelectedZone();
-    const pkg = timeSlotSelect ? timeSlotSelect.value : 'hourly';
-    const seatList = selectedSeats.size > 0 ? Array.from(selectedSeats).join(', ') : 'Station Auto-Assigned';
+    const pkg = $('#time-slot').val() || 'hourly';
+    const seatsList = selectedSeats.size > 0 ? Array.from(selectedSeats).join(', ') : 'Station Auto-Assigned';
     const totalCost = calculateBookingPrice(zone, pkg, selectedSeats.size > 0 ? selectedSeats.size : 1);
     const voucherRef = generateVoucherCode();
 
-    if (confirmationAlert) {
-      confirmationAlert.className = 'alert alert-success mt-4';
-      confirmationAlert.innerHTML = `
-        <h4 class="alert-heading h5 fw-bold">Reservation Voucher Confirmed!</h4>
-        <p class="mb-1">Guest <strong>${cleanName}</strong>, your station(s) [<strong>${seatList}</strong>] at <strong>QazaqPeek Astana (Kenesary 69)</strong> are held for 15 minutes past arrival.</p>
-        <hr class="border-secondary">
-        <div class="d-flex flex-wrap justify-content-between small">
-          <span>Voucher Code: <strong id="booking-reference-code">${voucherRef}</strong></span>
-          <span>Date &amp; Time: <strong id="booking-confirmed-time">${dateVal} at ${timeVal}</strong></span>
-          <span>Estimated Total: <strong>${typeof formatKZT === 'function' ? formatKZT(totalCost) : totalCost + ' ₸'}</strong></span>
-          <span>Hold Period: <strong>15 Mins Past Arrival</strong></span>
+    const voucherHtml = `
+      <div class="alert alert-success mt-4 shadow border-2 border-success">
+        <h4 class="alert-heading h5 fw-bold text-success d-flex align-items-center gap-2">
+          <span>✓</span> Official Reservation Voucher Confirmed!
+        </h4>
+        <p class="mb-2">Gamer <strong>${$.trim($name.val())}</strong>, your station(s) [<strong>${seatsList}</strong>] at <strong>QazaqPeek Astana (Kenesary 69)</strong> have been reserved.</p>
+        <hr class="border-success opacity-50">
+        <div class="row g-2 small text-light">
+          <div class="col-12 col-sm-6">Voucher Code: <strong class="text-accent" id="booking-reference-code">${voucherRef}</strong></div>
+          <div class="col-12 col-sm-6">Schedule: <strong id="booking-confirmed-time">${$date.val()} at ${$time.val()}</strong></div>
+          <div class="col-12 col-sm-6">Estimated Cost: <strong class="text-success">${formatKZT(totalCost)}</strong></div>
+          <div class="col-12 col-sm-6">Hold Window: <strong class="text-warning">15 Minutes past arrival</strong></div>
         </div>
-        <p class="small text-muted mt-2 mb-0">
-          * Demonstration Confirmation: No payment was charged and no server record was saved. Settle upon check-in via Kaspi QR or Cash.
-        </p>
-      `;
-      confirmationAlert.classList.remove('d-none');
-      confirmationAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+        <p class="small text-muted mt-3 mb-0">* Demonstration Voucher: Pay at desk via Kaspi QR or Cash upon arrival.</p>
+      </div>
+    `;
 
-    // Reset station selections
+    // Method Chain 2: stops queue, updates HTML, slides down over 400ms, and scrolls into view
+    $('#booking-confirmation')
+      .stop(true, true)
+      .html(voucherHtml)
+      .slideDown(400, function () {
+        $('html, body').animate({
+          scrollTop: $('#booking-confirmation').offset().top - 80
+        }, 300);
+      });
+
+    // Reset form and seat selections
+    $form[0].reset();
     selectedSeats.clear();
-    document.querySelectorAll('.btn-info.selected').forEach(btn => {
-      btn.className = 'btn btn-sm btn-outline-info';
-    });
+    $('.station-btn.selected').removeClass('selected border-light').addClass('btn-outline-info');
     updateChips();
+    refreshTotal();
+    $dateInput.val(todayStr);
+    highlightActiveZone('standard');
   });
 
-  // Handle Form Reset
-  bookingForm.addEventListener('reset', () => {
-    selectedSeats.clear();
-    document.querySelectorAll('.btn-info.selected').forEach(btn => {
-      btn.className = 'btn btn-sm btn-outline-info';
-    });
-    updateChips();
-    if (errorAlert) errorAlert.classList.add('d-none');
-    if (confirmationAlert) confirmationAlert.classList.add('d-none');
-    setTimeout(refreshTotalDisplay, 10);
-  });
-
-  // Initial calculation
-  refreshTotalDisplay();
+  // Initial zone highlight
+  highlightActiveZone(getSelectedZone());
 });

@@ -27,12 +27,12 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mainNavbar">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1 gap-xl-2">
             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="services.html">Zones &amp; Tariffs</a></li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Tariffs</a></li>
             <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
-            <li class="nav-item"><a class="nav-link active fw-bold text-accent" href="booking.html">Book a Station</a></li>
-            <li class="nav-item"><a class="nav-link" href="login.html">Login / Register</a></li>
+            <li class="nav-item"><a class="nav-link active fw-bold text-accent" href="booking.html">Booking</a></li>
+            <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
             <li class="nav-item"><a class="nav-link" href="pc-specs.html">PC Specs</a></li>
             <li class="nav-item"><a class="nav-link" href="rules.html">Rules &amp; FAQ</a></li>
           </ul>
@@ -44,147 +44,137 @@
   <!-- Container chosen to center form controls for comfortable user entry on desktop -->
   <main class="container py-4">
     
-    <div class="adilet-form-card p-4 mb-4 rounded-3 border border-secondary shadow text-center text-md-start">
+    <!-- Hero Intro Section -->
+    <div class="adilet-form-card p-4 mb-3 rounded-3 border border-secondary shadow text-center text-md-start">
       <h1 class="display-6 fw-bold text-accent mb-2">Reserve Your Gaming Station</h1>
       <article>
-        <h2 class="h5 text-info fw-semibold mt-2">Booking Guidelines &amp; Location</h2>
         <p class="lead text-light mb-2">
-          Secure your seat in advance to avoid waiting during peak tournament evenings. Stations are held for fifteen minutes past arrival time before release.
+          Select your zone and station, choose your tariff package, and receive an instant booking voucher.
         </p>
-        <p class="small text-muted mb-2">
-          Find us on <a href="https://2gis.kz/astana" target="_blank" rel="noopener noreferrer" class="text-accent fw-semibold">2GIS Map — Kenesary Street 69</a> or reach our administrator directly via telephone at <a href="tel:+77066055465" class="text-accent fw-semibold">+7 (706) 605 5465</a> or email at <a href="mailto:info@qazaqpeek.kz" class="text-accent fw-semibold">info@qazaqpeek.kz</a>.
-        </p>
-        <ul class="text-light small mt-3 mb-0 ps-3">
-          <li class="mb-1">Stations are reserved for 15 minutes past arrival time.
-            <ul class="text-muted">
-              <li>Cancellations can be phoned in directly to reception.</li>
-              <li>Free chilled H<sub>2</sub>O is provided at the beverage bar.</li>
-            </ul>
-          </li>
-          <li>Personal keyboards and mice can be connected with help from the on-duty admin.</li>
-        </ul>
+        <div class="d-flex flex-wrap gap-3 small text-secondary align-items-center mb-0">
+          <span>📍 <strong>Location:</strong> Kenesary St 69 (2nd Floor)</span>
+          <span>📞 <strong>Reception:</strong> <a href="tel:+77066055465" class="text-accent text-decoration-none fw-semibold">+7 (706) 605 5465</a></span>
+          <span>🗺️ <a href="https://2gis.kz/astana" target="_blank" rel="noopener noreferrer" class="text-accent text-decoration-none fw-semibold">Open on 2GIS</a></span>
+        </div>
       </article>
     </div>
 
-    <!-- Reservation Hold Policy Alert -->
-    <div class="alert alert-info bg-opacity-10 text-info border-info d-flex align-items-center mb-4 shadow-sm" role="alert">
-      <div class="me-3 fs-4">ℹ️</div>
+    <!-- Reservation Hold Policy Alert (Single, Prominent Notice) -->
+    <div class="alert alert-info bg-dark border-info text-light d-flex align-items-center mb-4 shadow-sm" role="alert">
+      <div class="me-3 fs-3 text-info">⏱️</div>
       <div>
-        <strong>Reservation Hold Policy:</strong> Reservations are held for 15 minutes past arrival time. For night packages (22:00-06:00), physical photo ID is required upon entry at Kenesary 69.
+        <strong class="text-info">Reservation Hold Policy:</strong> Stations are held for <strong>15 minutes</strong> past arrival time. Pay at reception upon check-in (Kaspi QR or Cash). Physical photo ID is required after 22:00.
       </div>
     </div>
 
-    <!-- Station Zone Options: 3 Uniform Cards for Standard, VIP 1, and VIP 2 -->
+    <!-- Station Zone Options: 3 Uniform Cards for Standard Arena, VIP 1 Lounge, and VIP 2 Bootcamp -->
     <section class="mb-5">
       <div class="d-flex flex-wrap justify-content-between align-items-center border-bottom border-secondary pb-2 mb-3">
         <h2 class="h3 fw-bold text-accent mb-0">Choose Your Gaming Zone</h2>
-        <span class="badge bg-info text-dark fw-bold">Real Astana Hardware &amp; Rates</span>
+        <span class="badge bg-info text-dark fw-bold">Club Rates</span>
       </div>
 
       <div class="row g-4">
-        <!-- Uniform Card 1: Standard Zone -->
+        <!-- Uniform Card 1: Standard Arena -->
         <div class="col-12 col-md-6 col-lg-4">
-          <div class="card bg-custom-card text-light h-100 shadow-sm border-secondary d-flex flex-column justify-content-between">
+          <div class="card bg-custom-card text-light h-100 shadow-sm border-secondary d-flex flex-column justify-content-between zone-card" id="card-zone-standard">
             <div class="card-header bg-dark d-flex justify-content-between align-items-center py-3">
-              <h3 class="h5 mb-0 fw-bold text-light">Standard</h3>
-              <span class="badge bg-info text-dark fw-bold">280Hz ASUS TUF</span>
-            </div>
+              <h3 class="h5 mb-0 fw-bold text-light">Standard Arena</h3>
+              </div>
             <div class="card-body d-flex flex-column justify-content-between">
               <div>
                 <div class="d-flex align-items-baseline mb-2">
                   <span class="h3 fw-bold text-accent mb-0">800 KZT</span>
-                  <span class="text-muted ms-2">/ hour</span>
+                  <span class="text-secondary ms-2">/ hour</span>
                 </div>
                 <div class="row g-1 text-center small my-2 py-1 bg-dark rounded border border-secondary">
                   <div class="col-4 border-end border-secondary">
-                    <span class="text-muted d-block" style="font-size: 0.72rem;">PKG 2+1</span>
+                    <span class="text-secondary d-block fw-semibold" style="font-size: 0.75rem;">PKG 2+1</span>
                     <strong class="text-light">1,600 ₸</strong>
                   </div>
                   <div class="col-4 border-end border-secondary">
-                    <span class="text-muted d-block" style="font-size: 0.72rem;">PKG 3+2</span>
+                    <span class="text-secondary d-block fw-semibold" style="font-size: 0.75rem;">PKG 3+2</span>
                     <strong class="text-light">2,400 ₸</strong>
                   </div>
                   <div class="col-4">
-                    <span class="text-muted d-block" style="font-size: 0.72rem;">NIGHT</span>
+                    <span class="text-secondary d-block fw-semibold" style="font-size: 0.75rem;">NIGHT</span>
                     <strong class="text-warning">3,000 ₸</strong>
                   </div>
                 </div>
-                <p class="card-text text-muted small mt-2 mb-3">i5-14400F &bull; RTX 4060/5060 &bull; AULA F75 &bull; Logitech G102 &bull; HyperX Cloud II.</p>
+                
               </div>
               <div>
-                <a href="#booking-form" class="btn btn-outline-info btn-sm w-100 fw-bold">Select Standard Zone</a>
+                <button type="button" class="btn btn-outline-info btn-sm w-100 fw-bold select-zone-btn" data-zone="standard">Select Standard Arena</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Uniform Card 2: VIP 1 Zone -->
+        <!-- Uniform Card 2: VIP 1 Lounge -->
         <div class="col-12 col-md-6 col-lg-4">
-          <div class="card bg-custom-card text-light h-100 shadow-sm border-info d-flex flex-column justify-content-between">
+          <div class="card bg-custom-card text-light h-100 shadow-sm border-info d-flex flex-column justify-content-between zone-card" id="card-zone-vip1">
             <div class="card-header bg-dark d-flex justify-content-between align-items-center py-3">
-              <h3 class="h5 mb-0 fw-bold text-accent">VIP 1</h3>
-              <span class="badge bg-warning text-dark fw-bold">310Hz ASUS TUF</span>
-            </div>
+              <h3 class="h5 mb-0 fw-bold text-accent">VIP 1 Lounge</h3>
+              </div>
             <div class="card-body d-flex flex-column justify-content-between">
               <div>
                 <div class="d-flex align-items-baseline mb-2">
                   <span class="h3 fw-bold text-accent mb-0">1,200 KZT</span>
-                  <span class="text-muted ms-2">/ hour</span>
+                  <span class="text-secondary ms-2">/ hour</span>
                 </div>
                 <div class="row g-1 text-center small my-2 py-1 bg-dark rounded border border-secondary">
                   <div class="col-4 border-end border-secondary">
-                    <span class="text-muted d-block" style="font-size: 0.72rem;">PKG 2+1</span>
+                    <span class="text-secondary d-block fw-semibold" style="font-size: 0.75rem;">PKG 2+1</span>
                     <strong class="text-light">2,400 ₸</strong>
                   </div>
                   <div class="col-4 border-end border-secondary">
-                    <span class="text-muted d-block" style="font-size: 0.72rem;">PKG 3+2</span>
+                    <span class="text-secondary d-block fw-semibold" style="font-size: 0.75rem;">PKG 3+2</span>
                     <strong class="text-light">3,600 ₸</strong>
                   </div>
                   <div class="col-4">
-                    <span class="text-muted d-block" style="font-size: 0.72rem;">NIGHT</span>
+                    <span class="text-secondary d-block fw-semibold" style="font-size: 0.75rem;">NIGHT</span>
                     <strong class="text-warning">4,000 ₸</strong>
                   </div>
                 </div>
-                <p class="card-text text-muted small mt-2 mb-3">i5-14600KF &bull; RTX 5060 &bull; AULA F75 &bull; VGN Mouse &bull; HyperX Cloud II.</p>
+                
               </div>
               <div>
-                <a href="#booking-form" class="btn btn-info btn-sm w-100 fw-bold text-dark">Select VIP 1 Zone</a>
+                <button type="button" class="btn btn-info btn-sm w-100 fw-bold text-dark select-zone-btn" data-zone="vip1">Select VIP 1 Lounge</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Uniform Card 3: VIP 2 Zone -->
+        <!-- Uniform Card 3: VIP 2 Bootcamp -->
         <div class="col-12 col-md-6 col-lg-4">
-          <div class="card bg-custom-card text-light h-100 shadow-sm border-secondary d-flex flex-column justify-content-between">
+          <div class="card bg-custom-card text-light h-100 shadow-sm border-secondary d-flex flex-column justify-content-between zone-card" id="card-zone-vip2">
             <div class="card-header bg-dark d-flex justify-content-between align-items-center py-3">
-              <h3 class="h5 mb-0 fw-bold text-warning">VIP 2</h3>
-              <span class="badge bg-danger text-light fw-bold">360Hz Alienware</span>
-            </div>
+              <h3 class="h5 mb-0 fw-bold text-warning">VIP 2 Bootcamp</h3>
+              </div>
             <div class="card-body d-flex flex-column justify-content-between">
               <div>
                 <div class="d-flex align-items-baseline mb-2">
                   <span class="h3 fw-bold text-accent mb-0">1,500 KZT</span>
-                  <span class="text-muted ms-2">/ hour</span>
+                  <span class="text-secondary ms-2">/ hour</span>
                 </div>
                 <div class="row g-1 text-center small my-2 py-1 bg-dark rounded border border-secondary">
                   <div class="col-4 border-end border-secondary">
-                    <span class="text-muted d-block" style="font-size: 0.72rem;">PKG 2+1</span>
+                    <span class="text-secondary d-block fw-semibold" style="font-size: 0.75rem;">PKG 2+1</span>
                     <strong class="text-light">3,000 ₸</strong>
                   </div>
                   <div class="col-4 border-end border-secondary">
-                    <span class="text-muted d-block" style="font-size: 0.72rem;">PKG 3+2</span>
+                    <span class="text-secondary d-block fw-semibold" style="font-size: 0.75rem;">PKG 3+2</span>
                     <strong class="text-light">4,500 ₸</strong>
                   </div>
                   <div class="col-4">
-                    <span class="text-muted d-block" style="font-size: 0.72rem;">NIGHT</span>
+                    <span class="text-secondary d-block fw-semibold" style="font-size: 0.75rem;">NIGHT</span>
                     <strong class="text-warning">5,000 ₸</strong>
                   </div>
                 </div>
-                <p class="card-text text-muted small mt-2 mb-3">Ryzen 7 7800X3D &bull; RTX 5060 Ti &bull; AULA F75 &bull; MCHOSE A5 &bull; HyperX Cloud II.</p>
+                
               </div>
               <div>
-                <a href="#booking-form" class="btn btn-outline-warning btn-sm w-100 fw-bold">Select VIP 2 Zone</a>
+                <button type="button" class="btn btn-outline-warning btn-sm w-100 fw-bold select-zone-btn" data-zone="vip2">Select VIP 2 Bootcamp</button>
               </div>
             </div>
           </div>
@@ -206,29 +196,29 @@
               <label class="form-label text-light fw-semibold d-block">Select Gaming Zone:</label>
               <div class="row g-2">
                 <div class="col-12 col-md-4">
-                  <div class="form-check p-3 bg-dark rounded border border-secondary h-100">
-                    <input class="form-check-input ms-0 me-2" type="radio" id="zone-standard" name="zone_tier" value="standard" checked>
+                  <div class="form-check p-3 bg-dark rounded border border-secondary h-100 zone-radio-card" id="zone-radio-card-standard">
+                    <input class="form-check-input ms-0 me-2" type="radio" id="zone-standard" name="zone" value="standard" checked>
                     <label class="form-check-label text-light fw-semibold" for="zone-standard">
                       Standard Arena
-                      <span class="small d-block text-accent">800 ₸ / hr &bull; 280Hz</span>
+                      <span class="small d-block text-accent">800 ₸ / hr</span>
                     </label>
                   </div>
                 </div>
                 <div class="col-12 col-md-4">
-                  <div class="form-check p-3 bg-dark rounded border border-secondary h-100">
-                    <input class="form-check-input ms-0 me-2" type="radio" id="zone-vip" name="zone_tier" value="vip1">
+                  <div class="form-check p-3 bg-dark rounded border border-secondary h-100 zone-radio-card" id="zone-radio-card-vip1">
+                    <input class="form-check-input ms-0 me-2" type="radio" id="zone-vip" name="zone" value="vip1">
                     <label class="form-check-label text-light fw-semibold" for="zone-vip">
                       VIP 1 Lounge
-                      <span class="small d-block text-accent">1,200 ₸ / hr &bull; 310Hz</span>
+                      <span class="small d-block text-accent">1,200 ₸ / hr</span>
                     </label>
                   </div>
                 </div>
                 <div class="col-12 col-md-4">
-                  <div class="form-check p-3 bg-dark rounded border border-secondary h-100">
-                    <input class="form-check-input ms-0 me-2" type="radio" id="zone-bootcamp" name="zone_tier" value="vip2">
+                  <div class="form-check p-3 bg-dark rounded border border-secondary h-100 zone-radio-card" id="zone-radio-card-vip2">
+                    <input class="form-check-input ms-0 me-2" type="radio" id="zone-bootcamp" name="zone" value="vip2">
                     <label class="form-check-label text-light fw-semibold" for="zone-bootcamp">
-                      VIP 2 Lounge
-                      <span class="small d-block text-warning">1,500 ₸ / hr &bull; 360Hz</span>
+                      VIP 2 Bootcamp
+                      <span class="small d-block text-warning">1,500 ₸ / hr</span>
                     </label>
                   </div>
                 </div>
@@ -249,8 +239,12 @@
                 </select>
               </div>
               <div class="col-12 col-md-4">
-                <label for="party-size" class="form-label text-light fw-semibold">Number of PCs (1–5):</label>
+                <label for="party-size" class="form-label text-light fw-semibold d-flex justify-content-between align-items-center">
+                  <span>Number of PCs:</span>
+                  <span class="badge bg-secondary text-light small fw-normal" id="party-size-mode">Auto from map</span>
+                </label>
                 <input type="number" class="form-control bg-dark text-light border-secondary" id="party-size" name="party_size" min="1" max="5" value="1" required>
+                <span class="small text-secondary d-block mt-1">Selecting stations on the floor map updates this count automatically.</span>
               </div>
             </div>
           </div>
@@ -287,7 +281,7 @@
 
             <div class="mb-2">
               <label for="special-notes" class="form-label text-light fw-semibold">Special Requests (Optional):</label>
-              <textarea class="form-control bg-dark text-light border-secondary" id="special-notes" name="special_notes" rows="2" placeholder="Mention titles to preload, DPI preference, or if bringing personal peripherals..."></textarea>
+              <textarea class="form-control bg-dark text-light border-secondary" id="special-notes" name="special_notes" rows="2" placeholder="Any special requests or comments..."></textarea>
             </div>
           </div>
 
@@ -297,7 +291,7 @@
 
             <div class="form-check mb-3">
               <input class="form-check-input" type="checkbox" id="policy-agree" name="policy_agree" required>
-              <label class="form-check-label text-muted small" for="policy-agree">
+              <label class="form-check-label text-secondary small" for="policy-agree">
                 I agree to the <a href="rules.html" class="text-accent fw-semibold">club conduct rules and hardware care policy</a> at Kenesary 69.
               </label>
             </div>
@@ -306,26 +300,28 @@
             <div class="p-3 bg-dark rounded border border-info mb-3 d-flex flex-wrap justify-content-between align-items-center">
               <div>
                 <span class="text-light fw-semibold d-block">Estimated Base Rate:</span>
-                <span class="small text-muted">No advance payment required. Settle at front reception desk upon arrival via Kaspi QR or Cash.</span>
+                <span class="small text-secondary">No advance payment required. Settle at front reception desk upon arrival via Kaspi QR or Cash.</span>
               </div>
               <div class="text-md-end mt-2 mt-md-0">
                 <span id="booking-total-display" class="h4 text-accent fw-bold mb-0 d-block">800 KZT / hr</span>
-                <span class="small text-muted">Held 15 mins past arrival</span>
+                <span class="small text-secondary">Held 15 mins past arrival</span>
               </div>
             </div>
 
-            <div class="d-flex flex-wrap gap-2">
-              <button type="submit" id="booking-submit-btn" class="btn btn-info btn-lg fw-bold text-dark flex-grow-1">
+            <div class="d-flex flex-wrap gap-2 align-items-stretch">
+              <button type="submit" id="booking-submit-btn" class="btn btn-info btn-lg fw-bold text-dark flex-grow-1 shadow-sm">
                 Confirm &amp; Reserve Station &rarr;
               </button>
-              <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#modal-confirm">
-                Preview Voucher
+              <button type="button" class="btn btn-outline-info btn-lg fw-semibold px-3 shadow-sm" data-bs-toggle="modal" data-bs-target="#modal-confirm">
+                👁 Preview Voucher
               </button>
-              <button type="reset" id="booking-reset-btn" class="btn btn-outline-secondary">Reset</button>
+              <button type="reset" id="booking-reset-btn" class="btn btn-secondary btn-lg fw-semibold px-3 shadow-sm text-light">
+                ↺ Reset Form
+              </button>
             </div>
 
-            <p class="small text-muted mt-3 mb-0">
-              * Upon submission, your reservation voucher is confirmed instantly on screen. Your PC is reserved for 15 minutes past arrival time.
+            <p class="small text-secondary mt-3 mb-0">
+              * Upon submission, your reservation voucher is confirmed instantly on screen.
             </p>
 
             <!-- Placeholders for JavaScript Confirmation & Error Output -->
@@ -363,7 +359,7 @@
               <li>Night packages (22:00–08:00) require a physical ID.</li>
               <li>Free chilled water available at the beverage bar.</li>
             </ul>
-            <p class="text-muted small mb-0">Present your Gamer Tag or Phone Number to the administrator on duty.</p>
+            <p class="text-secondary small mb-0">Present your Gamer Tag or Phone Number to the administrator on duty.</p>
           </div>
           <div class="modal-footer border-secondary">
             <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Edit Details</button>
@@ -388,6 +384,9 @@
   </footer>
 
   <!-- Bootstrap JS Bundle for interactive Modal and Navbar -->
+  <!-- jQuery 3.7.1 Core Library -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- Application JavaScript Modules -->

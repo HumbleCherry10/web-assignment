@@ -105,68 +105,150 @@ Milestone Tags: assignment-4 (Data & Logic) | assignment-5 (DOM & Forms)
 ================================================================================
 REQUIREMENT ITEM              FILE PATH         LINE NUMBER(S)   WRITTEN BY
 --------------------------------------------------------------------------------
-'use strict' directive        js/main.js        Line 13          Dias & Adilet
-'use strict' directive        js/home.js        Line 17          Dias Tursynbay
-'use strict' directive        js/events.js      Line 17          Dias Tursynbay
-'use strict' directive        js/services.js    Line 15          Dias Tursynbay
-'use strict' directive        js/booking.js     Line 17          Adilet Ainadinov
-'use strict' directive        js/login.js       Line 16          Adilet Ainadinov
-'use strict' directive        js/specs.js       Line 14          Adilet Ainadinov
+'use strict' directive        js/main.js        Line 6           Dias & Adilet
+'use strict' directive        js/home.js        Line 6           Dias Tursynbay
+'use strict' directive        js/events.js      Line 7           Dias Tursynbay
+'use strict' directive        js/services.js    Line 6           Dias Tursynbay
+'use strict' directive        js/booking.js     Line 7           Adilet Ainadinov
+'use strict' directive        js/login.js       Line 6           Adilet Ainadinov
+'use strict' directive        js/specs.js       Line 6           Adilet Ainadinov
 
-const / let default scoping   js/home.js        Lines 23, 290    Dias Tursynbay
-Strict equality (=== / !==)   js/home.js        Lines 200, 201   Dias Tursynbay
-Arithmetic & Logical (&&, ||) js/services.js    Lines 129, 140   Dias Tursynbay
-Switch condition statement    js/services.js    Lines 111-120    Dias Tursynbay
+const / let default scoping   js/home.js        Lines 9, 181     Dias Tursynbay
+Strict equality (=== / !==)   js/home.js        Lines 130, 131   Dias Tursynbay
+Arithmetic & Logical (&&, ||) js/services.js    Lines 99, 105    Dias Tursynbay
+Switch condition statement    js/services.js    Lines 85-94      Dias Tursynbay
 
-Array of >=6 objects (Reviews)js/home.js        Lines 23-103     Dias Tursynbay
-Array of >=6 objects (Tourney)js/events.js      Lines 23-109     Dias Tursynbay
-Array of >=6 objects (Tariffs)js/services.js    Lines 21-99      Dias Tursynbay
-Array of >=6 objects (Stationsjs/booking.js     Lines 33-59      Adilet Ainadinov
+Array of >=6 objects (Reviews)js/home.js        Lines 9-87       Dias Tursynbay
+Array of >=6 objects (Tourney)js/events.js      Lines 10-95      Dias Tursynbay
+Array of >=6 objects (Tariffs)js/services.js    Lines 9-81       Dias Tursynbay
+Array of >=6 objects (Stationsjs/booking.js     Lines 20-46      Adilet Ainadinov
 
-Filter / Traversal operations js/home.js        Lines 199-208    Dias Tursynbay
-Find / Optimizer operation    js/services.js    Lines 134-149    Dias Tursynbay
-Total calculation operation   js/booking.js     Lines 70-76      Adilet Ainadinov
+Filter / Traversal operations js/home.js        Lines 125-139    Dias Tursynbay
+Find / Optimizer operation    js/services.js    Lines 97-117     Dias Tursynbay
+Total calculation operation   js/booking.js     Lines 55-58      Adilet Ainadinov
 
-Reusable function (Params/Ret)js/home.js        Lines 113-185    Dias Tursynbay
-Reusable function (Params/Ret)js/services.js    Lines 128-154    Dias Tursynbay
-Reusable function (Params/Ret)js/events.js      Lines 119-198    Dias Tursynbay
-Reusable function (Params/Ret)js/booking.js     Lines 70-76      Adilet Ainadinov
-Function calling another      js/home.js        Line 588         Dias Tursynbay
-Function calling another      js/main.js        Lines 60-61      Dias & Adilet
+Reusable function (Params/Ret)js/home.js        Lines 90-122     Dias Tursynbay
+Reusable function (Params/Ret)js/services.js    Lines 97-117     Dias Tursynbay
+Reusable function (Params/Ret)js/events.js      Lines 97-100     Dias Tursynbay
+Reusable function (Params/Ret)js/booking.js     Lines 55-58      Adilet Ainadinov
+Function calling another      js/home.js        Line 333         Dias Tursynbay
+Function calling another      js/main.js        Lines 81-82      Dias & Adilet
 
-Math.random() (Daily Highlightjs/home.js        Line 271         Dias Tursynbay
-Math.random() (Bracket Seed)  js/events.js      Line 234         Dias Tursynbay
-Math.random() (Voucher Ref)   js/booking.js     Line 83          Adilet Ainadinov
-Math.random() (Config Ticket) js/specs.js       Line 48          Adilet Ainadinov
+Math.random() (Daily Highlightjs/home.js        Line 167         Dias Tursynbay
+Math.random() (Bracket Seed)  js/events.js      Line 103         Dias Tursynbay
+Math.random() (Voucher Ref)   js/booking.js     Line 62          Adilet Ainadinov
+Math.random() (Config Ticket) js/specs.js       Line 51          Adilet Ainadinov
 
-Dynamic DOM Card Rendering    js/home.js        Lines 113-185    Dias Tursynbay
-Dynamic DOM Card Rendering    js/events.js      Lines 119-198    Dias Tursynbay
-Dynamic Seating Map (DOM)     js/booking.js     Lines 170-272    Adilet Ainadinov
-Safe textContent User Input   js/home.js        Lines 147, 160   Dias Tursynbay
-Empty State / No-Results      js/home.js        Lines 221-248    Dias Tursynbay
-Empty State / No-Results      js/events.js      Lines 298-323    Dias Tursynbay
+Dynamic DOM Card Rendering    js/home.js        Lines 90-122     Dias Tursynbay
+Dynamic DOM Card Rendering    js/events.js      Lines 144-232    Dias Tursynbay
+Dynamic Seating Map (DOM)     js/booking.js     Lines 130-206    Adilet Ainadinov
+Safe textContent User Input   js/home.js        Lines 118-119    Dias Tursynbay
+Empty State / No-Results      js/home.js        Lines 145-161    Dias Tursynbay
+Empty State / No-Results      js/events.js      Lines 158-176    Dias Tursynbay
 
-Search & Filter Controls      js/home.js        Lines 297-362    Dias Tursynbay
-Status Filter Controls        js/events.js      Lines 331-352    Dias Tursynbay
-Matching Count Indicator      js/home.js        Lines 368-370    Dias Tursynbay
-Live Character Counter        js/home.js        Lines 468-479    Dias Tursynbay
-Live Character Counter        js/specs.js       Lines 154-164    Adilet Ainadinov
+Search & Filter Controls      js/home.js        Lines 176-200    Dias Tursynbay
+Status Filter Controls        js/events.js      Lines 113-134    Dias Tursynbay
+Matching Count Indicator      js/home.js        Lines 198-199    Dias Tursynbay
+Live Character Counter        js/home.js        Lines 275-280    Dias Tursynbay
+Live Character Counter        js/specs.js       Lines 125-130    Adilet Ainadinov
 
-Event Listener (click)        js/home.js        Lines 342, 517   Dias Tursynbay
-Event Listener (input)        js/home.js        Lines 468, 607   Dias Tursynbay
-Event Listener (change)       js/services.js    Line 235         Dias Tursynbay
-Event Listener (submit)       js/events.js      Line 377         Dias Tursynbay
-Event Listener (submit)       js/booking.js     Line 313         Adilet Ainadinov
+Event Listener (click)        js/home.js        Lines 190, 290   Dias Tursynbay
+Event Listener (input)        js/home.js        Lines 185, 275   Dias Tursynbay
+Event Listener (change)       js/services.js    Lines 128, 131   Dias Tursynbay
+Event Listener (submit)       js/events.js      Line 285         Dias Tursynbay
+Event Listener (submit)       js/booking.js     Line 305         Adilet Ainadinov
 
-Form Validation (>=4 fields)  js/events.js      Lines 391-443    Dias Tursynbay
-Form Validation (>=4 fields)  js/booking.js     Lines 329-389    Adilet Ainadinov
-Field-level error display     js/booking.js     Lines 394-405    Adilet Ainadinov
-First invalid field focus     js/booking.js     Line 407         Adilet Ainadinov
-Demonstration voucher summary js/booking.js     Lines 418-437    Adilet Ainadinov
+Form Validation (>=4 fields)  js/events.js      Lines 287-350    Dias Tursynbay
+Form Validation (>=4 fields)  js/booking.js     Lines 318-375    Adilet Ainadinov
+Field-level error display     js/booking.js     Lines 285-293    Adilet Ainadinov
+First invalid field focus     js/booking.js     Line 379         Adilet Ainadinov
+Demonstration voucher summary js/booking.js     Lines 391-406    Adilet Ainadinov
 
-Live Regex Password Checklist js/login.js       Lines 85-175     Adilet Ainadinov
-Show / Hide Password toggle   js/login.js       Lines 37-56      Adilet Ainadinov
-Password confirmation match   js/login.js       Lines 163, 293   Adilet Ainadinov
-Zero password persistence     js/login.js       Lines 232-237    Adilet Ainadinov
-Live FAQ keyword search filterjs/specs.js       Lines 82-132     Adilet Ainadinov
+Live Regex Password Checklist js/login.js       Lines 70-130     Adilet Ainadinov
+Show / Hide Password toggle   js/login.js       Lines 25-40      Adilet Ainadinov
+Password confirmation match   js/login.js       Lines 118-125    Adilet Ainadinov
+Zero password persistence     js/login.js       Lines 160-165    Adilet Ainadinov
+Live FAQ keyword search filterjs/specs.js       Lines 65-100     Adilet Ainadinov
+
+ASTANA VENUE LOCAL DATA INTEGRATION
+--------------------------------------------------------------------------------
+Kaspi QR Pay-at-Desk Policy   js/booking.js     Line 404         Adilet Ainadinov
+Live Club Open Status (Astana)js/main.js        Lines 14-35      Dias & Adilet
+Real Astana Reviews Dataset   js/home.js        Lines 9-87       Dias Tursynbay
+Official Club Hardware Rigs   js/booking.js     Lines 20-46      Adilet Ainadinov
+================================================================================
+
+8. JQUERY MIGRATION & DEFENSE PREPARATION (ASSIGNMENT 6) — CHECKLIST
+Students: Dias Tursynbay & Adilet Ainadinov
+Theme: QazaqPeek Cyber Club Astana (Kenesary St 69)
+Milestone Tag: assignment-6 (jQuery Core, Traversal, Effects, Chaining & Validation)
+================================================================================
+REQUIREMENT ITEM              FILE PATH         LINE NUMBER(S)   WRITTEN BY
+--------------------------------------------------------------------------------
+jQuery CDN Core Link          All 7 HTML pages  Before main.js   Dias & Adilet
+$(document).ready() Wrapper   js/booking.js     Line 67          Adilet Ainadinov
+$(document).ready() Wrapper   js/events.js      Line 108         Dias Tursynbay
+Version & Lifecycle Comment   js/booking.js     Line 66          Adilet Ainadinov
+Version & Lifecycle Comment   js/events.js      Line 107         Dias Tursynbay
+
+Rewritten Feature 1 (Cards)   js/booking.js     Lines 130-206    Adilet Ainadinov
+Rewritten Feature 2 (Validate)js/booking.js     Lines 280-378    Adilet Ainadinov
+Rewritten Feature 3 (Effects) js/booking.js     Lines 383-425    Adilet Ainadinov
+Rewritten Feature 1 (Search)  js/events.js      Lines 113-134    Dias Tursynbay
+Rewritten Feature 2 (Cards)   js/events.js      Lines 139-232    Dias Tursynbay
+Rewritten Feature 3 (Squad)   js/events.js      Lines 264-389    Dias Tursynbay
+
+Old Plain JS Archive File     js/old-js-version.js Entire File   Dias & Adilet
+Method Comparison Comments    js/booking.js     Lines 130-132    Adilet Ainadinov
+Method Comparison Comments    js/events.js      Lines 139-141    Dias Tursynbay
+
+Selector by ID ($('#id'))     js/booking.js     Lines 68, 75     Adilet Ainadinov
+Selector by Class ($('.cls')) js/booking.js     Line 230         Adilet Ainadinov
+Selector by Tag ($('button')) js/booking.js     Line 175         Adilet Ainadinov
+Selector by Attribute ($([])) js/booking.js     Lines 87, 183    Adilet Ainadinov
+Filter Selector (:checked)    js/booking.js     Line 85          Adilet Ainadinov
+Filter Selector (:not)        js/booking.js     Line 230         Adilet Ainadinov
+Filter Selector (:first)      js/booking.js     Line 208         Adilet Ainadinov
+
+Traversal: .find()            js/booking.js     Lines 208, 257   Adilet Ainadinov
+Traversal: .closest()         js/booking.js     Line 257         Adilet Ainadinov
+Traversal: .parent() / .after()js/booking.js    Lines 210, 290   Adilet Ainadinov
+Traversal: .siblings()        js/booking.js     Line 287         Adilet Ainadinov
+Traversal: .each() / $.each() js/booking.js     Lines 155, 172   Adilet Ainadinov
+Use of $(this) (Handler 1)    js/booking.js     Line 231         Adilet Ainadinov
+Use of $(this) (Handler 2)    js/booking.js     Line 302         Adilet Ainadinov
+Method Chain 1 (>=3 links)    js/booking.js     Line 257         Adilet Ainadinov
+Method Chain 2 (>=3 links)    js/booking.js     Lines 409-416    Adilet Ainadinov
+Link-by-Link Chain Comment    js/booking.js     Line 256         Adilet Ainadinov
+
+Changing DOM: .text()        js/booking.js     Lines 104, 217   Adilet Ainadinov
+Changing DOM: .html()        js/booking.js     Lines 142, 411   Adilet Ainadinov
+Changing DOM: .val()         js/booking.js     Lines 76, 254    Adilet Ainadinov
+Changing DOM: .attr()        js/booking.js     Lines 75, 183    Adilet Ainadinov
+Changing DOM: .prop()        js/booking.js     Lines 80, 188    Adilet Ainadinov
+Appearance: .addClass()      js/booking.js     Lines 98, 246    Adilet Ainadinov
+Appearance: .removeClass()   js/booking.js     Line 237         Adilet Ainadinov
+Build Array Markup (.append) js/booking.js     Lines 148, 194   Adilet Ainadinov
+
+Event Attachment via .on()    js/booking.js     Lines 115, 230   Adilet Ainadinov
+Multiple Events (input, chg) js/booking.js     Line 301         Adilet Ainadinov
+Delegated Event Handler       js/booking.js     Line 230         Adilet Ainadinov
+Delegated Event Handler       js/events.js      Line 236         Dias Tursynbay
+Delegation Explanation Note   js/booking.js     Lines 228-229    Adilet Ainadinov
+event.preventDefault()        js/booking.js     Line 307         Adilet Ainadinov
+preventDefault Explanation    js/booking.js     Line 306         Adilet Ainadinov
+
+Effect 1: .slideDown()        js/booking.js     Lines 292, 412   Adilet Ainadinov
+Effect 2: .slideUp()          js/booking.js     Lines 297, 313   Adilet Ainadinov
+Effect 3: .fadeIn()           js/events.js      Lines 171, 231   Dias Tursynbay
+Effect with Duration (400ms)  js/booking.js     Line 412         Adilet Ainadinov
+Effect Callback (Scroll)      js/booking.js     Lines 412-416    Adilet Ainadinov
+
+Main Form Submit Validation   js/booking.js     Lines 305-425    Adilet Ainadinov
+Field-Level Error Messages    js/booking.js     Lines 285-293    Adilet Ainadinov
+Input Trimming ($.trim)       js/booking.js     Lines 319, 329   Adilet Ainadinov
+Phone & Email Regex Check     js/booking.js     Lines 330, 341   Adilet Ainadinov
+Real-Time Error Clearing      js/booking.js     Lines 301-303    Adilet Ainadinov
+Form Reset on Success         js/booking.js     Line 419         Adilet Ainadinov
+Browser vs Server Comment     js/booking.js     Line 309         Adilet Ainadinov
 ================================================================================

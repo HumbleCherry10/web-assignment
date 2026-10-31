@@ -1,34 +1,24 @@
 /**
- * ================================================================================
- * QAZAQPEEK CYBER CLUB ASTANA — PC SPECS & HOUSE RULES CONTROLLER
- * File: js/specs.js
+ * QazaqPeek Cyber Club Astana - Specs & Rules Controller
  * Author: Adilet Ainadinov
- * Features:
- *   - Peripheral Driver & DPI Pre-Configuration Request Validation (pc-specs.html)
- *   - Random Hardware Ticket Reference Generator via Math.random()
- *   - Real-Time FAQ Keyword Search & Filter Engine (rules.html)
- *   - Administrator Inquiry Form Validation with Character Counter (rules.html)
- * ================================================================================
  */
 
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. DRIVER PRE-LOAD FORM (pc-specs.html)
+  // 1. Driver Pre-Load Form (pc-specs.html)
   const driverForm = document.getElementById('driver-request-form');
   const driverSoftware = document.getElementById('driver-software');
   const targetZone = document.getElementById('target-zone');
   const gamerPhone = document.getElementById('gamer-phone');
-  const dpiNotes = document.getElementById('dpi-notes');
   const driverFeedback = document.getElementById('driver-feedback');
 
   if (driverForm && driverSoftware && targetZone && gamerPhone && driverFeedback) {
     driverForm.noValidate = true;
 
-    driverForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-
-      const phoneVal = gamerPhone.value.trim();
+    driverForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const phone = gamerPhone.value.trim();
       const phoneRegex = /^\+?[0-9\s\-()]{10,18}$/;
       let firstInvalid = null;
 
@@ -46,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         targetZone.classList.remove('is-invalid');
       }
 
-      if (!phoneRegex.test(phoneVal)) {
+      if (!phoneRegex.test(phone)) {
         gamerPhone.classList.add('is-invalid');
         if (!firstInvalid) firstInvalid = gamerPhone;
       } else {
@@ -59,20 +49,20 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const ticketRef = `QP-CFG-${Math.floor(100 + Math.random() * 900)}`;
-      const selectedDriver = driverSoftware.options[driverSoftware.selectedIndex].text;
-      const selectedZone = targetZone.options[targetZone.selectedIndex].text;
+      const driver = driverSoftware.options[driverSoftware.selectedIndex].text;
+      const zone = targetZone.options[targetZone.selectedIndex].text;
 
       driverFeedback.className = 'alert alert-success mt-4';
       driverFeedback.innerHTML = `
         <h4 class="alert-heading h5 fw-bold">⚙️ Pre-Load Configuration Request Recorded!</h4>
-        <p class="mb-1">Our technical administrators will pre-install <strong>${selectedDriver}</strong> on an available station in <strong>${selectedZone}</strong>.</p>
+        <p class="mb-1">Our administrators will pre-install <strong>${driver}</strong> on an available station in <strong>${zone}</strong>.</p>
         <hr class="border-secondary">
         <div class="d-flex flex-wrap justify-content-between small">
           <span>Ticket: <strong>${ticketRef}</strong></span>
-          <span>Contact: <strong>${phoneVal}</strong></span>
+          <span>Contact: <strong>${phone}</strong></span>
           <span>Status: <strong>Queued for Bench Setup</strong></span>
         </div>
-        <p class="small text-muted mt-2 mb-0">* Demonstration Request: No network configuration commands were sent.</p>
+        <p class="small text-muted mt-2 mb-0">* Demonstration Request (No network commands sent).</p>
       `;
       driverFeedback.classList.remove('d-none');
       driverFeedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -80,111 +70,93 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2. LIVE FAQ SEARCH & ACCORDION FILTER (rules.html)
-  const faqAccordion = document.getElementById('faqAccordion');
-  if (faqAccordion) {
-    const searchWrapper = document.createElement('div');
-    searchWrapper.className = 'mb-4';
+  // 2. Live FAQ Search & Filter (rules.html)
+  const faq = document.getElementById('faqAccordion');
+  if (faq) {
+    const searchBox = document.createElement('div');
+    searchBox.className = 'mb-4';
+    searchBox.innerHTML = `
+      <input type="search" id="faq-search-input" class="form-control bg-dark text-light border-secondary" placeholder="Search rules & FAQ (e.g. food, peripherals, age, night package)...">
+      <div class="text-muted small mt-2" id="faq-search-status"></div>
+    `;
+    faq.before(searchBox);
 
-    const searchInput = document.createElement('input');
-    searchInput.type = 'search';
-    searchInput.id = 'faq-search-input';
-    searchInput.className = 'form-control bg-dark text-light border-secondary';
-    searchInput.placeholder = 'Search house rules & FAQ (e.g. food, peripherals, age, night package)...';
-
-    const countStatus = document.createElement('div');
-    countStatus.className = 'text-muted small mt-2';
-    countStatus.id = 'faq-search-status';
-
-    searchWrapper.appendChild(searchInput);
-    searchWrapper.appendChild(countStatus);
-    faqAccordion.parentNode.insertBefore(searchWrapper, faqAccordion);
-
-    const accordionItems = faqAccordion.querySelectorAll('.accordion-item');
+    const searchInput = document.getElementById('faq-search-input');
+    const statusText = document.getElementById('faq-search-status');
+    const items = faq.querySelectorAll('.accordion-item');
 
     searchInput.addEventListener('input', () => {
-      const query = searchInput.value.trim().toLowerCase();
-      let matchCount = 0;
+      const q = searchInput.value.trim().toLowerCase();
+      let matches = 0;
 
-      accordionItems.forEach(item => {
+      items.forEach(item => {
         const text = item.textContent.toLowerCase();
-        const collapseEl = item.querySelector('.accordion-collapse');
-        const buttonEl = item.querySelector('.accordion-button');
+        const collapse = item.querySelector('.accordion-collapse');
+        const btn = item.querySelector('.accordion-button');
 
-        if (query === '' || text.includes(query)) {
+        if (q === '' || text.includes(q)) {
           item.classList.remove('d-none');
-          matchCount++;
-          if (query !== '' && collapseEl) {
-            collapseEl.classList.add('show');
-            if (buttonEl) buttonEl.classList.remove('collapsed');
+          matches++;
+          if (q !== '' && collapse) {
+            collapse.classList.add('show');
+            if (btn) btn.classList.remove('collapsed');
           }
         } else {
           item.classList.add('d-none');
-          if (collapseEl) {
-            collapseEl.classList.remove('show');
-            if (buttonEl) buttonEl.classList.add('collapsed');
+          if (collapse) {
+            collapse.classList.remove('show');
+            if (btn) btn.classList.add('collapsed');
           }
         }
       });
 
-      if (query === '') {
-        countStatus.textContent = '';
-      } else {
-        countStatus.textContent = `Found ${matchCount} matching rules in FAQ.`;
-      }
+      statusText.textContent = q === '' ? '' : `Found ${matches} matching rules in FAQ.`;
     });
   }
 
-  // 3. ASK AN ADMINISTRATOR INQUIRY FORM (rules.html)
+  // 3. Ask an Administrator Form (rules.html)
   const inquiryForm = document.getElementById('inquiry-form');
   const inquiryName = document.getElementById('inquiry-name');
   const inquiryContact = document.getElementById('inquiry-contact');
-  const inquiryTopic = document.getElementById('inquiry-topic');
   const inquiryMessage = document.getElementById('inquiry-message');
   const inquiryFeedback = document.getElementById('inquiry-feedback');
 
   if (inquiryForm && inquiryName && inquiryContact && inquiryMessage && inquiryFeedback) {
     inquiryForm.noValidate = true;
 
-    // Add Character Counter to Inquiry Message
-    const charCountEl = document.createElement('div');
-    charCountEl.className = 'text-end text-muted small mt-1';
-    charCountEl.textContent = '0 / 300 characters (minimum 10 required)';
-    inquiryMessage.parentNode.appendChild(charCountEl);
+    const charCounter = document.createElement('div');
+    charCounter.className = 'text-end text-muted small mt-1';
+    charCounter.textContent = '0 / 300 (min 10 chars)';
+    inquiryMessage.after(charCounter);
 
     inquiryMessage.addEventListener('input', () => {
       const len = inquiryMessage.value.length;
-      charCountEl.textContent = `${len} / 300 characters (minimum 10 required)`;
-      if (len >= 10) {
-        charCountEl.className = 'text-end text-muted small mt-1';
-      } else {
-        charCountEl.className = 'text-end text-danger small mt-1';
-      }
+      charCounter.textContent = `${len} / 300 (min 10 chars)`;
+      charCounter.classList.toggle('text-danger', len < 10);
     });
 
-    inquiryForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-
-      const nameVal = inquiryName.value.trim();
-      const contactVal = inquiryContact.value.trim();
-      const messageVal = inquiryMessage.value.trim();
+    inquiryForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = inquiryName.value.trim();
+      const contact = inquiryContact.value.trim();
+      const msg = inquiryMessage.value.trim();
       let firstInvalid = null;
 
-      if (nameVal.length < 2) {
+      if (name.length < 2) {
         inquiryName.classList.add('is-invalid');
         if (!firstInvalid) firstInvalid = inquiryName;
       } else {
         inquiryName.classList.remove('is-invalid');
       }
 
-      if (contactVal.length < 5) {
+      if (contact.length < 5) {
         inquiryContact.classList.add('is-invalid');
         if (!firstInvalid) firstInvalid = inquiryContact;
       } else {
         inquiryContact.classList.remove('is-invalid');
       }
 
-      if (messageVal.length < 10) {
+      if (msg.length < 10) {
         inquiryMessage.classList.add('is-invalid');
         if (!firstInvalid) firstInvalid = inquiryMessage;
       } else {
@@ -196,24 +168,23 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const inquiryRef = `QP-INQ-${Math.floor(1000 + Math.random() * 9000)}`;
-
+      const ref = `QP-INQ-${Math.floor(1000 + Math.random() * 9000)}`;
       inquiryFeedback.className = 'alert alert-success mt-4';
       inquiryFeedback.innerHTML = `
         <h4 class="alert-heading h5 fw-bold">Inquiry Sent to Club Administrators!</h4>
-        <p class="mb-1">Thank you, <strong>${nameVal}</strong>. Your question regarding <strong>${inquiryTopic ? inquiryTopic.options[inquiryTopic.selectedIndex].text : 'General Club Inquiries'}</strong> has been routed to the reception desk.</p>
+        <p class="mb-1">Thank you, <strong>${name}</strong>. Your question has been routed to the reception desk.</p>
         <hr class="border-secondary">
         <div class="d-flex flex-wrap justify-content-between small">
-          <span>Inquiry Ticket: <strong>${inquiryRef}</strong></span>
-          <span>Contact: <strong>${contactVal}</strong></span>
-          <span>Avg Response: <strong>Within 15 minutes</strong></span>
+          <span>Ticket: <strong>${ref}</strong></span>
+          <span>Contact: <strong>${contact}</strong></span>
+          <span>Status: <strong>Response within 15 mins</strong></span>
         </div>
-        <p class="small text-muted mt-2 mb-0">* Demonstration Submission: No actual inquiry dispatched to server.</p>
+        <p class="small text-muted mt-2 mb-0">* Demonstration Submission.</p>
       `;
       inquiryFeedback.classList.remove('d-none');
       inquiryFeedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       inquiryForm.reset();
-      charCountEl.textContent = '0 / 300 characters (minimum 10 required)';
+      charCounter.textContent = '0 / 300 (min 10 chars)';
     });
   }
 });

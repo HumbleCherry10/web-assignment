@@ -237,3 +237,129 @@ In strict accordance with the Assignment 4–5 specification, HTML and CSS marku
 ### Milestone Stages & Git Tags
 * **Assignment 4 (`tag: assignment-4`):** Variables (`const`/`let`), operators, `Math.random()`, conditions, logical operators, arrays ($\ge 6$ objects with $\ge 4$ properties), loops/traversals, and $\ge 4$ reusable functions with parameters and return values.
 * **Assignment 5 (`tag: assignment-5`):** DOM creation/removal, attributes/classes, events (`submit`, `click`, `input`/`change`), and complete 4-field form validation flows with field-level errors and demonstration summaries.
+
+---
+
+## 11. Assignment 6: jQuery Migration & Defense Preparation Guide
+
+### 11.1 Project Overview & Architecture
+In this final milestone prior to the project defense, we migrate key site interactions to **jQuery 3.7.1** while maintaining strict adherence to the midterm freeze:
+* Zero new hand-written HTML elements (except the official CDN `<script>` tag).
+* Zero new CSS rules or style tags.
+* All new interactive elements are instantiated through jQuery DOM methods (`$('<div/>')`, `$('<button/>')`).
+* Presentation state is modified strictly through existing stylesheet classes (`.selected`, `.active`, `.hidden`, `is-invalid`, Bootstrap utilities).
+* Every script is wrapped in `$(document).ready()` to guarantee complete DOM readiness before selection or traversal.
+* The unlinked archive `js/old-js-version.js` contains the original plain-JavaScript implementations for side-by-side examination during defense.
+
+---
+
+### 11.2 Three Rewritten Features — Side-by-Side Comparison
+
+| Feature | Original Plain JS (`js/old-js-version.js`) | jQuery 3.7.1 Implementation (`js/booking.js` & `js/events.js`) | Replaced Methods & Architectural Verdict |
+| :--- | :--- | :--- | :--- |
+| **Feature 1: Dynamic Seating Grid & List Builder** | `document.createElement('button')`<br>`seatBtn.dataset.seatId = id`<br>`seatBtn.addEventListener('click', ...)` in a loop<br>`appendChild()` | `$('<button/>', { class: 'station-btn' })`<br>`.attr('data-seat-id', id)`<br>`.prop('disabled', isOccupied)`<br>`.append()` & delegated `.on('click', '.station-btn')` | **Replaces ~70 lines of verbose manual node creation and per-item listeners.**<br>*Verdict:* Dramatically shorter and clearer. Building elements declaratively and delegating clicks to the parent prevents memory leaks and catches future dynamic items. |
+| **Feature 2: Main Form Validation Flow** | `form.addEventListener('submit', ...)`<br>`document.getElementById()` for every input<br>Manual error array pushing<br>`classList.add('is-invalid')`<br>Form-level alert container | `$('#booking-form').on('submit', ...)`<br>`$.trim($(this).val())`<br>`$field.addClass('is-invalid')`<br>`$field.siblings('.invalid-feedback').text(msg).slideDown(200)`<br>Real-time clear on `.on('input change')` | **Replaces ~80 lines of manual error loops and messy innerHTML feedback.**<br>*Verdict:* Substantially shorter and more robust. Field-level error alerts provide immediate visual feedback next to the invalid input, clearing instantly on keystroke. |
+| **Feature 3: Animated Show/Hide & Status Filters** | `container.innerHTML = ''`<br>Manual `.forEach()` loop for card creation<br>`btn.className = 'btn...'` loop<br>`addEventListener('input', ...)` | `$cardContainer.empty()`<br>Fluent chaining: `$(this).siblings().removeClass('active').end().addClass('active')`<br>`.slideDown(400, callback)`<br>`.slideUp(200)`, `.fadeToggle()` | **Replaces complex manual DOM rebuilding and brittle display styling.**<br>*Verdict:* Much clearer and visually superior. jQuery effects provide smooth, hardware-accelerated animations with duration parameters and post-animation completion callbacks. |
+
+---
+
+### 11.3 Comprehensive jQuery Technical Audit
+
+#### 1. Selectors & Filters
+* **By ID:** `$('#booking-form')`, `$('#dynamic-seating-container')`, `$('#booking-confirmation')`, `$('#events-card-container')`, `$('#tournament-reg-form')`
+* **By Class:** `$('.station-btn')`, `$('.tournament-card-col')`, `$('.invalid-feedback')`, `$('.zone-section')`
+* **By Element:** `$('input')`, `$('select')`, `$('button')`, `$('legend:first')`
+* **By Attribute:** `$('[data-zone]')`, `$('[data-seat-id]')`, `$('[data-tourney-id]')`, `$('input[name="zone"]')`
+* **Filter Selectors:**
+  * `:checked` — `$('input[name="zone"]:checked')` to identify active zone radio button.
+  * `:not()` — `$('.station-btn:not(.occupied)')` to prevent clicking occupied rigs.
+  * `:first` — `filter(':first')` and `find('legend:first')` to select the boundary element.
+
+#### 2. Traversal Methods
+* `.find()`: `$(this).closest('.station-grid').find('.station-btn.selected')` (locates nested child stations).
+* `.closest()`: `$(this).closest('.station-grid')` and `$(this).closest('.mb-3')` (traverses up to parent row/card).
+* `.parent()`: `$(this).parent()` (reaches immediate parent).
+* `.siblings()`: `$(this).siblings('.station-btn')` and `$field.siblings('.invalid-feedback')` (navigates sibling elements).
+* `.each()` / `$.each()`: `$.each(CLUB_STATIONS, ...)` and `$.each(TOURNAMENTS_DATA, ...)` (clean array iteration).
+
+#### 3. Chaining Demonstrations (with Link Explanations)
+* **Chain 1 (`js/booking.js`, Line 299):**
+  ```javascript
+  $(this).closest('.station-grid').find('.station-btn.selected').filter(':first').addClass('border-light');
+  ```
+  * *Link 1:* `$(this).closest('.station-grid')` — climbs the DOM tree to locate the parent station row container.
+  * *Link 2:* `.find('.station-btn.selected')` — searches descendants for all station buttons currently in selected state.
+  * *Link 3:* `.filter(':first')` — narrows the collection to strictly the first selected station button.
+  * *Link 4:* `.addClass('border-light')` — adds the high-contrast border state class to that element.
+* **Chain 2 (`js/events.js`, Line 333):**
+  ```javascript
+  $btn.siblings().removeClass('active btn-info text-dark fw-bold').addClass('btn-outline-info').end().removeClass('btn-outline-info').addClass('active btn-info text-dark fw-bold');
+  ```
+  * *Link 1:* `$btn.siblings()` — targets all sibling filter buttons.
+  * *Link 2:* `.removeClass(...)` — strips active styling from siblings.
+  * *Link 3:* `.addClass('btn-outline-info')` — restores outline border on siblings.
+  * *Link 4:* `.end()` — pops the internal stack, returning selection back to the clicked button `$btn`.
+  * *Link 5:* `.removeClass(...)` & `.addClass(...)` — highlights the clicked button as active.
+
+#### 4. DOM Manipulation Semantics
+* `.text()`: Used for numerical totals, station counts, card titles, and error messages to safely escape HTML entities and prevent XSS.
+* `.html()`: Used to inject structured ticket voucher markup (`<span>`, `<strong>`, `<div>`) and badge icons.
+* `.val()`: Reads and updates user inputs (`#party-size`, `#time-slot`, `#booking-date`, `#tournament-choice`).
+* `.attr()`: Sets and reads HTML attributes (`data-seat-id`, `data-zone`, `title`, `min`, `novalidate`).
+* `.prop()`: Manages live boolean properties (`prop('checked', true)` on radio/checkbox and `prop('disabled', true)` on buttons).
+
+#### 5. Events & Delegation Mechanics
+* All listeners are bound using `.on()`, covering `'click'`, `'submit'`, `'input'`, and `'change'`.
+* **Delegated Event Listener (`js/booking.js`):**
+  ```javascript
+  $seatingCard.on('click', '.station-btn:not(.occupied)', function (event) { ... });
+  ```
+  * *Why binding directly fails:* Station buttons are generated dynamically from JavaScript data. If we called `$('.station-btn').on('click')` on initial page load, 0 matching elements would exist in the DOM, so 0 listeners would be attached. Delegation attaches a single listener to the permanent parent container (`$seatingCard`), intercepting clicks during the bubbling phase.
+
+#### 6. Purposeful Animated Effects
+* `.slideDown(400, callback)`: Smoothly reveals confirmation voucher and auto-scrolls to the result.
+* `.slideUp(200)`: Dismisses previous error alerts and collapses invalid feedback.
+* `.fadeIn(300)`: Smoothly fades in newly filtered tournament cards and empty state alerts.
+* `.stop(true, true)`: Clears running animation queues to prevent UI stutter during rapid user interaction.
+
+#### 7. Form Validation with Field-Level Feedback
+* Submissions intercepted with `event.preventDefault()` (preventing page refresh).
+* Values trimmed using `$.trim()`.
+* Email and Phone validated against standard Regular Expressions.
+* Errors displayed **directly next to the invalid input** using `.addClass('is-invalid')` and individual `.invalid-feedback` text.
+* Real-time removal: Listening to `.on('input change')` removes `is-invalid` and slides up the error the moment the user edits the field.
+* On full success: Renders a comprehensive demonstration voucher and resets the form via `$form[0].reset()`.
+
+---
+
+### 11.4 Oral Defense Viva Questions & Answers
+
+#### Q1: "What does this line of jQuery do, and what would be the plain-JavaScript equivalent?"
+* **Example Line:** `$('#booking-form').find('.station-btn.selected').addClass('border-light');`
+* **jQuery Explanation:** Selects the element with ID `booking-form`, traverses downward to find all descendant elements with classes `station-btn` and `selected`, then adds the CSS class `border-light` to every matching node.
+* **Plain JS Equivalent:**
+  ```javascript
+  const form = document.getElementById('booking-form');
+  if (form) {
+    const buttons = form.querySelectorAll('.station-btn.selected');
+    buttons.forEach(btn => btn.classList.add('border-light'));
+  }
+  ```
+
+#### Q2: "Why does a delegated handler catch elements that did not exist yet when the page loaded?"
+* **Answer:** When an event occurs on a child element (e.g. a dynamically created station button), the browser triggers the event in the **bubbling phase**, propagating it upward through its parent, ancestors, and ultimately `document`. A delegated listener is attached to an ancestor that was already present in the initial HTML. When the bubbling event reaches that ancestor, jQuery inspects the event's target (`event.target`). If the target matches the delegate selector (e.g. `'.station-btn'`), jQuery executes the handler function, binding `$(this)` to that dynamic target element.
+
+#### Q3: "What is the difference between .text() and .html()?"
+* **Answer:** `.text()` gets or sets the combined inner text of the selected elements, escaping special HTML characters (`<`, `>`, `&`) to display characters literally and prevent Cross-Site Scripting (XSS). `.html()` gets or sets the raw inner markup of the element, instructing the browser to parse HTML tags and render them as actual DOM nodes.
+
+#### Q4: "What is the difference between .attr() and .prop() on a checkbox?"
+* **Answer:** `.attr()` accesses the element's HTML attribute as written in the markup string (representing its initial/default state). `.prop()` accesses the live JavaScript DOM object property (`HTMLInputElement.checked`), which is a boolean (`true` or `false`) that accurately changes whenever the user clicks or toggles the checkbox. During validation or user interaction, `.prop('checked')` must always be used.
+
+#### Q5: "Why does a check in the browser never replace a check on the server?"
+* **Answer:** Browser-side validation exists strictly for **User Experience (UX)** — to give instant visual feedback, catch typos, and save server bandwidth. It provides zero security because the client environment is completely untrusted: any visitor can bypass client validation by turning off JavaScript, editing input attributes (`required`, `maxlength`) via DevTools, or sending raw HTTP POST requests directly to the server using cURL, Postman, or custom Python scripts. The server must always independently sanitize, validate, and authorize all data.
+
+#### Q6: "Live Task Preparation: How do we change an effect, add a field to validation, or extend a chain?"
+* **Change an Effect:** Switch `.slideDown(400)` to `.fadeIn(600)` or `.slideToggle(300)`.
+* **Add a Field to Validation:** Read new field value via `$.trim($('#new-field').val())`, test condition, call `showFieldError($('#new-field'), 'Error message')`, and clear in the `.on('input change')` listener.
+* **Extend a Chain:** Add `.delay(200)` or `.toggleClass('shadow-lg')` onto an existing chain, e.g. `$('#booking-confirmation').stop(true, true).html(html).slideDown(400).delay(200).addClass('border-info');`.
+* **Build One More Item from Array:** Append a new object into `CLUB_STATIONS` or `TOURNAMENTS_DATA` and invoke the render function; jQuery automatically builds and injects the new card into the grid.

@@ -67,3 +67,68 @@ pre {
   font-family: 'Courier New', Courier, monospace;
   font-size: 14px;
 }
+
+/* Visual Polish: Single-line navbar on desktop viewports */
+@media (min-width: 992px) {
+  .navbar-dark .navbar-nav .nav-link {
+    white-space: nowrap;
+    padding: 0.45rem 0.6rem !important;
+    font-size: 0.95rem;
+  }
+}
+
+/* High-contrast occupied station styling with distinct border and marker */
+.station-btn.occupied {
+  background-color: #0b1120 !important;
+  border-color: #64748b !important;
+  color: #e2e8f0 !important;
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+
+/* High-contrast placeholder text */
+::placeholder {
+  color: #94a3b8 !important;
+  opacity: 1 !important;
+}
+
+/* Enhanced contrast for secondary and muted descriptions in dark cards */
+.card-text.text-secondary,
+.card-text.text-muted {
+  color: #cbd5e1 !important;
+}
+
+/* High-visibility selected station styling - vibrant solid cyan with bold text */
+.station-btn.selected {
+  background-color: #00e5ff !important;
+  border-color: #00e5ff !important;
+  color: #050b14 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.7) !important;
+}
+
+/* Floor map station row of 5 stations */
+.station-row .station-btn {
+  min-width: 0;
+  padding: 0.4rem 0.25rem;
+  text-align: center;
+}
+
+/* Auth tab switcher styling on login.html */
+#authTabs .nav-link {
+  color: #94a3b8;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease;
+}
+
+#authTabs .nav-link:hover {
+  color: #ffffff;
+}
+
+#authTabs .nav-link.active {
+  background-color: #00e5ff !important;
+  color: #050b14 !important;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}

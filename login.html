@@ -27,12 +27,12 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mainNavbar">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1 gap-xl-2">
             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="services.html">Zones &amp; Tariffs</a></li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Tariffs</a></li>
             <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
-            <li class="nav-item"><a class="nav-link" href="booking.html">Book a Station</a></li>
-            <li class="nav-item"><a class="nav-link active fw-bold text-accent" href="login.html">Login / Register</a></li>
+            <li class="nav-item"><a class="nav-link" href="booking.html">Booking</a></li>
+            <li class="nav-item"><a class="nav-link active fw-bold text-accent" href="login.html">Login</a></li>
             <li class="nav-item"><a class="nav-link" href="pc-specs.html">PC Specs</a></li>
             <li class="nav-item"><a class="nav-link" href="rules.html">Rules &amp; FAQ</a></li>
           </ul>
@@ -52,129 +52,190 @@
       </p>
     </div>
 
-    <!-- Authentication Forms Grid -->
-    <div class="row g-4 mb-5">
+    <!-- Authentication & Member Portal Grid (Full Width, Perfectly Balanced) -->
+    <div class="row g-4 mb-5 align-items-stretch">
       
-      <!-- Form 1: Member Login -->
-      <div class="col-12 col-md-6">
-        <div class="card bg-custom-card text-light h-100 border-secondary shadow">
-          <div class="card-header bg-dark border-secondary">
-            <h2 class="h4 mb-0 fw-bold text-accent">Existing Member Login</h2>
+      <!-- Column 1: Member Authentication Card (Log In <-> Register Tabs) -->
+      <div class="col-12 col-lg-6">
+        <div class="card bg-custom-card text-light border-secondary shadow h-100">
+          
+          <!-- Auth Navigation Switcher -->
+          <div class="card-header bg-dark border-secondary p-2">
+            <ul class="nav nav-pills nav-fill" id="authTabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active fw-bold text-accent" id="tab-login-btn" type="button" role="tab">Log In</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link fw-bold text-light" id="tab-register-btn" type="button" role="tab">Register</button>
+              </li>
+            </ul>
           </div>
-          <div class="card-body d-flex flex-column justify-content-between">
-            <form id="login-form" action="login.html" method="POST">
-              <fieldset>
-                <legend class="visually-hidden">Member Login Credentials</legend>
-                
-                <div class="mb-3">
-                  <label for="loginPhone" class="form-label fw-bold">Phone Number or Username:</label>
-                  <input type="text" id="loginPhone" name="loginPhone" class="form-control bg-dark text-light border-secondary" placeholder="+7 707 123 4567" required>
-                </div>
 
-                <div class="mb-3">
-                  <label for="loginPassword" class="form-label fw-bold">Password / PIN:</label>
-                  <input type="password" id="loginPassword" name="loginPassword" class="form-control bg-dark text-light border-secondary" placeholder="••••••••" required>
-                </div>
+          <div class="card-body p-4 d-flex flex-column justify-content-between">
+            
+            <!-- Form 1: Member Login -->
+            <div id="auth-login-pane">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h5 fw-bold text-accent mb-0">Member Sign In</h2>
+                <span class="badge bg-info text-dark fw-bold">Active Players</span>
+              </div>
+              <p class="small text-secondary mb-3">Enter your registered mobile phone or gamer username to access your account.</p>
 
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <a href="#pin-recovery-help" data-bs-toggle="collapse" class="small text-accent text-decoration-none" role="button" aria-expanded="false" aria-controls="pin-recovery-help">Forgot PIN?</a>
-                  <button type="submit" id="login-submit-btn" class="btn btn-primary shadow">Log In</button>
-                </div>
-
-                <!-- Collapsible PIN Recovery Helper -->
-                <div class="collapse mb-3" id="pin-recovery-help">
-                  <div class="p-3 bg-dark rounded border border-secondary text-muted small">
-                    To reset your account PIN, contact our administrator on WhatsApp at <a href="tel:+77066055465" class="text-accent fw-semibold">+7 (706) 605 5465</a> or visit the reception desk at Kenesary 69.
+              <form id="login-form" action="login.html" method="POST">
+                <fieldset>
+                  <legend class="visually-hidden">Member Login Credentials</legend>
+                  
+                  <div class="mb-3">
+                    <label for="loginPhone" class="form-label fw-bold">Phone Number or Username:</label>
+                    <input type="text" id="loginPhone" name="loginPhone" class="form-control bg-dark text-light border-secondary" placeholder="+7 707 123 4567" required>
                   </div>
-                </div>
 
-                <!-- Explanation of Submission Result -->
-                <p class="small text-muted mb-0">
-                  * Logging in displays your remaining account balance and active discount tier.
-                </p>
+                  <div class="mb-3">
+                    <label for="loginPassword" class="form-label fw-bold">Password / PIN:</label>
+                    <input type="password" id="loginPassword" name="loginPassword" class="form-control bg-dark text-light border-secondary" placeholder="••••••••" required>
+                  </div>
 
-                <!-- Feedback Container for JavaScript Hook -->
-                <div id="login-feedback" class="alert alert-info mt-3 mb-0 d-none" role="alert">
-                  Authenticating player session... Welcome back!
-                </div>
-              </fieldset>
-            </form>
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <a href="#pin-recovery-help" data-bs-toggle="collapse" class="small text-accent text-decoration-none" role="button" aria-expanded="false" aria-controls="pin-recovery-help">Forgot PIN?</a>
+                    <button type="submit" id="login-submit-btn" class="btn btn-primary shadow px-4">Log In</button>
+                  </div>
+
+                  <!-- Collapsible PIN Recovery Helper -->
+                  <div class="collapse mb-3" id="pin-recovery-help">
+                    <div class="p-3 bg-dark rounded border border-secondary text-secondary small">
+                      To reset your account PIN, contact our administrator on WhatsApp at <a href="tel:+77066055465" class="text-accent fw-semibold">+7 (706) 605 5465</a> or visit the reception desk at Kenesary 69.
+                    </div>
+                  </div>
+
+                  <!-- Explanation of Submission Result -->
+                  <p class="small text-secondary mb-0">
+                    * Logging in displays your remaining account balance and active discount tier.
+                  </p>
+
+                  <!-- Feedback Container for JavaScript Hook -->
+                  <div id="login-feedback" class="alert alert-info mt-3 mb-0 d-none" role="alert">
+                    Authenticating player session... Welcome back!
+                  </div>
+
+                  <div class="text-center mt-3 pt-3 border-top border-secondary">
+                    <span class="small text-secondary">New to QazaqPeek?</span>
+                    <a href="#register" id="switch-to-register" class="small text-accent fw-bold text-decoration-none ms-1">Create an Account &rarr;</a>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+
+            <!-- Form 2: New Account Registration -->
+            <div id="auth-register-pane" class="d-none">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h5 fw-bold text-accent mb-0">Create Player Account</h2>
+                <span class="badge bg-success text-dark fw-bold">+500 ₸ Bonus</span>
+              </div>
+              <p class="small text-secondary mb-3">Sign up for instant check-in, automated Kaspi top-ups, and early tournament bookings.</p>
+
+              <form id="register-form" action="login.html" method="POST">
+                <fieldset>
+                  <legend class="visually-hidden">New Account Registration</legend>
+
+                  <div class="mb-3">
+                    <label for="regNickname" class="form-label fw-bold">Gamer Nickname:</label>
+                    <input type="text" id="regNickname" name="regNickname" class="form-control bg-dark text-light border-secondary" placeholder="e.g. S1mple_Astana" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="regPhone" class="form-label fw-bold">Mobile Phone (for Kaspi &amp; SMS):</label>
+                    <input type="tel" id="regPhone" name="regPhone" class="form-control bg-dark text-light border-secondary" placeholder="+7 706 605 5465" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="regPass" class="form-label fw-bold">Create Password / PIN:</label>
+                    <input type="password" id="regPass" name="regPass" class="form-control bg-dark text-light border-secondary" placeholder="Create strong password" required>
+                  </div>
+
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="small text-success fw-semibold">* 500 KZT bonus on signup</span>
+                    <button type="submit" id="register-submit-btn" class="btn btn-outline-info shadow px-3">Register</button>
+                  </div>
+
+                  <!-- Explanation of Submission Result -->
+                  <p class="small text-secondary mb-0">
+                    * Creating an account generates your unique gamer ID for instant check-in at Kenesary 69.
+                  </p>
+
+                  <!-- Feedback Container for JavaScript Hook -->
+                  <div id="register-feedback" class="alert alert-success mt-3 mb-0 d-none" role="alert">
+                    Account created successfully! Your 500 KZT welcome bonus is active.
+                  </div>
+
+                  <div class="text-center mt-3 pt-3 border-top border-secondary">
+                    <span class="small text-secondary">Already a member?</span>
+                    <a href="#login" id="switch-to-login" class="small text-accent fw-bold text-decoration-none ms-1">Sign In &rarr;</a>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+
           </div>
         </div>
       </div>
 
-      <!-- Form 2: New Account Registration -->
-      <div class="col-12 col-md-6">
-        <div class="card bg-custom-card text-light h-100 border-secondary shadow">
-          <div class="card-header bg-dark border-secondary">
-            <h2 class="h4 mb-0 fw-bold text-accent">Register New Player Account</h2>
+      <!-- Column 2: Member Advantages & Venue Access (Fills space beautifully) -->
+      <div class="col-12 col-lg-6">
+        <div class="card bg-custom-card text-light border-secondary shadow h-100 p-4 d-flex flex-column justify-content-between">
+          <div>
+            <div class="d-flex align-items-center justify-content-between pb-3 mb-3 border-bottom border-secondary">
+              <h2 class="h4 fw-bold text-accent mb-0">Member Advantages</h2>
+              <span class="badge bg-info text-dark fw-bold">Astana Club Perks</span>
+            </div>
+            <p class="text-secondary small mb-4">
+              Joining the QazaqPeek member community gives you instant perks across our Standard Arena, VIP 1 Lounge, and VIP 2 Bootcamp in Astana.
+            </p>
+
+            <div class="d-flex flex-column gap-3 mb-4">
+              <div class="p-3 bg-dark rounded border border-secondary shadow-sm">
+                <div class="d-flex align-items-center gap-2 mb-1">
+                  <span class="fs-5">🎁</span>
+                  <h3 class="h6 text-accent fw-bold mb-0">500 KZT Welcome Bonus</h3>
+                </div>
+                <p class="small text-secondary mb-0">Every newly registered player receives 500 KZT introductory credit applied directly to their game time upon arrival.</p>
+              </div>
+
+              <div class="p-3 bg-dark rounded border border-secondary shadow-sm">
+                <div class="d-flex align-items-center gap-2 mb-1">
+                  <span class="fs-5">⚡</span>
+                  <h3 class="h6 text-accent fw-bold mb-0">Direct Kaspi QR Top-Ups</h3>
+                </div>
+                <p class="small text-secondary mb-0">Top up your station account directly from your seat with Kaspi QR without interrupting active matches or queuing at reception.</p>
+              </div>
+
+              <div class="p-3 bg-dark rounded border border-secondary shadow-sm">
+                <div class="d-flex align-items-center gap-2 mb-1">
+                  <span class="fs-5">🏆</span>
+                  <h3 class="h6 text-accent fw-bold mb-0">LAN Tournament Priority</h3>
+                </div>
+                <p class="small text-secondary mb-0">Early-bird slot reservation in our weekly CS2 and Dota 2 LAN brackets before public registration opens.</p>
+              </div>
+            </div>
           </div>
-          <div class="card-body d-flex flex-column justify-content-between">
-            <form id="register-form" action="login.html" method="POST">
-              <fieldset>
-                <legend class="visually-hidden">New Account Registration</legend>
 
-                <div class="mb-3">
-                  <label for="regNickname" class="form-label fw-bold">Gamer Nickname:</label>
-                  <input type="text" id="regNickname" name="regNickname" class="form-control bg-dark text-light border-secondary" placeholder="e.g. S1mple_Astana" required>
-                </div>
-
-                <div class="mb-3">
-                  <label for="regPhone" class="form-label fw-bold">Mobile Phone (for Kaspi &amp; SMS):</label>
-                  <input type="tel" id="regPhone" name="regPhone" class="form-control bg-dark text-light border-secondary" placeholder="+7 706 605 5465" required>
-                </div>
-
-                <div class="mb-3">
-                  <label for="regPass" class="form-label fw-bold">Create 6-Digit PIN:</label>
-                  <input type="password" id="regPass" name="regPass" class="form-control bg-dark text-light border-secondary" placeholder="Create 6-digit PIN" required>
-                </div>
-
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <span class="small text-muted d-none d-md-block">* 500 KZT bonus balance on signup</span>
-                  <button type="submit" id="register-submit-btn" class="btn btn-outline-info shadow">Register Account</button>
-                </div>
-
-                <!-- Explanation of Submission Result -->
-                <p class="small text-muted mb-0">
-                  * Creating an account generates your unique gamer ID for instant check-in at Kenesary 69.
-                </p>
-
-                <!-- Feedback Container for JavaScript Hook -->
-                <div id="register-feedback" class="alert alert-success mt-3 mb-0 d-none" role="alert">
-                  Account created successfully! Your 500 KZT welcome bonus is active.
-                </div>
-              </fieldset>
-            </form>
+          <div class="p-3 bg-dark bg-opacity-75 rounded border border-secondary small text-secondary">
+            <div class="d-flex justify-content-between mb-1">
+              <span>📍 <strong>Venue Location:</strong></span>
+              <span class="text-light">Kenesary St 69, 2nd Floor</span>
+            </div>
+            <div class="d-flex justify-content-between mb-1">
+              <span>🕒 <strong>Operating Hours:</strong></span>
+              <span class="text-success fw-semibold">Open 24/7 (Non-stop)</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span>📞 <strong>Admin Reception:</strong></span>
+              <a href="tel:+77066055465" class="text-accent text-decoration-none fw-semibold">+7 (706) 605 5465</a>
+            </div>
           </div>
         </div>
       </div>
 
     </div>
-
-    <!-- Member Benefits Section (Completes Page Layout) -->
-    <section class="mb-5">
-      <h2 class="h3 fw-bold text-accent mb-3 border-bottom border-secondary pb-2">Membership Benefits</h2>
-      <div class="row g-4">
-        <div class="col-12 col-md-4">
-          <div class="p-4 bg-custom-card rounded-3 border border-secondary h-100 shadow-sm">
-            <h3 class="h5 text-accent fw-bold mb-2">🎁 500 KZT Bonus</h3>
-            <p class="small text-muted mb-0">Every newly registered player receives 500 KZT introductory credit towards their first game session at Kenesary 69.</p>
-          </div>
-        </div>
-        <div class="col-12 col-md-4">
-          <div class="p-4 bg-custom-card rounded-3 border border-secondary h-100 shadow-sm">
-            <h3 class="h5 text-accent fw-bold mb-2">⚡ Automatic Top-ups</h3>
-            <p class="small text-muted mb-0">Top up directly with Kaspi QR without interrupting active matches or standing in queue at reception.</p>
-          </div>
-        </div>
-        <div class="col-12 col-md-4">
-          <div class="p-4 bg-custom-card rounded-3 border border-secondary h-100 shadow-sm">
-            <h3 class="h5 text-accent fw-bold mb-2">🏆 Tournament Priority</h3>
-            <p class="small text-muted mb-0">Members receive early bird slot reservation in weekly CS2 and Dota 2 LAN brackets before public registration opens.</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
   </main>
 
@@ -192,6 +253,9 @@
   </footer>
 
   <!-- Bootstrap 5.3.3 JavaScript Bundle CDN -->
+  <!-- jQuery 3.7.1 Core Library -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- Application JavaScript Modules -->

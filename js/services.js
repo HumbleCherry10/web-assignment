@@ -1,23 +1,11 @@
 /**
- * ================================================================================
- * QAZAQPEEK CYBER CLUB ASTANA — SERVICES & TARIFFS CONTROLLER
- * File: js/services.js
+ * QazaqPeek Cyber Club Astana - Services & Tariffs Controller
  * Author: Dias Tursynbay
- * Features:
- *   - Comprehensive Tariff & Package Data Array (6+ official venue packages)
- *   - Interactive Session Cost & Savings Optimizer
- *   - Package Recommendation Engine (Compares hourly vs package rates)
- *   - Tariff Filter & Search Controls with Dynamic Result Count
- *   - Deep-linking parameters to Booking Reservation page
- * ================================================================================
  */
 
 'use strict';
 
-/**
- * 1. OFFICIAL VENUE TARIFF DATA ARRAY
- * Array of 7 packages with pricing across Standard, VIP 1, and VIP 2 zones.
- */
+// 7 Official Venue Packages
 const TARIFF_PACKAGES = [
   {
     id: 'hourly',
@@ -27,8 +15,7 @@ const TARIFF_PACKAGES = [
     standardRate: 800,
     vip1Rate: 1200,
     vip2Rate: 1500,
-    schedule: '24/7 Available Anytime',
-    perks: 'Play at your own pace, pay upon leaving'
+    schedule: '24/7 Available Anytime'
   },
   {
     id: 'pkg_2plus1',
@@ -38,75 +25,62 @@ const TARIFF_PACKAGES = [
     standardRate: 1600,
     vip1Rate: 2400,
     vip2Rate: 3000,
-    schedule: '24/7 Any Day',
-    perks: 'Buy 2 hours and get 1 bonus hour free (Save up to 1,500 ₸)'
+    schedule: '24/7 Any Day'
   },
   {
     id: 'pkg_3plus2',
     title: 'Package "3 + 2" (5 Hours)',
     category: 'discount',
-    durationHours: 5,
+    durationHours: 2400,
+    durationHoursNum: 5,
     standardRate: 2400,
     vip1Rate: 3600,
     vip2Rate: 4500,
-    schedule: '24/7 Any Day',
-    perks: 'Buy 3 hours and get 2 bonus hours free (Save up to 3,000 ₸)'
+    schedule: '24/7 Any Day'
   },
   {
     id: 'morning',
     title: 'Morning Package (08:00 - 12:00)',
     category: 'fixed_time',
-    durationHours: 4,
+    durationHoursNum: 4,
     standardRate: 1500,
     vip1Rate: 1500,
     vip2Rate: 2000,
-    schedule: 'Daily from 08:00 to 12:00',
-    perks: 'Low latency morning queue, optimal solo training hours'
+    schedule: 'Daily 08:00 - 12:00'
   },
   {
     id: 'day',
     title: 'Day Package (12:00 - 18:00)',
     category: 'fixed_time',
-    durationHours: 6,
+    durationHoursNum: 6,
     standardRate: 2000,
     vip1Rate: 2500,
     vip2Rate: 3500,
-    schedule: 'Daily from 12:00 to 18:00',
-    perks: 'Afternoon grind package, popular for students'
+    schedule: 'Daily 12:00 - 18:00'
   },
   {
     id: 'night',
     title: 'Night Package (22:00 - 08:00)',
     category: 'fixed_time',
-    durationHours: 10,
+    durationHoursNum: 10,
     standardRate: 3000,
     vip1Rate: 4000,
     vip2Rate: 5000,
-    schedule: 'Daily from 22:00 to 08:00',
-    perks: '10-hour LAN marathon, free chilled water, quiet arena vibe'
+    schedule: 'Daily 22:00 - 08:00'
   },
   {
     id: 'bootcamp_pass',
     title: 'Squad Bootcamp All-Day Pass',
     category: 'team',
-    durationHours: 12,
+    durationHoursNum: 12,
     standardRate: 7500,
     vip1Rate: 10000,
     vip2Rate: 12000,
-    schedule: 'Bookable 24 hours in advance',
-    perks: 'Dedicated 5-rig row in VIP 2, tactical whiteboard, personal power outlets'
+    schedule: 'Bookable 24h in advance'
   }
 ];
 
-/**
- * 2. REUSABLE FUNCTIONS WITH PARAMETERS & RETURN VALUES
- */
-
-/**
- * Get hourly rate for a specific zone tier.
- * @param {'standard'|'vip1'|'vip2'} zone - Zone identifier
- * @returns {number} Rate in KZT per hour
- */
+// Switch condition: returns hourly rate by zone
 function getZoneHourlyRate(zone) {
   switch (zone) {
     case 'vip1':
@@ -119,33 +93,22 @@ function getZoneHourlyRate(zone) {
   }
 }
 
-/**
- * Calculate standard hourly cost and find the best promotional package recommendation.
- * @param {'standard'|'vip1'|'vip2'} zone - Zone tier
- * @param {number} hours - Session length in hours (1 - 12)
- * @returns {{ baseCost: number, bestDeal: Object|null, savings: number }}
- */
+// Find / optimizer: calculates base cost and discovers promotional package savings
 function calculateTariffOptimization(zone, hours) {
-  const hourlyRate = getZoneHourlyRate(zone);
-  const baseCost = hours * hourlyRate;
+  const rate = getZoneHourlyRate(zone);
+  const baseCost = hours * rate;
   let bestDeal = null;
   let maxSavings = 0;
 
   TARIFF_PACKAGES.forEach(pkg => {
-    // Only check applicable packages based on hours requested
-    if (pkg.category !== 'flexible') {
-      const pkgCost = zone === 'vip1' ? pkg.vip1Rate : zone === 'vip2' ? pkg.vip2Rate : pkg.standardRate;
-      
-      // If requested hours fit within or match package duration
-      if (hours >= pkg.durationHours && pkgCost < baseCost) {
-        const potentialSavings = baseCost - pkgCost;
-        if (potentialSavings > maxSavings) {
-          maxSavings = potentialSavings;
-          bestDeal = {
-            package: pkg,
-            cost: pkgCost,
-            savings: potentialSavings
-          };
+    const pkgHours = pkg.durationHoursNum || pkg.durationHours || 1;
+    if (pkg.category !== 'flexible' && hours >= pkgHours) {
+      const cost = zone === 'vip1' ? pkg.vip1Rate : zone === 'vip2' ? pkg.vip2Rate : pkg.standardRate;
+      if (cost < baseCost) {
+        const savings = baseCost - cost;
+        if (savings > maxSavings) {
+          maxSavings = savings;
+          bestDeal = { package: pkg, cost, savings };
         }
       }
     }
@@ -154,94 +117,52 @@ function calculateTariffOptimization(zone, hours) {
   return { baseCost, bestDeal, savings: maxSavings };
 }
 
-/**
- * Format currency using global formatKZT or fallback.
- * @param {number} amount
- * @returns {string}
- */
-function displayCurrency(amount) {
-  if (typeof formatKZT === 'function') {
-    return formatKZT(amount);
-  }
-  return `${amount.toLocaleString('ru-KZ')} ₸`;
-}
-
-/**
- * 3. DOM INTERACTION & EVENT LISTENERS
- */
-
 document.addEventListener('DOMContentLoaded', () => {
-  const calculatorForm = document.getElementById('calculator-form');
   const zoneSelect = document.getElementById('calc-zone');
   const hoursInput = document.getElementById('calc-hours');
   const totalDisplay = document.getElementById('calc-total-display');
   const proceedBtn = document.getElementById('btn-proceed-booking');
-  const calcResultBox = document.getElementById('calculator-result');
+  const resultBox = document.getElementById('calculator-result');
 
-  if (!calculatorForm || !zoneSelect || !hoursInput || !totalDisplay) return;
+  if (!zoneSelect || !hoursInput || !totalDisplay) return;
 
-  // Create Recommendation Output Container
-  let recommendationBox = document.getElementById('calc-recommendation-box');
-  if (!recommendationBox && calcResultBox) {
-    recommendationBox = document.createElement('div');
-    recommendationBox.id = 'calc-recommendation-box';
-    recommendationBox.className = 'mt-2 pt-2 border-top border-secondary text-info small';
-    calcResultBox.appendChild(recommendationBox);
+  // Recommendation box inside result container
+  let dealBox = document.getElementById('calc-recommendation-box');
+  if (!dealBox && resultBox) {
+    dealBox = document.createElement('div');
+    dealBox.id = 'calc-recommendation-box';
+    dealBox.className = 'mt-2 pt-2 border-top border-secondary text-info small';
+    resultBox.appendChild(dealBox);
   }
 
-  /**
-   * Recalculate price and update DOM display
-   */
-  function updateSessionEstimate() {
+  function updateEstimate() {
     const zone = zoneSelect.value || 'standard';
     let hours = parseInt(hoursInput.value, 10);
-
-    // Validate bounds
     if (isNaN(hours) || hours < 1) hours = 1;
     if (hours > 12) hours = 12;
 
-    const result = calculateTariffOptimization(zone, hours);
+    const opt = calculateTariffOptimization(zone, hours);
+    const format = typeof formatKZT === 'function' ? formatKZT : n => `${n} ₸`;
 
-    // Update main total display
-    totalDisplay.textContent = displayCurrency(result.baseCost);
+    totalDisplay.textContent = format(opt.baseCost);
 
-    // Display smart package savings recommendation
-    if (recommendationBox) {
-      if (result.bestDeal) {
-        recommendationBox.innerHTML = '';
-        const recText = document.createElement('span');
-        recText.className = 'badge bg-success text-dark p-2 me-1 fw-bold';
-        recText.textContent = `💡 Smart Deal: ${result.bestDeal.package.title}`;
-
-        const savingsText = document.createElement('span');
-        savingsText.className = 'text-accent d-block mt-1';
-        savingsText.textContent = `Choose package for ${displayCurrency(result.bestDeal.cost)} and save ${displayCurrency(result.savings)}!`;
-
-        recommendationBox.appendChild(recText);
-        recommendationBox.appendChild(savingsText);
+    if (dealBox) {
+      if (opt.bestDeal) {
+        dealBox.innerHTML = `
+          <span class="badge bg-success text-dark p-2 fw-bold">💡 Deal: ${opt.bestDeal.package.title}</span>
+          <span class="text-accent d-block mt-1">Get this package for ${format(opt.bestDeal.cost)} and save ${format(opt.bestDeal.savings)}!</span>
+        `;
       } else {
-        recommendationBox.innerHTML = '';
-        const standardInfo = document.createElement('span');
-        standardInfo.className = 'text-muted';
-        standardInfo.textContent = `Standard hourly billing at ${displayCurrency(getZoneHourlyRate(zone))} / hour. No advance prepayment required.`;
-        recommendationBox.appendChild(standardInfo);
+        dealBox.innerHTML = `<span class="text-muted">Standard rate: ${format(getZoneHourlyRate(zone))} / hour. Pay as you go.</span>`;
       }
     }
 
-    // Sync proceed to booking button href with pre-filled query parameters
     if (proceedBtn) {
       proceedBtn.href = `booking.html?zone=${encodeURIComponent(zone)}&hours=${hours}`;
     }
   }
 
-  // Event Listeners for Real-Time Calculation
-  zoneSelect.addEventListener('change', updateSessionEstimate);
-  hoursInput.addEventListener('input', updateSessionEstimate);
-
-  calculatorForm.addEventListener('reset', () => {
-    setTimeout(updateSessionEstimate, 10);
-  });
-
-  // Initial calculation run
-  updateSessionEstimate();
+  zoneSelect.addEventListener('change', updateEstimate);
+  hoursInput.addEventListener('input', updateEstimate);
+  updateEstimate();
 });
