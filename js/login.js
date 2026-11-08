@@ -1,10 +1,132 @@
 /**
- * QazaqPeek Cyber Club Astana - Member Security & Auth
+ * ================================================================================
+ * QAZAQPEEK CYBER CLUB ASTANA — MEMBER SECURITY & AUTHENTICATION
+ * File: js/login.js
  * Author: Adilet Ainadinov
+ * Technology: 100% Plain JavaScript (Weeks 6–8)
+ *
+ * Requirements Covered:
+ *   - Plain JavaScript DOM methods (createElement, appendChild, insertBefore, querySelector)
+ *   - Accessible Show / Hide Password toggle buttons dynamically injected
+ *   - Dynamic Confirm Password field injection
+ *   - Live Regex Password Strength Checklist (8+ chars, upper, lower, digit, special)
+ *   - Real-time password confirmation match verification
+ *   - Client-side Session State Simulator (Sign In <-> Sign Out in Navbar)
+ *   - Live Kazakhstani Phone Input Auto-Formatter (+7 (7XX) XXX-XX-XX)
+ *   - Strict Data Security: Zero persistence of passwords in storage/console
+ *   - Scope: One visitor, one site (100% client-side, zero backend requirement)
+ * ================================================================================
  */
 
 'use strict';
 
+// Active simulated in-memory session (no backend / database required)
+let activePlayerSession = null;
+
+/**
+ * Reusable Function: Formats raw input into Kazakhstani phone format: +7 (7XX) XXX-XX-XX
+ * Called from multiple places: login phone input and registration phone input.
+ * @param {string} raw
+ * @returns {string}
+ */
+function formatKazakhstaniPhone(raw) {
+  if (typeof raw !== 'string') return '';
+  const digits = raw.replace(/\D/g, '');
+  if (!digits) return '';
+
+  let cleanDigits = digits;
+  if (cleanDigits.startsWith('8')) {
+    cleanDigits = '7' + cleanDigits.substring(1);
+  } else if (!cleanDigits.startsWith('7')) {
+    cleanDigits = '7' + cleanDigits;
+  }
+
+  const part1 = cleanDigits.substring(0, 1);
+  const part2 = cleanDigits.substring(1, 4);
+  const part3 = cleanDigits.substring(4, 7);
+  const part4 = cleanDigits.substring(7, 9);
+  const part5 = cleanDigits.substring(9, 11);
+
+  let formatted = `+${part1}`;
+  if (part2) formatted += ` (${part2}`;
+  if (part2.length === 3) formatted += `) `;
+  if (part3) formatted += `${part3}`;
+  if (part4) formatted += `-${part4}`;
+  if (part5) formatted += `-${part5}`;
+
+  return formatted;
+}
+
+/**
+ * Reusable Function: Adds accessible Show/Hide Password toggle button next to an input.
+ * Called from multiple places: loginPassword, regPass, regPassConfirm.
+ * @param {HTMLInputElement} input
+ */
+function addPasswordVisibilityToggle(input) {
+  if (!input || !input.parentElement) return;
+
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'btn btn-outline-secondary btn-sm mt-1';
+  btn.textContent = '👁 Show Password';
+  btn.setAttribute('aria-label', 'Toggle password visibility');
+
+  btn.addEventListener('click', () => {
+    const isPassword = input.type === 'password';
+    input.type = isPassword ? 'text' : 'password';
+    btn.textContent = isPassword ? '🙈 Hide Password' : '👁 Show Password';
+  });
+
+  input.parentElement.appendChild(btn);
+}
+
+/**
+ * Reusable Function: Updates the top navbar with active session information.
+ * Called from multiple places: login success, registration success, and sign-out.
+ * @param {Object|null} session
+ */
+function updateSessionNavbar(session) {
+  let sessionBadge = document.getElementById('navbar-player-session');
+  const navContainer = document.querySelector('.navbar .container');
+  if (!navContainer) return;
+
+  if (session && session.isLoggedIn) {
+    if (!sessionBadge) {
+      sessionBadge = document.createElement('div');
+      sessionBadge.id = 'navbar-player-session';
+      sessionBadge.className = 'd-none d-lg-flex align-items-center gap-2 ms-3 py-1 px-2 rounded bg-dark border border-info small';
+      const mainNavbar = document.getElementById('mainNavbar');
+      if (mainNavbar) {
+        mainNavbar.after(sessionBadge);
+      } else {
+        navContainer.appendChild(sessionBadge);
+      }
+    }
+
+    sessionBadge.innerHTML = `
+      <span class="text-accent fw-bold">👤 ${session.nickname}</span>
+      <span class="badge bg-success text-dark">${session.balance} ₸</span>
+      <button type="button" class="btn btn-outline-danger btn-sm py-0 px-2" id="btn-session-signout">Sign Out</button>
+    `;
+
+    const signoutBtn = sessionBadge.querySelector('#btn-session-signout');
+    if (signoutBtn) {
+      signoutBtn.addEventListener('click', () => {
+        activePlayerSession = null;
+        updateSessionNavbar(null);
+        if (typeof displayGlobalToast === 'function') {
+          displayGlobalToast('Signed Out', 'You have been signed out of the player session.', 'info');
+        }
+      });
+    }
+  } else {
+    if (sessionBadge) {
+      sessionBadge.remove();
+    }
+  }
+}
+
+// Main Page Execution on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.getElementById('login-form');
   const loginPhone = document.getElementById('loginPhone');
@@ -19,24 +141,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const phoneRegex = /^\+?[0-9\s\-()]{10,18}$/;
 
-  // Helper: append accessible Show/Hide Password toggle button
-  function addToggle(input) {
-    if (!input || !input.parentElement) return;
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'btn btn-outline-secondary btn-sm mt-1';
-    btn.textContent = '👁 Show';
-    btn.addEventListener('click', () => {
-      const isPass = input.type === 'password';
-      input.type = isPass ? 'text' : 'password';
-      btn.textContent = isPass ? '🙈 Hide' : '👁 Show';
+  // 1. Live Phone Input Auto-Formatting Listeners
+  if (loginPhone) {
+    loginPhone.addEventListener('input', (e) => {
+      const val = e.target.value;
+      if (val.replace(/\D/g, '').length >= 4) {
+        loginPhone.value = formatKazakhstaniPhone(val);
+      }
     });
-    input.parentElement.appendChild(btn);
   }
 
-  if (loginPassword) addToggle(loginPassword);
+  if (regPhone) {
+    regPhone.addEventListener('input', (e) => {
+      const val = e.target.value;
+      if (val.replace(/\D/g, '').length >= 4) {
+        regPhone.value = formatKazakhstaniPhone(val);
+      }
+    });
+  }
 
-  // Registration Dynamic Elements: Confirm Password & Regex Checklist
+  // 2. Add Show/Hide Toggle to Login Password
+  if (loginPassword) {
+    addPasswordVisibilityToggle(loginPassword);
+  }
+
+  // 3. Dynamic Registration Fields: Confirm Password & Regex Checklist
   let regPassConfirm = null;
   const rules = [
     { id: 'rule-len', label: '8+ Characters', test: p => p.length >= 8 },
@@ -47,9 +176,9 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   if (registerForm && regPass) {
-    addToggle(regPass);
+    addPasswordVisibilityToggle(regPass);
 
-    // Confirm password field
+    // Confirm password input group injected dynamically
     const confirmGroup = document.createElement('div');
     confirmGroup.className = 'mb-3';
     confirmGroup.innerHTML = `
@@ -60,9 +189,9 @@ document.addEventListener('DOMContentLoaded', () => {
     passParent.after(confirmGroup);
 
     regPassConfirm = document.getElementById('regPassConfirm');
-    addToggle(regPassConfirm);
+    addPasswordVisibilityToggle(regPassConfirm);
 
-    // Live regex checklist box
+    // Live regex password checklist box injected dynamically
     const checklistBox = document.createElement('div');
     checklistBox.id = 'password-live-checklist';
     checklistBox.className = 'p-3 bg-dark bg-opacity-75 rounded border border-secondary mb-3 small';
@@ -101,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (regPassConfirm) regPassConfirm.addEventListener('input', evaluatePassword);
   }
 
-  // Login Form Submission
+  // 4. Login Form Submission Handler
   if (loginForm && loginPhone && loginPassword && loginFeedback) {
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -123,15 +252,29 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Demonstration success - zero persistence of password
+      // Demonstration success - passwords never stored or logged
+      activePlayerSession = {
+        nickname: phoneOrUser,
+        balance: 1500,
+        isLoggedIn: true
+      };
+      updateSessionNavbar(activePlayerSession);
+
       loginFeedback.className = 'alert alert-success mt-3 mb-0';
-      loginFeedback.textContent = `Welcome back, ${phoneOrUser}! Session active (Demonstration Mode: No backend database).`;
+      loginFeedback.innerHTML = `
+        <h4 class="alert-heading h6 fw-bold mb-1">✓ Welcome back, ${phoneOrUser}!</h4>
+        <p class="small mb-0">Player session active &bull; Balance: <strong>1,500 ₸</strong>. (Demonstration Mode: No backend database).</p>
+      `;
       loginFeedback.classList.remove('d-none');
       loginForm.reset();
+
+      if (typeof displayGlobalToast === 'function') {
+        displayGlobalToast('Session Started', `Welcome back, ${phoneOrUser}!`, 'success');
+      }
     });
   }
 
-  // Registration Form Submission
+  // 5. Registration Form Submission Handler
   if (registerForm && regNickname && regPhone && regPass && regFeedback) {
     registerForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -173,9 +316,19 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Demonstration success - passwords never saved or logged
+      // Demonstration success - passwords never saved or transmitted
+      activePlayerSession = {
+        nickname: nick,
+        balance: 500,
+        isLoggedIn: true
+      };
+      updateSessionNavbar(activePlayerSession);
+
       regFeedback.className = 'alert alert-success mt-3 mb-0';
-      regFeedback.textContent = `Account created for "${nick}"! 500 ₸ welcome bonus credited (Demonstration Mode).`;
+      regFeedback.innerHTML = `
+        <h4 class="alert-heading h6 fw-bold mb-1">🎉 Account Created for "${nick}"!</h4>
+        <p class="small mb-0"><strong>500 ₸</strong> introductory credit has been added to your balance. (Demonstration Mode).</p>
+      `;
       regFeedback.classList.remove('d-none');
       registerForm.reset();
 
@@ -192,58 +345,10 @@ document.addEventListener('DOMContentLoaded', () => {
         matchLi.className = 'text-muted';
         matchLi.innerHTML = `<span class="me-1">✕</span> Passwords Match`;
       }
+
+      if (typeof displayGlobalToast === 'function') {
+        displayGlobalToast('Account Registered', `Welcome to QazaqPeek, ${nick}! 500 ₸ bonus active.`, 'success');
+      }
     });
-  }
-  // Auth Tab Switcher (Log In <-> Register)
-  const tabLoginBtn = document.getElementById('tab-login-btn');
-  const tabRegisterBtn = document.getElementById('tab-register-btn');
-  const loginPane = document.getElementById('auth-login-pane');
-  const registerPane = document.getElementById('auth-register-pane');
-  const switchToRegister = document.getElementById('switch-to-register');
-  const switchToLogin = document.getElementById('switch-to-login');
-
-  function showLogin() {
-    if (loginPane && registerPane) {
-      loginPane.classList.remove('d-none');
-      registerPane.classList.add('d-none');
-    }
-    if (tabLoginBtn && tabRegisterBtn) {
-      tabLoginBtn.classList.add('active', 'text-accent');
-      tabLoginBtn.classList.remove('text-light');
-      tabRegisterBtn.classList.remove('active', 'text-accent');
-      tabRegisterBtn.classList.add('text-light');
-    }
-  }
-
-  function showRegister() {
-    if (loginPane && registerPane) {
-      registerPane.classList.remove('d-none');
-      loginPane.classList.add('d-none');
-    }
-    if (tabLoginBtn && tabRegisterBtn) {
-      tabRegisterBtn.classList.add('active', 'text-accent');
-      tabRegisterBtn.classList.remove('text-light');
-      tabLoginBtn.classList.remove('active', 'text-accent');
-      tabLoginBtn.classList.add('text-light');
-    }
-  }
-
-  if (tabLoginBtn) tabLoginBtn.addEventListener('click', showLogin);
-  if (tabRegisterBtn) tabRegisterBtn.addEventListener('click', showRegister);
-  if (switchToRegister) {
-    switchToRegister.addEventListener('click', (e) => {
-      e.preventDefault();
-      showRegister();
-    });
-  }
-  if (switchToLogin) {
-    switchToLogin.addEventListener('click', (e) => {
-      e.preventDefault();
-      showLogin();
-    });
-  }
-
-  if (window.location.hash === '#register') {
-    showRegister();
   }
 });

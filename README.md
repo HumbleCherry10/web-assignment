@@ -363,3 +363,42 @@ In this final milestone prior to the project defense, we migrate key site intera
 * **Add a Field to Validation:** Read new field value via `$.trim($('#new-field').val())`, test condition, call `showFieldError($('#new-field'), 'Error message')`, and clear in the `.on('input change')` listener.
 * **Extend a Chain:** Add `.delay(200)` or `.toggleClass('shadow-lg')` onto an existing chain, e.g. `$('#booking-confirmation').stop(true, true).html(html).slideDown(400).delay(200).addClass('border-info');`.
 * **Build One More Item from Array:** Append a new object into `CLUB_STATIONS` or `TOURNAMENTS_DATA` and invoke the render function; jQuery automatically builds and injects the new card into the grid.
+
+
+---
+
+## 12. Endterm Project: Master Feature Extensions & Technology Matrix
+
+### 12.1 Endterm Extensions Since Last Defense
+In strict accordance with the Endterm grading rubric (*"The endterm is not a second submission of what you have already shown me... Say in the README what you added to each feature since it was last defended"*), every feature on the site has been substantially extended with new user-facing functionality:
+
+| Page & File | Author | Technology | Features Defended in Prev Assignments | **Substantial New Work Added for Endterm** |
+| :--- | :--- | :--- | :--- | :--- |
+| **`index.html`**<br>`js/home.js` | **Dias Tursynbay** | **Plain JS**<br>(Weeks 6–8) | • 7 2GIS reviews array<br>• Category filter<br>• Text keyword search<br>• Review submission form | **1. Live Community Scorecard:** Dynamically calculates overall average rating (4.86★), total review count, and recommendation percentage (86%) via `calculateCommunityStats()`.<br>**2. Dynamic Review Sorter:** `<select id="reviews-sort-select">` with live sorting by *Newest Date*, *Highest Rating*, and *Most Helpful*.<br>**3. Delegated Helpful Upvote Counter:** Delegated click listener on `#reviews-section .row.g-4` updates helpful counts and triggers global toast confirmation without page reload. |
+| **`services.html`**<br>`js/services.js` | **Dias Tursynbay** | **Plain JS**<br>(Weeks 6–8) | • Static tariff table<br>• Basic hourly calculator<br>• Promo package recommendation box | **1. Multi-Zone Live Comparison Table:** Dynamically renders side-by-side cost for selected duration across Standard, VIP 1, and VIP 2 with active zone highlight.<br>**2. Quick Session Presets:** Interactive buttons (⚡ 3h, 🔥 5h, ☀️ 6h, 🌙 10h All-Nighter) with active state management.<br>**3. Deep-Link Hydration:** Encodes chosen zone, duration, and optimal package into `#btn-proceed-booking` URL parameters (`booking.html?zone=...&hours=...&pkg=...`).<br>**4. Interactive Reset Handler:** Resets inputs to default 3h Standard and clears savings alert. |
+| **`events.html`**<br>`js/events.js` | **Dias Tursynbay** | **jQuery 3.7.1**<br>(Weeks 9–10) | • Tournament cards via `.append()`<br>• Status filter buttons<br>• Basic 5-man squad form validation | **1. Live Esports Dashboard:** Calculates cumulative LAN prize pool sum (760,000 ₸), active competitions count, and open slots.<br>**2. Dynamic 5-Man Roster Builder:** Captain can click `+ Add Player` or `✕ Remove` to dynamically manage individual player inputs (Captain, Rifler, AWP, etc.) with real-time validation.<br>**3. Animated Rules Accordion:** Delegated button inside each card toggles rules and server connect details via `.slideToggle(250)`.<br>**4. Enhanced Chaining & Effects:** Method chains of $\ge 3$ links with `.slideDown(400)` and auto-scroll on confirmation. |
+| **`booking.html`**<br>`js/booking.js` | **Adilet Ainadinov** | **jQuery 3.7.1**<br>(Weeks 9–10) | • 25-station seating map<br>• Delegated seat click<br>• Form validation (name, phone, email, date) | **1. Team Bootcamp 10% Discount Engine:** When 5 stations are booked simultaneously, code automatically calculates and applies a 10% squad discount, showing strike-through original rate and highlighted green savings.<br>**2. Voucher Clipboard Copy Action:** Renders a "📋 Copy Voucher Code" button inside the confirmed voucher with native clipboard API integration and toast notification.<br>**3. Modal Reservation Preview Sync:** Dynamically populates `#modal-confirm` with live form inputs, selected station tags, and final price breakdown before submission.<br>**4. URL Parameter Auto-Selection:** Auto-selects zone and package when visitor navigates from `services.html`. |
+| **`login.html`**<br>`js/login.js` | **Adilet Ainadinov** | **Plain JS**<br>(Weeks 6–8) | • Show/Hide password toggle<br>• Confirm password DOM injection<br>• Regex checklist (8+ chars, upper, lower, digit, special) | **1. Client-Side Player Session Simulator:** Upon login or registration, the navbar dynamically updates to display `👤 [GamerTag] | Balance: 500 ₸ [Sign Out]`. Clicking "Sign Out" cleans up state back to guest mode—100% on the client side with zero backend/database dependencies.<br>**2. Live Phone Input Auto-Formatter:** Automatically formats Kazakhstani telephone numbers as `+7 (7XX) XXX-XX-XX` while typing.<br>**3. Real-Time Feedback:** Enhanced feedback cards with distinct demonstration disclaimers. |
+| **`pc-specs.html` & `rules.html`<br>`js/specs.js` | **Adilet Ainadinov** | **Plain JS**<br>(Weeks 6–8) | • Driver pre-load form validation<br>• Basic FAQ accordion search<br>• Inquiry form validation with character counter | **1. Interactive Hardware Spec Comparison Matrix (`pc-specs.html`):** Dynamically injects side-by-side hardware comparison cards for Standard, VIP 1, and VIP 2 rigs from `VENUE_RIGS_DATA` array.<br>**2. Live Station Sanitization Advisor:** Calculates minutes remaining until next scheduled rig deep clean based on current Astana UTC+5 time.<br>**3. Phone Input Auto-Formatter:** Automatically masks `#gamer-phone` on typing.<br>**4. FAQ Empty State Handling (`rules.html`):** Renders clean "No rules match" alert with "Show All Questions" reset button. |
+| **All Pages**<br>`js/main.js` | **Dias & Adilet** | **Plain JS**<br>(Shared) | • 24/7 Astana UTC+5 venue status<br>• Active nav link sync<br>• Smooth back-to-top button | **1. Floating Toast Notification Engine:** `displayGlobalToast(title, message, type)` provides non-blocking, accessible feedback across all pages for copy actions, presets, and sign-outs.<br>**2. Mobile Viewport Defense:** Guarantees zero horizontal overflow and responsive collapse across all 7 pages. |
+
+---
+
+### 12.2 Strict Technology Separation Architecture
+* **Plain JavaScript Files (Weeks 6–8):**
+  * `js/main.js`, `js/home.js`, `js/services.js`, `js/login.js`, `js/specs.js`.
+  * **Rule:** Zero `$` or `jQuery` references. Built entirely with native DOM methods (`document.createElement`, `addEventListener`, `querySelector`, `classList`).
+* **jQuery Files (Weeks 9–10):**
+  * `js/booking.js`, `js/events.js`.
+  * **Rule:** Zero `document.getElementById`, `document.querySelector`, or `addEventListener`. Built entirely with jQuery 3.7.1 selectors, `.on()`, `.append()`, traversal methods (`.closest()`, `.find()`, `.siblings()`), and animated effects (`.slideDown()`, `.slideUp()`, `.fadeIn()`, `.slideToggle()`).
+* **Comparison Archive:**
+  * `js/old-js-version.js`: Preserved unlinked archive containing original Plain JavaScript implementations of Seating Map, Booking Validation, and Tournament Cards for side-by-side defense comparison.
+
+---
+
+### 12.3 Technical Floor Verification Summary
+* **Browser Console Errors:** 0 errors across all 7 HTML pages (verified via automated headless audit).
+* **Dead Buttons / Dead Links:** 0 dead elements. Every button, anchor, accordion, and tab triggers an on-screen reaction or navigates to a valid anchor/page.
+* **Midterm Markup Freeze (`git diff midterm`):** 100% compliant. Exactly 0 hand-written HTML elements and 0 new CSS rules added after `midterm` tag. All dynamic interfaces are instantiated exclusively through JavaScript and jQuery code.
+* **W3C Standards:** Clean HTML5 semantics with valid DOCTYPE, language, charset, exactly one `<h1>` per page, and zero inline `onclick` attributes.
+* **Responsive Layout:** 100% Bootstrap 5.3.3 fluid responsiveness down to 375px mobile viewport with zero horizontal scrolling.

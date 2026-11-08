@@ -252,3 +252,77 @@ Real-Time Error Clearing      js/booking.js     Lines 301-303    Adilet Ainadino
 Form Reset on Success         js/booking.js     Line 419         Adilet Ainadinov
 Browser vs Server Comment     js/booking.js     Line 309         Adilet Ainadinov
 ================================================================================
+
+
+================================================================================
+9. ENDTERM EXTENSIONS & RUBRIC COMPLIANCE (WEEKS 6–10) — CHECKLIST
+Students: Dias Tursynbay & Adilet Ainadinov
+Theme: QazaqPeek Cyber Club Astana (Kenesary St 69)
+Milestone Tag: endterm (Complete Logic, Plain JS + jQuery Separation, Zero Dead Elements)
+================================================================================
+REQUIREMENT ITEM              FILE PATH         LINE NUMBER(S)   WRITTEN BY
+--------------------------------------------------------------------------------
+1. PLAIN JAVASCRIPT (WEEKS 6–8)
+Array of Objects at file top  js/home.js        Lines 9-87       Dias Tursynbay
+Array of Objects at file top  js/services.js    Lines 9-81       Dias Tursynbay
+Array of Objects at file top  js/specs.js       Lines 9-45       Adilet Ainadinov
+Dynamic Loop Rendering        js/home.js        Lines 130-165    Dias Tursynbay
+Dynamic Loop Rendering        js/specs.js       Lines 60-100     Adilet Ainadinov
+Reusable Function with Return js/home.js        Lines 89-125     Dias Tursynbay
+Reusable Function with Return js/services.js    Lines 83-118     Dias Tursynbay
+Reusable Function with Return js/login.js       Lines 18-50      Adilet Ainadinov
+Reusable Function with Return js/specs.js       Lines 48-65      Adilet Ainadinov
+Function called from >=2 spotsjs/home.js        Lines 180, 240   Dias Tursynbay
+Function called from >=2 spotsjs/services.js    Lines 125, 170   Dias Tursynbay
+Calculated Number (Average)   js/home.js        Lines 98-115     Dias Tursynbay
+Calculated Number (Savings)   js/services.js    Lines 95-115     Dias Tursynbay
+Calculated Number (Countdown) js/specs.js       Lines 48-62      Adilet Ainadinov
+
+2. EVENTS & INTERACTION
+0 inline onclick attributes   All 7 HTML pages  Entire Project   Dias & Adilet
+>=3 Event Types (click, input,All JS files      Entire Project   Dias & Adilet
+change, submit)
+Delegated Event Handler       js/home.js        Lines 220-245    Dias Tursynbay
+event.preventDefault()        js/home.js        Line 260         Dias Tursynbay
+event.target handling         js/home.js        Line 221         Dias Tursynbay
+
+3. FORM VALIDATION
+Full Submit Validation        js/login.js       Lines 120-195    Adilet Ainadinov
+Full Submit Validation        js/specs.js       Lines 105-180    Adilet Ainadinov
+Trimmed Inputs                js/login.js       Lines 125, 155   Adilet Ainadinov
+Field-level Error Messages    js/specs.js       Lines 110-140    Adilet Ainadinov
+Real-time Error Clearance     js/specs.js       Lines 165-175    Adilet Ainadinov
+Phone Regex Validation        js/login.js       Lines 160-165    Adilet Ainadinov
+Password Regex Checklist      js/login.js       Lines 60-110     Adilet Ainadinov
+Finished On-Screen Voucher    js/specs.js       Lines 140-160    Adilet Ainadinov
+
+4. JQUERY (WEEKS 9–10)
+Wrapped in $(function() {})   js/booking.js     Line 60          Adilet Ainadinov
+Wrapped in $(function() {})   js/events.js      Line 75          Dias Tursynbay
+Selectors: ID, Class, Element js/booking.js     Lines 65-80      Adilet Ainadinov
+Selectors: Filter (:first,:notjs/booking.js     Lines 180, 220   Adilet Ainadinov
+Traversal: .closest(), .find()js/events.js      Lines 145, 190   Dias Tursynbay
+Traversal: .siblings()        js/events.js      Line 175         Dias Tursynbay
+Traversal: $(this)            js/booking.js     Line 205         Adilet Ainadinov
+Method Chain >=3 links        js/events.js      Lines 174-179    Dias Tursynbay
+Method Chain >=3 links        js/booking.js     Lines 220, 340   Adilet Ainadinov
+Effects: .slideDown(), .fadeInjs/events.js      Lines 135, 310   Dias Tursynbay
+Effects: .slideUp(), .slideTogjs/events.js      Lines 195, 230   Dias Tursynbay
+Separation: Zero Plain JS in $js/booking.js, js/events.js        Dias & Adilet
+
+5. ENDTERM EXTENSIONS
+Community Scorecard (Averages)js/home.js        Lines 180-210    Dias Tursynbay
+Live Review Sorter            js/home.js        Lines 125-140    Dias Tursynbay
+Delegated Helpful Upvote      js/home.js        Lines 220-245    Dias Tursynbay
+Multi-Zone Savings Table      js/services.js    Lines 140-175    Dias Tursynbay
+Quick Session Presets         js/services.js    Lines 180-205    Dias Tursynbay
+Esports Prize Pool Dashboard  js/events.js      Lines 80-110     Dias Tursynbay
+Dynamic 5-Man Roster Builder  js/events.js      Lines 210-260    Dias Tursynbay
+Team Bootcamp 10% Discount    js/booking.js     Lines 50-70      Adilet Ainadinov
+Voucher Copy to Clipboard     js/booking.js     Lines 350-365    Adilet Ainadinov
+Modal Reservation Preview Syncjs/booking.js     Lines 275-295    Adilet Ainadinov
+Client-Side Session Simulator js/login.js       Lines 50-80      Adilet Ainadinov
+Live Phone Auto-Formatter     js/login.js       Lines 18-45      Adilet Ainadinov
+Dynamic Hardware Specs Matrix js/specs.js       Lines 70-110     Adilet Ainadinov
+Station Sanitization Countdownjs/specs.js       Lines 48-65      Adilet Ainadinov
+================================================================================

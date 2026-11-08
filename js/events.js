@@ -1,12 +1,26 @@
 /**
- * QazaqPeek Cyber Club Astana - Tournaments & Events
+ * ================================================================================
+ * QAZAQPEEK CYBER CLUB ASTANA — TOURNAMENTS & ESPORTS EVENTS
+ * File: js/events.js
  * Author: Dias Tursynbay
- * Rewritten with jQuery 3.7.1 for Assignment 6
+ * Technology: 100% jQuery 3.7.1 (Weeks 9–10)
+ *
+ * Requirements Covered:
+ *   - Wrapped in $(function () { ... }) document ready wrapper
+ *   - Selectors of different kinds: ID ($('#id')), Class ($('.cls')), Tag ($('input')), Attribute ($('[data-...]')), Filters (:checked, :not, :first)
+ *   - Traversal without redundant IDs: .closest(), .find(), .siblings(), $(this), .parent()
+ *   - Method Chaining of >=3 calls with step-by-step commentary
+ *   - At least 2 purposeful animated effects: .slideDown(), .slideUp(), .fadeIn(), .slideToggle()
+ *   - Delegated event handlers bound to permanent container for dynamic elements
+ *   - Full Form Validation on submit: preventDefault, trim, field-level errors, regex checks, real-time error clear
+ *   - Dynamic Roster Input Builder (Captain can dynamically add/remove roster slots)
+ *   - Strict Isolation: 100% jQuery (Zero mixing with Plain JS)
+ * ================================================================================
  */
 
 'use strict';
 
-// 6 Esports LAN Tournaments at Kenesary 69
+// 6 Official Esports LAN Tournaments at QazaqPeek Kenesary 69
 const TOURNAMENTS_DATA = [
   {
     id: 'cs2-cup',
@@ -20,7 +34,10 @@ const TOURNAMENTS_DATA = [
     statusLabel: 'Open for Registration',
     format: 'Double Elimination • 128-tick LAN Server',
     badgeClass: 'bg-success text-dark',
-    cardId: 'card-event-cs2'
+    slotsTotal: 16,
+    slotsLeft: 4,
+    cardId: 'card-event-cs2',
+    rulesText: 'Tournament mode active. Server IP: 192.168.1.100:27015. Bring your own peripherals or use our AULA F75 & MCHOSE setups. Strict anti-cheat check.'
   },
   {
     id: 'dota-1v1',
@@ -34,7 +51,10 @@ const TOURNAMENTS_DATA = [
     statusLabel: 'Open for Registration',
     format: 'Shadow Fiend Solo Mid • Best of 3',
     badgeClass: 'bg-info text-dark',
-    cardId: 'card-event-dota'
+    slotsTotal: 32,
+    slotsLeft: 9,
+    cardId: 'card-event-dota',
+    rulesText: 'Mirror match Shadow Fiend only. First to 2 kills or 1 tower destruction wins. Runes enabled after 2 minutes.'
   },
   {
     id: 'fc24-weekend',
@@ -48,7 +68,10 @@ const TOURNAMENTS_DATA = [
     statusLabel: 'Open for Registration',
     format: 'PS5 & PC Arena • Single Elimination',
     badgeClass: 'bg-primary text-light',
-    cardId: 'card-event-fc24'
+    slotsTotal: 24,
+    slotsLeft: 6,
+    cardId: 'card-event-fc24',
+    rulesText: '6-minute halves. Tactical defending mandatory. Official venue DualSense wireless controllers provided.'
   },
   {
     id: 'valorant-open',
@@ -62,7 +85,10 @@ const TOURNAMENTS_DATA = [
     statusLabel: 'Open for Registration',
     format: '5v5 Tournament Mode • VIP 2 Bootcamp',
     badgeClass: 'bg-info text-dark',
-    cardId: 'card-event-valorant'
+    slotsTotal: 8,
+    slotsLeft: 2,
+    cardId: 'card-event-valorant',
+    rulesText: 'VIP 2 Ryzen 7 7800X3D + 360Hz Alienware rigs dedicated. Riot Vanguard client verified by admin before lobby creation.'
   },
   {
     id: 'pubg-masters',
@@ -76,7 +102,10 @@ const TOURNAMENTS_DATA = [
     statusLabel: 'Concluded (Winner: QazaqSniper)',
     format: 'Erangel 4-Map Series',
     badgeClass: 'bg-secondary text-light',
-    cardId: 'card-event-pubg'
+    slotsTotal: 50,
+    slotsLeft: 0,
+    cardId: 'card-event-pubg',
+    rulesText: 'Concluded event. First place: QazaqSniper (35,000 ₸), Second place: NomadAim (15,000 ₸), Third: SaryArka (10,000 ₸).'
   },
   {
     id: 'apex-trio',
@@ -90,29 +119,70 @@ const TOURNAMENTS_DATA = [
     statusLabel: 'Concluded (Winner: Astana Predators)',
     format: 'Custom Lobby 6 Rounds',
     badgeClass: 'bg-secondary text-light',
-    cardId: 'card-event-apex'
+    slotsTotal: 20,
+    slotsLeft: 0,
+    cardId: 'card-event-apex',
+    rulesText: 'Concluded event. Winner: Astana Predators with 84 total tournament points across 6 World\'s Edge matches.'
   }
 ];
 
+// Helper: Formats currency amount in KZT
 function formatKZT(amount) {
   if (typeof amount !== 'number' || isNaN(amount) || amount < 0) return '0 ₸';
   return amount.toLocaleString('ru-KZ') + ' ₸';
 }
 
+// Generates a tournament bracket seed code
 function generateBracketSeed(gameSlug) {
   const num = Math.floor(100 + Math.random() * 900);
   const prefix = gameSlug ? gameSlug.substring(0, 3).toUpperCase() : 'LAN';
   return `QP-${prefix}-${num}`;
 }
 
-// jQuery 3.7.1: $(document).ready ensures HTML structure is loaded before scripts bind listeners
-$(document).ready(function () {
+// jQuery Entry Point: $(function () { ... }) executes once DOM is ready
+$(function () {
   const $cardContainer = $('#events-card-container');
   if ($cardContainer.length === 0) return;
 
-  // REWRITTEN FEATURE 1: Search Bar & Result Counter
-  // Replaced ~30 lines of createElement with jQuery $('<div/>') and .before().
-  // Result is concise and easy to read.
+  // 1. DYNAMIC ESPORTS DASHBOARD METRICS BAR
+  // Calculated numbers: total prize pool sum, open events count, available slots
+  let totalPrizeMoney = 0;
+  let openEventsCount = 0;
+  let totalAvailableSlots = 0;
+
+  $.each(TOURNAMENTS_DATA, function (_, tourney) {
+    totalPrizeMoney += tourney.prizePool;
+    if (tourney.status === 'open') {
+      openEventsCount++;
+      totalAvailableSlots += (tourney.slotsLeft || 0);
+    }
+  });
+
+  const $dashboardBar = $('<div />', {
+    id: 'tournaments-dashboard-bar',
+    class: 'p-3 bg-dark rounded border border-info mb-4 shadow-sm'
+  }).html(`
+    <div class="row g-3 align-items-center text-center text-md-start">
+      <div class="col-12 col-md-4 border-end-md border-secondary">
+        <span class="text-muted small d-block">Cumulative LAN Prize Pool</span>
+        <span class="h4 text-warning fw-bold mb-0">${formatKZT(totalPrizeMoney)}</span>
+      </div>
+      <div class="col-6 col-md-3">
+        <span class="text-muted small d-block">Open Competitions</span>
+        <span class="h4 text-accent fw-bold mb-0">${openEventsCount} Active Events</span>
+      </div>
+      <div class="col-6 col-md-3">
+        <span class="text-muted small d-block">Open Team Slots</span>
+        <span class="h4 text-success fw-bold mb-0">${totalAvailableSlots} Slots Remaining</span>
+      </div>
+      <div class="col-12 col-md-2 text-md-end">
+        <span class="badge bg-success text-dark p-2 fw-bold">Live LAN Season</span>
+      </div>
+    </div>
+  `);
+  $cardContainer.before($dashboardBar);
+
+  // 2. SEARCH BAR & DYNAMIC RESULT COUNTER
   const $searchBar = $('<div />', {
     id: 'tournaments-search-bar',
     class: 'row g-3 align-items-center mb-4'
@@ -136,9 +206,7 @@ $(document).ready(function () {
 
   let currentFilter = 'all';
 
-  // REWRITTEN FEATURE 2: Dynamic Tournament Cards
-  // Replaced ~80 lines of manual DOM loops with jQuery $.grep, $.each, and .append().
-  // Clearer because cards are built declaratively with safe .text() methods.
+  // 3. DYNAMIC TOURNAMENT CARD BUILDER WITH ANIMATION
   function renderTournamentCards() {
     const query = $.trim($searchInput.val()).toLowerCase();
 
@@ -158,7 +226,8 @@ $(document).ready(function () {
         class: 'col-12 text-center py-5',
         html: '<div class="p-4 bg-dark rounded border border-secondary shadow-sm">' +
               '<h3 class="h5 text-warning mb-2">No tournaments match your filter</h3>' +
-              '<button type="button" class="btn btn-outline-info btn-sm mt-2" id="btn-reset-events">Show All Events</button>' +
+              '<p class="text-muted small mb-3">Try adjusting your keyword or click below to view all scheduled LAN cups.</p>' +
+              '<button type="button" class="btn btn-outline-info btn-sm" id="btn-reset-events">Show All Events</button>' +
               '</div>'
       });
 
@@ -185,8 +254,12 @@ $(document).ready(function () {
 
       const isOpen = item.status === 'open';
       const buttonHtml = isOpen
-        ? `<button type="button" class="btn btn-info btn-sm w-100 fw-bold text-dark register-squad-btn" data-tourney-id="${item.id}">Register Squad / Player</button>`
+        ? `<button type="button" class="btn btn-info btn-sm w-100 fw-bold text-dark register-squad-btn" data-tourney-id="${item.id}">Register Squad / Player &rarr;</button>`
         : `<button type="button" class="btn btn-outline-secondary btn-sm w-100" disabled>Tournament Concluded</button>`;
+
+      const slotsInfo = isOpen
+        ? `<span class="badge bg-dark border border-success text-success">${item.slotsLeft} of ${item.slotsTotal} slots left</span>`
+        : `<span class="badge bg-secondary text-light">Bracket Finished</span>`;
 
       $card.html(`
         <div>
@@ -195,11 +268,21 @@ $(document).ready(function () {
             <span class="badge ${item.badgeClass} fw-bold">${item.statusLabel}</span>
           </div>
           <h3 class="h5 card-title fw-bold text-accent mb-2">${item.title}</h3>
-          <ul class="list-unstyled small text-light mb-3">
-            <li>📅 Date: ${item.date} at ${item.time}</li>
-            <li>🏆 Prize Pool: ${formatKZT(item.prizePool)}</li>
+          <ul class="list-unstyled small text-light mb-2">
+            <li>📅 <strong>Date:</strong> ${item.date} at ${item.time}</li>
+            <li>🏆 <strong>Prize Pool:</strong> <span class="text-warning fw-bold">${formatKZT(item.prizePool)}</span></li>
+            <li>🎟️ <strong>Entry Fee:</strong> ${formatKZT(item.entryFee)} / squad</li>
             <li class="text-muted">⚙️ ${item.format}</li>
           </ul>
+          <div class="mb-3 d-flex justify-content-between align-items-center">
+            ${slotsInfo}
+            <button type="button" class="btn btn-link btn-sm text-accent text-decoration-none p-0 toggle-rules-btn">
+              📜 Rules &amp; Spec
+            </button>
+          </div>
+          <div class="tournament-rules-panel p-2 bg-dark rounded border border-secondary small text-muted mb-3" style="display: none;">
+            ${item.rulesText}
+          </div>
         </div>
         <div class="pt-2 border-top border-secondary">
           ${buttonHtml}
@@ -214,8 +297,8 @@ $(document).ready(function () {
     $cardContainer.find('.tournament-card-col').hide().fadeIn(300);
   }
 
-  // Delegated event handler: handles dynamically created tournament registration buttons
-  // Direct binding would not attach to cards rendered after search/filter operations
+  // 4. DELEGATED EVENT HANDLER 1: Register Squad Button
+  // Dynamic button clicks are intercepted at parent $cardContainer
   $cardContainer.on('click', '.register-squad-btn', function () {
     const tourneyId = $(this).attr('data-tourney-id');
     const $dropdown = $('#tournament-choice');
@@ -228,7 +311,18 @@ $(document).ready(function () {
     });
   });
 
-  // Method Chain: switches active styling on clicked filter button and resets siblings
+  // 5. DELEGATED EVENT HANDLER 2: Expandable Rules Panel with .slideToggle()
+  $cardContainer.on('click', '.toggle-rules-btn', function () {
+    const $panel = $(this).closest('.card').find('.tournament-rules-panel');
+    $panel.stop(true, true).slideToggle(250);
+  });
+
+  // 6. METHOD CHAINING DEMONSTRATION (>=3 Links): Filter buttons styling
+  // Link 1: climbs to siblings
+  // Link 2: strips active classes
+  // Link 3: adds outline styling
+  // Link 4: .end() pops stack back to clicked button
+  // Link 5: adds active highlight
   $('.btn-group-filter, #filter-all, #filter-open, #filter-completed').on('click', function () {
     const $btn = $(this);
     $btn.siblings()
@@ -261,8 +355,67 @@ $(document).ready(function () {
 
   renderTournamentCards();
 
-  // REWRITTEN FEATURE 3: 5-Man Squad Form Validation
-  // Replaced manual error alerts with jQuery .addClass('is-invalid') and .slideDown(400, callback).
+  // 7. DYNAMIC ROSTER BUILDER (Captain can add/remove up to 5 squad member inputs)
+  const $rosterGroup = $('#roster-notes').closest('.mb-3');
+  const $rosterBuilderBox = $('<div />', {
+    id: 'dynamic-roster-builder',
+    class: 'p-3 bg-dark rounded border border-secondary mb-3'
+  }).html(`
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <span class="small text-light fw-bold">Dynamic 5-Man Squad Lineup:</span>
+      <button type="button" class="btn btn-outline-info btn-sm py-0" id="btn-add-roster-slot">+ Add Player</button>
+    </div>
+    <div id="roster-slots-container" class="d-flex flex-column gap-2"></div>
+    <small class="text-muted d-block mt-2">* Add nicknames for all 5 team members for the official match sheet.</small>
+  `);
+  $rosterGroup.after($rosterBuilderBox);
+
+  const $slotsContainer = $('#roster-slots-container');
+  const playerRoles = ['Captain / IGL', 'Entry Fragger', 'Main AWP', 'Rifler / Support', 'Lurker / Anchor'];
+
+  function addRosterSlot(defaultRole) {
+    const currentCount = $slotsContainer.find('.roster-player-row').length;
+    if (currentCount >= 5) {
+      if (typeof displayGlobalToast === 'function') {
+        displayGlobalToast('Roster Full', 'Maximum of 5 squad members allowed.', 'warning');
+      }
+      return;
+    }
+
+    const roleName = defaultRole || playerRoles[currentCount] || `Player ${currentCount + 1}`;
+    const $row = $('<div />', { class: 'input-group input-group-sm roster-player-row' }).html(`
+      <span class="input-group-text bg-secondary text-light border-secondary" style="min-width: 140px;">${roleName}</span>
+      <input type="text" class="form-control bg-dark text-light border-secondary roster-player-tag" placeholder="Gamer Tag (e.g. ShadowAce)" required>
+      <button type="button" class="btn btn-outline-danger remove-player-btn" title="Remove Player">&times;</button>
+    `);
+    $slotsContainer.append($row);
+    $row.hide().fadeIn(200);
+  }
+
+  // Pre-seed 5 standard slots
+  for (let i = 0; i < 5; i++) {
+    addRosterSlot(playerRoles[i]);
+  }
+
+  $('#btn-add-roster-slot').on('click', function () {
+    addRosterSlot();
+  });
+
+  // Delegated remove player button listener
+  $slotsContainer.on('click', '.remove-player-btn', function () {
+    const currentCount = $slotsContainer.find('.roster-player-row').length;
+    if (currentCount <= 1) {
+      if (typeof displayGlobalToast === 'function') {
+        displayGlobalToast('Roster Minimum', 'At least 1 player tag required.', 'warning');
+      }
+      return;
+    }
+    $(this).closest('.roster-player-row').slideUp(150, function () {
+      $(this).remove();
+    });
+  });
+
+  // 8. 5-MAN SQUAD FORM SUBMIT VALIDATION WITH FIELD-LEVEL FEEDBACK
   const $regForm = $('#tournament-reg-form');
   $regForm.attr('novalidate', 'novalidate');
 
@@ -281,15 +434,14 @@ $(document).ready(function () {
     $field.siblings('.invalid-feedback').stop(true, true).slideUp(150);
   }
 
+  // Real-time error clearing on input or change using $(this)
   $regForm.on('input change', 'input, select, textarea', function () {
     clearRegError($(this));
   });
 
   $regForm.on('submit', function (e) {
-    // preventDefault halts default browser page refresh, keeping user roster data intact
     e.preventDefault();
 
-    // Client validation provides immediate feedback, but server validation is essential for actual security
     let isValid = true;
     let $firstInvalid = null;
 
@@ -356,6 +508,14 @@ $(document).ready(function () {
       return;
     }
 
+    // Collect roster tags
+    const rosterList = [];
+    $('.roster-player-tag').each(function () {
+      const val = $.trim($(this).val());
+      if (val) rosterList.push(val);
+    });
+    const rosterDisplay = rosterList.length > 0 ? rosterList.join(', ') : 'Roster pre-registered';
+
     const selectedTourney = $.grep(TOURNAMENTS_DATA, t => t.id === $choice.val())[0];
     const bracketSeed = generateBracketSeed($choice.val());
     const tourneyTitle = selectedTourney ? selectedTourney.title : 'Selected Tournament';
@@ -366,6 +526,7 @@ $(document).ready(function () {
           <span>🏆</span> Tournament Squad Registration Recorded!
         </h4>
         <p class="mb-2">Team "<strong>${tagVal}</strong>" is registered for <strong>${tourneyTitle}</strong>.</p>
+        <div class="small text-light mb-2"><strong>Squad Roster:</strong> ${rosterDisplay}</div>
         <hr class="border-success opacity-50">
         <div class="row g-2 small text-light">
           <div class="col-12 col-sm-6">Bracket Seed: <strong class="text-accent">${bracketSeed}</strong></div>
@@ -373,10 +534,11 @@ $(document).ready(function () {
           <div class="col-12 col-sm-6">Discord Handle: <strong>${discordVal}</strong></div>
           <div class="col-12 col-sm-6">LAN Check-In: <strong class="text-warning">30 mins before first match</strong></div>
         </div>
-        <p class="small text-muted mt-3 mb-0">* Demonstration Confirmation: Check in at reception before match schedule.</p>
+        <p class="small text-muted mt-3 mb-0">* Demonstration Confirmation: Check in at reception at Kenesary 69 on match day.</p>
       </div>
     `;
 
+    // Method Chain demonstration: stops running queues, sets HTML, slides down, auto-scrolls
     $('#tournament-feedback')
       .stop(true, true)
       .html(feedbackHtml)

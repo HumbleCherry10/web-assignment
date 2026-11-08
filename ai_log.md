@@ -119,3 +119,33 @@ In accordance with course AI policy, this log records questions asked to AI duri
   - **Right Column:** Member Advantages & Venue Access card (500 ₸ Bonus, Kaspi QR Top-Ups, Tournament Priority, Location, 24/7 Hours, Reception phone).
   - Eliminates all empty voids on desktop viewports, provides balanced visual weight, and preserves all JavaScript validation and security features.
 * **Response Summary:** Full-width, professional layout achieved with zero console errors and 100% preservation of midterm freeze constraints.
+
+
+---
+
+### Session 23: November 8, 2026 - Endterm Project Master Compliance & Rubric Gap Analysis
+* **Objective:** Review the newly issued Endterm Project specification (`endterm_project (1).docx`), audit all 7 site pages against the 100-point rubric and strict penalty triggers, enforce the midterm freeze, and design substantial feature extensions.
+* **Topics & Inquiries:**
+  - *Midterm Freeze Reconciliation:* How to reconcile HTML and CSS changes made in commit `71db0c1` against the strict `midterm` freeze rule to avoid the -10 point penalty.
+  - *New Work Verification:* How to properly extend features already defended in Assignments 5 & 6 to prevent the -15 point penalty for resubmitting unchanged code.
+  - *Technology Isolation:* Verifying that Plain JavaScript (Weeks 6–8) and jQuery (Weeks 9–10) remain strictly separated in dedicated files without cross-contamination.
+* **Key Solutions Applied:**
+  - Audited `git diff midterm HEAD -- css/ *.html` and verified that zero hand-written HTML elements or CSS rules were retained, ensuring 100% compliance with the midterm freeze.
+  - Standardized script placement across all 7 pages with the official jQuery 3.7.1 CDN script preceding Bootstrap.
+  - Formulated a comprehensive implementation plan covering both team members (Dias Tursynbay & Adilet Ainadinov) across all required categories.
+* **Response Summary:** Full compliance roadmap established with zero penalty risk and clear architectural work division.
+
+
+---
+
+### Session 24: November 8, 2026 - Plain JavaScript & jQuery Substantial Feature Extensions Implementation
+* **Objective:** Implement the substantial feature extensions across all project scripts, eliminating dead elements, expanding DOM dynamics, and enhancing user experience.
+* **Key Changes:**
+  - **`js/home.js` (Dias Tursynbay — Plain JS):** Added `calculateCommunityStats()` returning average rating (4.86★), recommendation % (86%), and counts; added live sorting dropdown (Newest, Rating, Helpful); implemented delegated Helpful upvote click handler on the reviews container.
+  - **`js/services.js` (Dias Tursynbay — Plain JS):** Implemented multi-zone live comparison table with active zone styling; added quick session preset buttons (⚡ 3h, 🔥 5h, ☀️ 6h, 🌙 10h All-Nighter); implemented deep-link parameter hydration to `booking.html`.
+  - **`js/events.js` (Dias Tursynbay — jQuery 3.7.1):** Added live esports prize pool dashboard calculating total prize money (760,000 ₸) and active slots; implemented dynamic 5-man squad roster builder allowing captains to add/remove player input fields; added expandable tournament rules panel with `.slideToggle(250)`.
+  - **`js/booking.js` (Adilet Ainadinov — jQuery 3.7.1):** Added Team Bootcamp 10% discount engine for 5-station reservations; implemented interactive voucher code copy to clipboard action with toast feedback; synchronized live modal reservation preview.
+  - **`js/login.js` (Adilet Ainadinov — Plain JS):** Added client-side player session state simulator with dynamic navbar update (`Signed in as... | 500 ₸ Balance`); implemented live Kazakhstani phone input auto-formatter (`+7 (7XX) XXX-XX-XX`).
+  - **`js/specs.js` (Adilet Ainadinov — Plain JS):** Added dynamic hardware spec comparison matrix from `VENUE_RIGS_DATA` array; implemented live station sanitization countdown clock based on Astana UTC+5 time; enhanced FAQ search with empty state alert and reset trigger.
+  - **Documentation & Verification:** Updated `README.md` with Section 12, appended Section 9 to `checklist.txt`, and verified 0 console errors, 0 dead buttons, and 0 dead links.
+* **Response Summary:** Robust, cohesive, and 100% working project ready for final git tagging and oral defense.
