@@ -67,3 +67,92 @@ pre {
   font-family: 'Courier New', Courier, monospace;
   font-size: 14px;
 }
+
+/* Booking Floor Map: 5 seats per row, wrapping onto additional lines when > 5 */
+.station-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.station-row {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.station-btn {
+  width: 100%;
+  padding: 0.45rem 0.25rem;
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.station-btn:not(:disabled):hover {
+  transform: translateY(-1px);
+}
+
+.station-btn.selected {
+  background-color: var(--qp-accent) !important;
+  color: #0f172a !important;
+  border-color: #e0f2fe !important;
+}
+
+@media (max-width: 575.98px) {
+  .station-row {
+    gap: 0.35rem;
+  }
+
+  .station-btn {
+    font-size: 0.78rem;
+    padding: 0.35rem 0.15rem;
+  }
+}
+
+/* Dark-theme Date & 24h Time Picker controls */
+#booking-form {
+  color-scheme: dark;
+}
+
+.qp-input-addon {
+  background-color: var(--qp-card-header);
+  color: var(--qp-accent);
+  border-color: var(--qp-border);
+}
+
+.qp-date-popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  min-width: 270px;
+  max-width: 330px;
+  background-color: var(--qp-card-bg);
+  z-index: 1050;
+}
+
+.qp-cal-weekdays,
+.qp-cal-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.qp-cal-weekdays span {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--qp-text-muted);
+  padding-bottom: 0.25rem;
+}
+
+.qp-cal-day {
+  padding: 0.32rem 0;
+  font-size: 0.82rem;
+  border-radius: 6px;
+}
+
+.qp-cal-day:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
